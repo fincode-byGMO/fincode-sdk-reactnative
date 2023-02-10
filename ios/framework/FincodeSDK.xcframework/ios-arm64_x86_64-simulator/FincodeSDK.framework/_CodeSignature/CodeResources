@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		fgHjWAva+OXYdI57ragJUKmzqnE=
+		ueHJ7w4llEFFHx07m19EQL0vN7I=
 		</data>
 		<key>CardPickerParts.nib</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Headers/FincodeSDK-Swift.h</key>
 		<data>
-		wn+nW3x1vz99UnallwJI/2EVt5U=
+		Rdq/1G7QSUvLRkQNuE8lWLBKfeE=
 		</data>
 		<key>Headers/FincodeSDK.h</key>
 		<data>
@@ -86,11 +86,11 @@
 		</data>
 		<key>Modules/FincodeSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		NYjPMk0zl882tOo0/zjq+xIbqA4=
+		Qp+J5xsH14Wl/nUOvsT8Id9XfOs=
 		</data>
 		<key>Modules/FincodeSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		ZTL/dfeyh8RHJW9vVxSUgqzbhic=
+		3beYew20SFp4IVCaiqqdvzbRVpM=
 		</data>
 		<key>Modules/FincodeSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -98,11 +98,11 @@
 		</data>
 		<key>Modules/FincodeSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		8zV1NV35+a4aSKrphSc3eTy2Zew=
+		sAjxxi1jy0Y0/PDZM2HsZWVANrM=
 		</data>
 		<key>Modules/FincodeSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		19B8VtyON9RsJNMRyTQ/t1xvY5g=
+		kLEA7YEBSkodjHB31b1VBh7Ri3M=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -139,7 +139,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jX3BHhHLEvB/myLnK6zyo6HPvNIE0BAoNDoRpw2AJsQ=
+			/2N6jxP4ay8ZTMXOE35wP8p/axSIyIHWsKBeNqWGEso=
 			</data>
 		</dict>
 		<key>CardPickerParts.nib</key>
@@ -230,7 +230,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qkahFzp4kRKD057hd3lAPYJ66MBLmwjyB98Tb6vnxeU=
+			pYs5gUO6EwlpJZ6hRu/xKFA8sppChTxwxj1FtnXPKgw=
 			</data>
 		</dict>
 		<key>Headers/FincodeSDK.h</key>
@@ -272,14 +272,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			cTmMg0w9LJpeSytDL3BFgP5Umdwg0MGVZWbc3kNo5eI=
+			YpWUsGul8pRCewz3lNQD58dHXm6mkPw2qe1rA2B/ouw=
 			</data>
 		</dict>
 		<key>Modules/FincodeSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JSaVbk6PnamRYeqQzE1F0m0u26X4Aad+BcKdy4b0xx0=
+			2q0D9oTrBTKUoh52KdNgq7NinEUK/Ftli2MXSOkNqrE=
 			</data>
 		</dict>
 		<key>Modules/FincodeSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -293,14 +293,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FYZcI2zBUA0lrJ7kvrqSx/li9dGSvYchKePQicbZiQQ=
+			DbvmTIEPb01QlUI/gH7taoxBaP0xEL+raoi3h1az4KU=
 			</data>
 		</dict>
 		<key>Modules/FincodeSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XLrQyVkiJ9MukGWmqsZU2AZwgkCVb2gRZUnEt1ebCV4=
+			h+LCLEDD3uoFKg3ZHyAjFTTUTHLUCLMuriXF/xzMRak=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

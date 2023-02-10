@@ -9,6 +9,6 @@
 
 @interface RCT_EXTERN_MODULE(FincodeHorizontalViewManager, RCTViewManager)
 
-// RCT_EXPORT_VIEW_PROPERTY(color, NSString)
+RCT_EXPORT_VIEW_PROPERTY(placeHolderName, NSString)
 
 @end

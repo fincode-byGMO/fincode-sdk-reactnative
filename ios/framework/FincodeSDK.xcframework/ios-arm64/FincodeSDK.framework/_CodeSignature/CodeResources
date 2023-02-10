@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		ueHJ7w4llEFFHx07m19EQL0vN7I=
+		7KHRDByxpf2JNoAde6gXE5IMfDo=
 		</data>
 		<key>CardPickerParts.nib</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Headers/FincodeSDK-Swift.h</key>
 		<data>
-		4kNh9SpELqfAj4FPSul/xiwHDns=
+		sK5326uEoIL+IIzIu9zzRfb146A=
 		</data>
 		<key>Headers/FincodeSDK.h</key>
 		<data>
@@ -86,11 +86,11 @@
 		</data>
 		<key>Modules/FincodeSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		5WFrvDn+AXr6p3YRenStp3EYrcA=
+		jT0JILrv94zIlJt5A9Ky1tN3TP4=
 		</data>
 		<key>Modules/FincodeSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		tI1CXiIjan7WVVuOCi0ZASnE7Gs=
+		20mB+BtpUMJ4PGVxqpQvtHYWpP8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -127,7 +127,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/2N6jxP4ay8ZTMXOE35wP8p/axSIyIHWsKBeNqWGEso=
+			Rl+uRnQHnHnRvlNLmO7IXRyCL+GCL2Yw9O+B33RKo60=
 			</data>
 		</dict>
 		<key>CardPickerParts.nib</key>
@@ -218,7 +218,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7hgUqcWbsqh9i2yqa2bUCWtgoZtYq1bxp5aeOxZCoII=
+			qNwnoreIX0XBKetsgSEWC6Ske3KPMml7J+QcNb6tFEM=
 			</data>
 		</dict>
 		<key>Headers/FincodeSDK.h</key>
@@ -260,14 +260,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yQvreCRId6d/lvUI4Z2uYVLb5CE9bmqpn7bwK5BfgjI=
+			+4txUB+QPTDo8MigI3u5PvOCkUeVlK4pR0MQRvor22w=
 			</data>
 		</dict>
 		<key>Modules/FincodeSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iGEJC/7S/MMle9TU0rCvdeT/jkgBMH53xTdClLnkWEE=
+			Y2N9fn8yIPFqT8/KPGTYI1OR7kbZPZMInUiKgdbVFoE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

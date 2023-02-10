@@ -849,6 +849,10 @@ extension FincodeSDK.AFError : Foundation.LocalizedError {
     @objc get
     @objc set
   }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var placeHolderName: Swift.String {
+    @objc get
+    @objc set
+  }
   @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var payTimesHidden: Swift.Bool {
     @objc get
     @objc set

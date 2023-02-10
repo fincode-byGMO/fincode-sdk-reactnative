@@ -218,6 +218,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 @class NSCoder;
+@class NSString;
 
 IB_DESIGNABLE
 SWIFT_CLASS("_TtC10FincodeSDK13FincodeCommon")
@@ -236,6 +237,7 @@ SWIFT_CLASS("_TtC10FincodeSDK13FincodeCommon")
 /// true: 表示
 /// false: 非表示
 @property (nonatomic) IBInspectable BOOL holderNameHidden;
+@property (nonatomic, copy) IBInspectable NSString * _Nonnull placeHolderName;
 /// お支払い回数の表示・非表示を設定します
 /// true: 表示
 /// false: 非表示
