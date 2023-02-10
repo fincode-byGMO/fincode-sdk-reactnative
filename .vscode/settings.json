@@ -1,0 +1,14 @@
+{
+  "workbench.colorTheme": "Default Dark+",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.minimap.enabled": false,
+  "files.autoSave": "afterDelay",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "workbench.editor.splitInGroupLayout": "vertical",
+  "terminal.integrated.scrollback": 100000000,
+  "terminal.integrated.env.osx": {},
+  "html.format.contentUnformatted": "",
+  "prettier.printWidth": 1000,
+  "typescript.validate.enable": false
+}
