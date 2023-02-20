@@ -1,13 +1,21 @@
+//
+//  FincodeHorizontalViewManager.swift
+//  SampleApp
+//
+//  Created by 中嶋彰 on 2023/01/23.
+//
+
 import FincodeSDK
 
 @objc(FincodeVerticalViewManager)
-class FincodeVerticalViewManager: RCTViewManager {
-
-  override func view() -> FincodeVerticalView {
-    return FincodeVerticalView()
+class FincodeVerticalViewManager: RCTFincodeViewManager {
+  
+  override func view() -> UIView {
+    fincodeView = FincodeVerticalView()
+    return fincodeView!
   }
 
-  @objc override static func requiresMainQueueSetup() -> Bool {
-    return false
+  override static func requiresMainQueueSetup() -> Bool {
+    return true
   }
 }

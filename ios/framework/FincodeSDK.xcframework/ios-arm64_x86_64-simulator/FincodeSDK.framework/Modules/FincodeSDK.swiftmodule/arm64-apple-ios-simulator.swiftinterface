@@ -14,59 +14,57 @@ import _Concurrency
   final public let errorResponse: FincodeSDK.FincodeErrorResponse
   @objc deinit
 }
-@_inheritsConvenienceInitializers public class FincodePaymentConfiguration : FincodeSDK.FincodeConfiguration {
-  public var payType: Swift.String
-  public var accessId: Swift.String
-  public var id: Swift.String
-  public var tds2RetUrl: Swift.String
-  public var tds2ChAccChange: Swift.String
-  public var tds2ChAccDate: Swift.String
-  public var tds2ChAccPwChange: Swift.String
-  public var tds2NbPurchaseAccount: Swift.String
-  public var tds2PaymentAccAge: Swift.String
-  public var tds2ProvisionAttemptsDay: Swift.String
-  public var tds2ShipAddressUsage: Swift.String
-  public var tds2ShipNameInd: Swift.String
-  public var tds2SuspiciousAccActivity: Swift.String
-  public var tds2TxnActivityDay: Swift.String
-  public var tds2TxnActivityYear: Swift.String
-  public var tds2ThreeDsReqAuthData: Swift.String
-  public var tds2ThreeDsReqAuthMethod: Swift.String
-  public var tds2ThreeDsReqAuthTimestamp: Swift.String
-  public var tds2AddrMatch: Swift.String
-  public var tds2BillAddrCity: Swift.String
-  public var tds2BillAddrCountry: Swift.String
-  public var tds2BillAddrLine1: Swift.String
-  public var tds2BillAddrLine2: Swift.String
-  public var tds2BillAddrLine3: Swift.String
-  public var tds2BillAddrPostCode: Swift.String
-  public var tds2BillAddrState: Swift.String
-  public var tds2Email: Swift.String
-  public var tds2HomePhoneCc: Swift.String
-  public var tds2HomePhoneNo: Swift.String
-  public var tds2MobilePhoneCc: Swift.String
-  public var tds2MobilePhoneNo: Swift.String
-  public var tds2WorkPhoneCc: Swift.String
-  public var tds2WorkPhoneNo: Swift.String
-  public var tds2ShipAddrCity: Swift.String
-  public var tds2ShipAddrCountry: Swift.String
-  public var tds2ShipAddrLine1: Swift.String
-  public var tds2ShipAddrLine2: Swift.String
-  public var tds2ShipAddrLine3: Swift.String
-  public var tds2ShipAddrPostCode: Swift.String
-  public var tds2ShipAddrState: Swift.String
-  public var tds2DeliveryEmailAddress: Swift.String
-  public var tds2DeliveryTimeframe: Swift.String
-  public var tds2GiftCardAmount: Swift.String
-  public var tds2GiftCardCount: Swift.String
-  public var tds2GiftCardCurr: Swift.String
-  public var tds2PreOrderDate: Swift.String
-  public var tds2PreOrderPurchaseInd: Swift.String
-  public var tds2ReorderItemsInd: Swift.String
-  public var tds2ShipInd: Swift.String
-  public var tds2RecurringExpiry: Swift.String
-  public var tds2RecurringFrequency: Swift.String
-  override public init()
+@_inheritsConvenienceInitializers @objc public class FincodePaymentConfiguration : FincodeSDK.FincodeConfiguration {
+  @objc public var payType: Swift.String
+  @objc public var accessId: Swift.String
+  @objc public var id: Swift.String
+  @objc public var tds2RetUrl: Swift.String
+  @objc public var tds2ChAccChange: Swift.String
+  @objc public var tds2ChAccDate: Swift.String
+  @objc public var tds2ChAccPwChange: Swift.String
+  @objc public var tds2NbPurchaseAccount: Swift.String
+  @objc public var tds2PaymentAccAge: Swift.String
+  @objc public var tds2ProvisionAttemptsDay: Swift.String
+  @objc public var tds2ShipAddressUsage: Swift.String
+  @objc public var tds2ShipNameInd: Swift.String
+  @objc public var tds2SuspiciousAccActivity: Swift.String
+  @objc public var tds2TxnActivityDay: Swift.String
+  @objc public var tds2TxnActivityYear: Swift.String
+  @objc public var tds2ThreeDsReqAuthData: Swift.String
+  @objc public var tds2ThreeDsReqAuthMethod: Swift.String
+  @objc public var tds2ThreeDsReqAuthTimestamp: Swift.String
+  @objc public var tds2AddrMatch: Swift.String
+  @objc public var tds2BillAddrCity: Swift.String
+  @objc public var tds2BillAddrCountry: Swift.String
+  @objc public var tds2BillAddrLine1: Swift.String
+  @objc public var tds2BillAddrLine2: Swift.String
+  @objc public var tds2BillAddrLine3: Swift.String
+  @objc public var tds2BillAddrPostCode: Swift.String
+  @objc public var tds2BillAddrState: Swift.String
+  @objc public var tds2Email: Swift.String
+  @objc public var tds2HomePhoneCc: Swift.String
+  @objc public var tds2HomePhoneNo: Swift.String
+  @objc public var tds2MobilePhoneCc: Swift.String
+  @objc public var tds2MobilePhoneNo: Swift.String
+  @objc public var tds2ShipAddrCity: Swift.String
+  @objc public var tds2ShipAddrCountry: Swift.String
+  @objc public var tds2ShipAddrLine1: Swift.String
+  @objc public var tds2ShipAddrLine2: Swift.String
+  @objc public var tds2ShipAddrLine3: Swift.String
+  @objc public var tds2ShipAddrPostCode: Swift.String
+  @objc public var tds2ShipAddrState: Swift.String
+  @objc public var tds2DeliveryEmailAddress: Swift.String
+  @objc public var tds2DeliveryTimeframe: Swift.String
+  @objc public var tds2GiftCardAmount: Swift.String
+  @objc public var tds2GiftCardCount: Swift.String
+  @objc public var tds2GiftCardCurr: Swift.String
+  @objc public var tds2PreOrderDate: Swift.String
+  @objc public var tds2PreOrderPurchaseInd: Swift.String
+  @objc public var tds2ReorderItemsInd: Swift.String
+  @objc public var tds2ShipInd: Swift.String
+  @objc public var tds2RecurringExpiry: Swift.String
+  @objc public var tds2RecurringFrequency: Swift.String
+  @objc override dynamic public init()
   @objc deinit
 }
 public class FincodePaymentRequest {
@@ -726,10 +724,10 @@ extension FincodeSDK.JSON : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-@_inheritsConvenienceInitializers public class FincodeCardUpdateConfiguration : FincodeSDK.FincodeConfiguration {
+@objc @_inheritsConvenienceInitializers public class FincodeCardUpdateConfiguration : FincodeSDK.FincodeConfiguration {
   public var cardId: Swift.String
   public var defaultFlag: FincodeSDK.DefaultFlg
-  override public init()
+  @objc override dynamic public init()
   @objc deinit
 }
 public enum AFError : Swift.Error {
@@ -834,7 +832,7 @@ extension FincodeSDK.AFError : Foundation.LocalizedError {
   final public let brand: Swift.String
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) public class FincodeCommon : UIKit.UIView {
+@_inheritsConvenienceInitializers @IBDesignable @objc @_Concurrency.MainActor(unsafe) public class FincodeCommon : UIKit.UIView {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var headingHidden: Swift.Bool {
@@ -849,15 +847,15 @@ extension FincodeSDK.AFError : Foundation.LocalizedError {
     @objc get
     @objc set
   }
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var placeHolderName: Swift.String {
-    @objc get
-    @objc set
-  }
   @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var payTimesHidden: Swift.Bool {
     @objc get
     @objc set
   }
-  @_Concurrency.MainActor(unsafe) public func configuration(_ config: FincodeSDK.FincodeConfiguration?, delegate: FincodeSDK.ResultDelegate)
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var placeHolderName: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public func configuration(_ config: FincodeSDK.FincodeConfiguration?, delegate: FincodeSDK.ResultDelegate)
   @objc deinit
 }
 public enum ApiKinds {
@@ -1346,7 +1344,7 @@ public enum FincodeApiResult<T> {
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
 }
-public protocol FincodeResponse {
+@objc public protocol FincodeResponse {
 }
 extension Foundation.NSNotification.Name {
   public struct Task {
@@ -1373,16 +1371,13 @@ public class FincodeAuthRequest {
   final public let challengeUrl: Swift.String?
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) public class FincodeSubmitButtonView : UIKit.UIView {
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @objc deinit
-}
-public class FincodeConfiguration {
-  public var authorizationPublic: FincodeSDK.Authorization
-  public var apiVersion: Swift.String
-  public var customerId: Swift.String
-  public init()
+@_inheritsConvenienceInitializers @objc public class FincodeConfiguration : ObjectiveC.NSObject {
+  @objc public var useCase: FincodeSDK.SubmitButtonType
+  @objc public var authorizationPublic: FincodeSDK.Authorization
+  @objc public var apiKey: Swift.String
+  @objc public var apiVersion: Swift.String
+  @objc public var customerId: Swift.String
+  @objc override dynamic public init()
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class FincodeErrorInfo {
@@ -1414,25 +1409,30 @@ public class FincodeCardRegisterRequest {
   final public let brand: Swift.String
   @objc deinit
 }
-public protocol ResultDelegate : AnyObject {
-  func success(_ result: FincodeSDK.FincodeResponse)
-  func failure(_ result: FincodeSDK.FincodeErrorResponse)
+@objc public protocol ResultDelegate {
+  @objc func success(_ result: FincodeSDK.FincodeResponse)
+  @objc func failure(_ result: FincodeSDK.FincodeErrorResponse)
 }
-@_hasMissingDesignatedInitializers public class FincodeErrorResponse {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class FincodeErrorResponse : ObjectiveC.NSObject {
   final public let statusCode: Swift.Int
   final public let errorOccurredApi: FincodeSDK.ApiKinds
   final public let errors: [FincodeSDK.FincodeErrorInfo]
   @objc deinit
 }
-@_inheritsConvenienceInitializers public class FincodeCardRegisterConfiguration : FincodeSDK.FincodeConfiguration {
+@objc @_inheritsConvenienceInitializers public class FincodeCardRegisterConfiguration : FincodeSDK.FincodeConfiguration {
   public var defaultFlag: FincodeSDK.DefaultFlg
-  override public init()
+  @objc override dynamic public init()
   @objc deinit
 }
-public enum Authorization {
+@objc public enum Authorization : Swift.Int {
   case none
-  case Basic(apiKey: Swift.String)
-  case Bearer(apiKey: Swift.String)
+  case Basic
+  case Bearer
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
 }
 public enum Result<Value> {
   case success(Value)
@@ -1688,14 +1688,14 @@ extension FincodeSDK.SessionDelegate : Foundation.URLSessionStreamDelegate {
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, betterRouteDiscoveredFor streamTask: Foundation.URLSessionStreamTask)
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, streamTask: Foundation.URLSessionStreamTask, didBecome inputStream: Foundation.InputStream, outputStream: Foundation.OutputStream)
 }
-public enum SubmitButtonType {
+@objc public enum SubmitButtonType : Swift.Int {
   case none
   case registerCard
   case updateCard
   case payment
-  public static func == (a: FincodeSDK.SubmitButtonType, b: FincodeSDK.SubmitButtonType) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
     get
   }
 }
@@ -1723,6 +1723,9 @@ extension FincodeSDK.URLEncoding.ArrayEncoding : Swift.Equatable {}
 extension FincodeSDK.URLEncoding.ArrayEncoding : Swift.Hashable {}
 extension FincodeSDK.URLEncoding.BoolEncoding : Swift.Equatable {}
 extension FincodeSDK.URLEncoding.BoolEncoding : Swift.Hashable {}
+extension FincodeSDK.Authorization : Swift.Equatable {}
+extension FincodeSDK.Authorization : Swift.Hashable {}
+extension FincodeSDK.Authorization : Swift.RawRepresentable {}
 extension FincodeSDK.NetworkReachabilityManager.ConnectionType : Swift.Equatable {}
 extension FincodeSDK.NetworkReachabilityManager.ConnectionType : Swift.Hashable {}
 extension FincodeSDK.Tds2TransResult : Swift.Equatable {}
@@ -1730,3 +1733,4 @@ extension FincodeSDK.Tds2TransResult : Swift.Hashable {}
 extension FincodeSDK.Tds2TransResult : Swift.RawRepresentable {}
 extension FincodeSDK.SubmitButtonType : Swift.Equatable {}
 extension FincodeSDK.SubmitButtonType : Swift.Hashable {}
+extension FincodeSDK.SubmitButtonType : Swift.RawRepresentable {}

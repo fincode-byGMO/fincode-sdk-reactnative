@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../../gmo-ep/FincodeSDK/FincodeSDK.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Fincode_Manual_Import.xcodeproj">
    </FileRef>
    <FileRef
