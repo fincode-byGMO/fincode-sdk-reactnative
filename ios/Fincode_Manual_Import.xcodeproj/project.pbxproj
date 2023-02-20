@@ -12,12 +12,13 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		4F7EF7F6297F775A0037F935 /* FincodeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7EF7F5297F775A0037F935 /* FincodeSDK.xcframework */; };
-		4F7EF7F7297F775A0037F935 /* FincodeSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7EF7F5297F775A0037F935 /* FincodeSDK.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4F457D81299A282B00DBA60D /* RCTFincodeViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F457D80299A282A00DBA60D /* RCTFincodeViewManager.swift */; };
 		4F7EF7FE297F80D30037F935 /* FincodeVerticalViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EF7FA297F80D30037F935 /* FincodeVerticalViewManager.swift */; };
-		4F7EF7FF297F80D30037F935 /* FincodeHorizontalViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EF7FB297F80D30037F935 /* FincodeHorizontalViewManager.swift */; };
-		4F7EF800297F80D30037F935 /* FincodeHorizontalViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EF7FC297F80D30037F935 /* FincodeHorizontalViewManager.m */; };
+		4F7EF7FF297F80D30037F935 /* RCTFincodeHorizontalViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EF7FB297F80D30037F935 /* RCTFincodeHorizontalViewManager.swift */; };
+		4F7EF800297F80D30037F935 /* RCTFincodeHorizontalViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EF7FC297F80D30037F935 /* RCTFincodeHorizontalViewManager.m */; };
 		4F7EF801297F80D30037F935 /* FincodeVerticalViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EF7FD297F80D30037F935 /* FincodeVerticalViewManager.m */; };
+		4F9DD788299D082400521463 /* FincodeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9DD787299D082400521463 /* FincodeSDK.framework */; };
+		4F9DD789299D082400521463 /* FincodeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9DD787299D082400521463 /* FincodeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7699B88040F8A987B510C191 /* libPods-Fincode_Manual_Import-Fincode_Manual_ImportTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Fincode_Manual_Import-Fincode_Manual_ImportTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -33,13 +34,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4F7EF7F8297F775A0037F935 /* Embed Frameworks */ = {
+		4F9DD78A299D082400521463 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4F7EF7F7297F775A0037F935 /* FincodeSDK.xcframework in Embed Frameworks */,
+				4F9DD789299D082400521463 /* FincodeSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,12 +59,15 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Fincode_Manual_Import/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Fincode_Manual_Import-Fincode_Manual_ImportTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Fincode_Manual_Import-Fincode_Manual_ImportTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-Fincode_Manual_Import.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fincode_Manual_Import.debug.xcconfig"; path = "Target Support Files/Pods-Fincode_Manual_Import/Pods-Fincode_Manual_Import.debug.xcconfig"; sourceTree = "<group>"; };
+		4F457D80299A282A00DBA60D /* RCTFincodeViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTFincodeViewManager.swift; sourceTree = "<group>"; };
+		4F457D8F299CFCEC00DBA60D /* FincodeSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FincodeSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F7EF7F5297F775A0037F935 /* FincodeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FincodeSDK.xcframework; path = framework/FincodeSDK.xcframework; sourceTree = "<group>"; };
 		4F7EF7F9297F80D30037F935 /* Fincode_Manual_Import-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fincode_Manual_Import-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F7EF7FA297F80D30037F935 /* FincodeVerticalViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FincodeVerticalViewManager.swift; sourceTree = "<group>"; };
-		4F7EF7FB297F80D30037F935 /* FincodeHorizontalViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FincodeHorizontalViewManager.swift; sourceTree = "<group>"; };
-		4F7EF7FC297F80D30037F935 /* FincodeHorizontalViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FincodeHorizontalViewManager.m; sourceTree = "<group>"; };
+		4F7EF7FB297F80D30037F935 /* RCTFincodeHorizontalViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCTFincodeHorizontalViewManager.swift; sourceTree = "<group>"; };
+		4F7EF7FC297F80D30037F935 /* RCTFincodeHorizontalViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTFincodeHorizontalViewManager.m; sourceTree = "<group>"; };
 		4F7EF7FD297F80D30037F935 /* FincodeVerticalViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FincodeVerticalViewManager.m; sourceTree = "<group>"; };
+		4F9DD787299D082400521463 /* FincodeSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FincodeSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5709B34CF0A7D63546082F79 /* Pods-Fincode_Manual_Import.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fincode_Manual_Import.release.xcconfig"; path = "Target Support Files/Pods-Fincode_Manual_Import/Pods-Fincode_Manual_Import.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Fincode_Manual_Import-Fincode_Manual_ImportTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fincode_Manual_Import-Fincode_Manual_ImportTests.debug.xcconfig"; path = "Target Support Files/Pods-Fincode_Manual_Import-Fincode_Manual_ImportTests/Pods-Fincode_Manual_Import-Fincode_Manual_ImportTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Fincode_Manual_Import.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Fincode_Manual_Import.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,8 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F9DD788299D082400521463 /* FincodeSDK.framework in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-Fincode_Manual_Import.a in Frameworks */,
-				4F7EF7F6297F775A0037F935 /* FincodeSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +117,12 @@
 		13B07FAE1A68108700A75B9A /* Fincode_Manual_Import */ = {
 			isa = PBXGroup;
 			children = (
+				4F7EF7F9297F80D30037F935 /* Fincode_Manual_Import-Bridging-Header.h */,
+				4F457D80299A282A00DBA60D /* RCTFincodeViewManager.swift */,
+				4F7EF7FC297F80D30037F935 /* RCTFincodeHorizontalViewManager.m */,
+				4F7EF7FB297F80D30037F935 /* RCTFincodeHorizontalViewManager.swift */,
+				4F7EF7FD297F80D30037F935 /* FincodeVerticalViewManager.m */,
+				4F7EF7FA297F80D30037F935 /* FincodeVerticalViewManager.swift */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -127,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				4F7EF7F5297F775A0037F935 /* FincodeSDK.xcframework */,
+				4F9DD787299D082400521463 /* FincodeSDK.framework */,
+				4F457D8F299CFCEC00DBA60D /* FincodeSDK.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-Fincode_Manual_Import.a */,
 				19F6CBCC0A4E27FBF8BF4A61 /* libPods-Fincode_Manual_Import-Fincode_Manual_ImportTests.a */,
@@ -144,17 +156,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				4F7EF7FC297F80D30037F935 /* FincodeHorizontalViewManager.m */,
-				4F7EF7FB297F80D30037F935 /* FincodeHorizontalViewManager.swift */,
-				4F7EF7FD297F80D30037F935 /* FincodeVerticalViewManager.m */,
-				4F7EF7FA297F80D30037F935 /* FincodeVerticalViewManager.swift */,
 				13B07FAE1A68108700A75B9A /* Fincode_Manual_Import */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* Fincode_Manual_ImportTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
-				4F7EF7F9297F80D30037F935 /* Fincode_Manual_Import-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -217,7 +224,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
-				4F7EF7F8297F775A0037F935 /* Embed Frameworks */,
+				4F9DD78A299D082400521463 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -447,10 +454,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
-				4F7EF7FF297F80D30037F935 /* FincodeHorizontalViewManager.swift in Sources */,
+				4F7EF7FF297F80D30037F935 /* RCTFincodeHorizontalViewManager.swift in Sources */,
 				4F7EF7FE297F80D30037F935 /* FincodeVerticalViewManager.swift in Sources */,
+				4F457D81299A282B00DBA60D /* RCTFincodeViewManager.swift in Sources */,
 				4F7EF801297F80D30037F935 /* FincodeVerticalViewManager.m in Sources */,
-				4F7EF800297F80D30037F935 /* FincodeHorizontalViewManager.m in Sources */,
+				4F7EF800297F80D30037F935 /* RCTFincodeHorizontalViewManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,6 +536,50 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A52CDR6PDK;
 				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/FBLazyVector\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Fmt\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-PeerTalk\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-RSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/FlipperKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RCT-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTRequired\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTTypeSafety\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Codegen\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTAnimation\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTAppDelegate\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTBlob\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTText\"",
+					"\"${PODS_ROOT}/Headers/Public/React-callinvoker\"",
+					"\"${PODS_ROOT}/Headers/Public/React-cxxreact\"",
+					"\"${PODS_ROOT}/Headers/Public/React-hermes\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsi\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsiexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsinspector\"",
+					"\"${PODS_ROOT}/Headers/Public/React-logger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-perflogger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-runtimeexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/ReactCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/SocketRocket\"",
+					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
+					"\"${PODS_ROOT}/Headers/Public/YogaKit\"",
+					"\"${PODS_ROOT}/Headers/Public/fmt\"",
+					"\"${PODS_ROOT}/Headers/Public/glog\"",
+					"\"${PODS_ROOT}/Headers/Public/hermes-engine\"",
+					"\"${PODS_ROOT}/Headers/Public/libevent\"",
+					"\"$(PODS_ROOT)/DoubleConversion\"",
+					"\"$(PODS_ROOT)/boost\"",
+					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
+					"\"$(PODS_TARGET_SRCROOT)/include/\"",
+					"\"$(SRCROOT)/framework/FincodeSDK.xcframework\"",
+				);
 				INFOPLIST_FILE = Fincode_Manual_Import/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -556,6 +608,50 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A52CDR6PDK;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/FBLazyVector\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Fmt\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-PeerTalk\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-RSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/FlipperKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RCT-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTRequired\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTTypeSafety\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Codegen\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTAnimation\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTAppDelegate\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTBlob\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTText\"",
+					"\"${PODS_ROOT}/Headers/Public/React-callinvoker\"",
+					"\"${PODS_ROOT}/Headers/Public/React-cxxreact\"",
+					"\"${PODS_ROOT}/Headers/Public/React-hermes\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsi\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsiexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsinspector\"",
+					"\"${PODS_ROOT}/Headers/Public/React-logger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-perflogger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-runtimeexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/ReactCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/SocketRocket\"",
+					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
+					"\"${PODS_ROOT}/Headers/Public/YogaKit\"",
+					"\"${PODS_ROOT}/Headers/Public/fmt\"",
+					"\"${PODS_ROOT}/Headers/Public/glog\"",
+					"\"${PODS_ROOT}/Headers/Public/hermes-engine\"",
+					"\"${PODS_ROOT}/Headers/Public/libevent\"",
+					"\"$(PODS_ROOT)/DoubleConversion\"",
+					"\"$(PODS_ROOT)/boost\"",
+					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
+					"\"$(PODS_TARGET_SRCROOT)/include/\"",
+					"\"$(SRCROOT)/framework/FincodeSDK.xcframework\"",
+				);
 				INFOPLIST_FILE = Fincode_Manual_Import/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

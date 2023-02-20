@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		7KHRDByxpf2JNoAde6gXE5IMfDo=
+		6Vw0KhyhZRCExh29a22CV0KuIfU=
 		</data>
 		<key>CardPickerParts.nib</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Headers/FincodeSDK-Swift.h</key>
 		<data>
-		sK5326uEoIL+IIzIu9zzRfb146A=
+		cE6gdipRRDiA41Wf2YqM12je7pA=
 		</data>
 		<key>Headers/FincodeSDK.h</key>
 		<data>
@@ -82,15 +82,15 @@
 		</data>
 		<key>Modules/FincodeSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		NXThTxlEwbpT815yyD9ucuksoys=
+		KPhfdJb4CQGWfE1nRc3QpaOVM7o=
 		</data>
 		<key>Modules/FincodeSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		jT0JILrv94zIlJt5A9Ky1tN3TP4=
+		eD0YiGB1s+35bQad4T6Ns357Oyk=
 		</data>
 		<key>Modules/FincodeSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		20mB+BtpUMJ4PGVxqpQvtHYWpP8=
+		AcfptMkluj+WuyMSu5LIN93tek4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -127,7 +127,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Rl+uRnQHnHnRvlNLmO7IXRyCL+GCL2Yw9O+B33RKo60=
+			pOXuHUfFaMqHzaEjFtYi+2kWL/YAeoe1EGt9axcuGTg=
 			</data>
 		</dict>
 		<key>CardPickerParts.nib</key>
@@ -218,7 +218,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qNwnoreIX0XBKetsgSEWC6Ske3KPMml7J+QcNb6tFEM=
+			Ahgv+ePSZXVAezaBWarpajWqRcbUZ8TYEX5hQ2vBuOs=
 			</data>
 		</dict>
 		<key>Headers/FincodeSDK.h</key>
@@ -253,21 +253,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tUJFfqNndhd9rqbwnrQY51rsM+51TItM6mzwCGIdZ0c=
+			TlfVEOH0tSk6VBmlQVxvFDv0MAd3q5xzGHIYmZh/YFE=
 			</data>
 		</dict>
 		<key>Modules/FincodeSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			+4txUB+QPTDo8MigI3u5PvOCkUeVlK4pR0MQRvor22w=
+			x/nzP1y3os3ZbtLJRD9EUWHAMtjs7qXzVEQo8OgIjjY=
 			</data>
 		</dict>
 		<key>Modules/FincodeSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Y2N9fn8yIPFqT8/KPGTYI1OR7kbZPZMInUiKgdbVFoE=
+			pBacT0J4Ngnk4Q4LijMBZTcR373IsE6M4SF/XVdQKzY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

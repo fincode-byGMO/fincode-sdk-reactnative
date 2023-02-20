@@ -218,9 +218,53 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+/// 認証方式
+typedef SWIFT_ENUM(NSInteger, Authorization, open) {
+  AuthorizationNone = 0,
+/// Basic認証 ( Base64でエンコードしたAPIキー )
+  AuthorizationBasic = 1,
+/// Bearer認証
+  AuthorizationBearer = 2,
+};
+
+
+enum SubmitButtonType : NSInteger;
+@class NSString;
+
+SWIFT_CLASS("_TtC10FincodeSDK20FincodeConfiguration")
+@interface FincodeConfiguration : NSObject
+/// 利用目的を選択
+/// payment : 決済
+/// registerCard : クレジットカード登録
+/// updateCard :  クレジットカード更新
+@property (nonatomic) enum SubmitButtonType useCase;
+/// 認証方式およびパブリックキー
+/// Basic認証 ( Base64でエンコードしたパブリックキー )
+/// Bearer認証
+@property (nonatomic) enum Authorization authorizationPublic;
+/// API キー
+@property (nonatomic, copy) NSString * _Nonnull apiKey;
+/// APIバージョン
+@property (nonatomic, copy) NSString * _Nonnull apiVersion;
+/// 顧客ID
+@property (nonatomic, copy) NSString * _Nonnull customerId;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC10FincodeSDK32FincodeCardRegisterConfiguration")
+@interface FincodeCardRegisterConfiguration : FincodeConfiguration
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC10FincodeSDK30FincodeCardUpdateConfiguration")
+@interface FincodeCardUpdateConfiguration : FincodeConfiguration
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
 
 @class NSCoder;
-@class NSString;
+@protocol ResultDelegate;
 
 IB_DESIGNABLE
 SWIFT_CLASS("_TtC10FincodeSDK13FincodeCommon")
@@ -239,13 +283,50 @@ SWIFT_CLASS("_TtC10FincodeSDK13FincodeCommon")
 /// true: 表示
 /// false: 非表示
 @property (nonatomic) IBInspectable BOOL holderNameHidden;
-@property (nonatomic, copy) IBInspectable NSString * _Nonnull placeHolderName;
 /// お支払い回数の表示・非表示を設定します
 /// true: 表示
 /// false: 非表示
 @property (nonatomic) IBInspectable BOOL payTimesHidden;
+@property (nonatomic, copy) IBInspectable NSString * _Nonnull placeHolderName;
+/// 処理に必要な情報を設定します
+/// 処理に対応したクラスを使用してください
+/// \param config 設定情報
+/// <ul>
+///   <li>
+///     決済: FincodePaymentConfiguration
+///   </li>
+///   <li>
+///     カード登録: FincodeCardRegisterConfiguration
+///   </li>
+///   <li>
+///     カード更新: FincodeCardUpdateConfiguration
+///   </li>
+/// </ul>
+///
+/// \param delegate 処理結果
+/// <ul>
+///   <li>
+///     決済: FincodePaymentRequest
+///   </li>
+///   <li>
+///     カード登録: FincodeCardRegisterRequest
+///   </li>
+///   <li>
+///     カード更新: FincodeCardUpdateResponse
+///   </li>
+/// </ul>
+///
+- (void)configuration:(FincodeConfiguration * _Nullable)config delegate:(id <ResultDelegate> _Nonnull)delegate;
 @end
 
+
+
+
+SWIFT_CLASS("_TtC10FincodeSDK20FincodeErrorResponse")
+@interface FincodeErrorResponse : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
 
 
 IB_DESIGNABLE
@@ -256,11 +337,112 @@ SWIFT_CLASS("_TtC10FincodeSDK21FincodeHorizontalView")
 @end
 
 
-IB_DESIGNABLE
-SWIFT_CLASS("_TtC10FincodeSDK23FincodeSubmitButtonView")
-@interface FincodeSubmitButtonView : UIView
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+SWIFT_CLASS("_TtC10FincodeSDK27FincodePaymentConfiguration")
+@interface FincodePaymentConfiguration : FincodeConfiguration
+/// 決済種別
+@property (nonatomic, copy) NSString * _Nonnull payType;
+/// 取引ID
+@property (nonatomic, copy) NSString * _Nonnull accessId;
+/// オーダーID
+@property (nonatomic, copy) NSString * _Nonnull id;
+/// 加盟店戻りURL
+@property (nonatomic, copy) NSString * _Nonnull tds2RetUrl;
+/// 3DSリクエスター アカウント最終更新日
+@property (nonatomic, copy) NSString * _Nonnull tds2ChAccChange;
+/// 3DSリクエスター アカウント開設日
+@property (nonatomic, copy) NSString * _Nonnull tds2ChAccDate;
+/// 3DSリクエスター アカウントパスワード変更日
+@property (nonatomic, copy) NSString * _Nonnull tds2ChAccPwChange;
+/// 過去6ヶ月間の購入回数
+@property (nonatomic, copy) NSString * _Nonnull tds2NbPurchaseAccount;
+/// カード登録日
+@property (nonatomic, copy) NSString * _Nonnull tds2PaymentAccAge;
+/// 過去24時間のカード追加の試行回数
+@property (nonatomic, copy) NSString * _Nonnull tds2ProvisionAttemptsDay;
+/// 出荷先住所の最初の使用日
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddressUsage;
+/// カード顧客名と出荷先名の一致/不一致情報
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipNameInd;
+/// アカウントの不審行為情報
+@property (nonatomic, copy) NSString * _Nonnull tds2SuspiciousAccActivity;
+/// 過去24時間の取引回数
+@property (nonatomic, copy) NSString * _Nonnull tds2TxnActivityDay;
+/// 前年の取引回数
+@property (nonatomic, copy) NSString * _Nonnull tds2TxnActivityYear;
+/// ログイン証跡
+@property (nonatomic, copy) NSString * _Nonnull tds2ThreeDsReqAuthData;
+/// ログイン方法
+@property (nonatomic, copy) NSString * _Nonnull tds2ThreeDsReqAuthMethod;
+/// ログイン日時
+@property (nonatomic, copy) NSString * _Nonnull tds2ThreeDsReqAuthTimestamp;
+/// 請求先住所と配送先住所の一致/不一致情報
+@property (nonatomic, copy) NSString * _Nonnull tds2AddrMatch;
+/// カード顧客の請求先住所の都市
+@property (nonatomic, copy) NSString * _Nonnull tds2BillAddrCity;
+/// カード顧客の請求先住所の国コード
+@property (nonatomic, copy) NSString * _Nonnull tds2BillAddrCountry;
+/// カード顧客の請求先住所の区域部分の１行目
+@property (nonatomic, copy) NSString * _Nonnull tds2BillAddrLine1;
+/// カード顧客の請求先住所の区域部分の２行目
+@property (nonatomic, copy) NSString * _Nonnull tds2BillAddrLine2;
+/// カード顧客の請求先住所の区域部分の３行目
+@property (nonatomic, copy) NSString * _Nonnull tds2BillAddrLine3;
+/// カード顧客の請求先住所の郵便番号
+@property (nonatomic, copy) NSString * _Nonnull tds2BillAddrPostCode;
+/// カード顧客の請求先住所の州または都道府県コード
+@property (nonatomic, copy) NSString * _Nonnull tds2BillAddrState;
+/// カード顧客のメールアドレス
+@property (nonatomic, copy) NSString * _Nonnull tds2Email;
+/// 自宅電話の国コード
+@property (nonatomic, copy) NSString * _Nonnull tds2HomePhoneCc;
+/// 自宅電話番号
+@property (nonatomic, copy) NSString * _Nonnull tds2HomePhoneNo;
+/// 携帯電話の国コード
+@property (nonatomic, copy) NSString * _Nonnull tds2MobilePhoneCc;
+/// 携帯電話番号
+@property (nonatomic, copy) NSString * _Nonnull tds2MobilePhoneNo;
+/// 出荷先住所の都市
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddrCity;
+/// 出荷先住所の国コード
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddrCountry;
+/// 出荷先住所の区域部分の１行目
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddrLine1;
+/// 出荷先住所の区域部分の２行目
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddrLine2;
+/// 出荷先住所の区域部分の３行目
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddrLine3;
+/// 出荷先住所の郵便番号
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddrPostCode;
+/// 出荷先住所の州または都道府県コード
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddrState;
+/// 納品先電子メールアドレス
+@property (nonatomic, copy) NSString * _Nonnull tds2DeliveryEmailAddress;
+/// 商品納品時間枠
+@property (nonatomic, copy) NSString * _Nonnull tds2DeliveryTimeframe;
+/// プリペイドカードまたはギフトカードの総購入金額
+@property (nonatomic, copy) NSString * _Nonnull tds2GiftCardAmount;
+/// 購入されたプリペイドカードまたはギフトカード / コードの総数
+@property (nonatomic, copy) NSString * _Nonnull tds2GiftCardCount;
+/// 通貨コード
+@property (nonatomic, copy) NSString * _Nonnull tds2GiftCardCurr;
+/// 商品の発売予定日
+@property (nonatomic, copy) NSString * _Nonnull tds2PreOrderDate;
+/// 商品の販売時期情報
+@property (nonatomic, copy) NSString * _Nonnull tds2PreOrderPurchaseInd;
+/// 商品の注文情報
+@property (nonatomic, copy) NSString * _Nonnull tds2ReorderItemsInd;
+/// 取引の出荷方法
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipInd;
+/// 継続課金の期限
+@property (nonatomic, copy) NSString * _Nonnull tds2RecurringExpiry;
+/// 継続課金の課金最小間隔日数
+@property (nonatomic, copy) NSString * _Nonnull tds2RecurringFrequency;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_PROTOCOL("_TtP10FincodeSDK15FincodeResponse_")
+@protocol FincodeResponse
 @end
 
 
@@ -272,6 +454,13 @@ SWIFT_CLASS("_TtC10FincodeSDK19FincodeVerticalView")
 @end
 
 
+
+
+SWIFT_PROTOCOL("_TtP10FincodeSDK14ResultDelegate_")
+@protocol ResultDelegate
+- (void)success:(id <FincodeResponse> _Nonnull)result;
+- (void)failure:(FincodeErrorResponse * _Nonnull)result;
+@end
 
 
 /// Responsible for handling all delegate callbacks for the underlying session.
@@ -338,6 +527,32 @@ SWIFT_CLASS("_TtC10FincodeSDK15SessionDelegate")
 - (void)URLSession:(NSURLSession * _Nonnull)session downloadTask:(NSURLSessionDownloadTask * _Nonnull)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes;
 @end
 
+@class NSURLAuthenticationChallenge;
+@class NSURLCredential;
+
+@interface SessionDelegate (SWIFT_EXTENSION(FincodeSDK)) <NSURLSessionDelegate>
+/// Tells the delegate that the session has been invalidated.
+/// \param session The session object that was invalidated.
+///
+/// \param error The error that caused invalidation, or nil if the invalidation was explicit.
+///
+- (void)URLSession:(NSURLSession * _Nonnull)session didBecomeInvalidWithError:(NSError * _Nullable)error;
+/// Requests credentials from the delegate in response to a session-level authentication request from the
+/// remote server.
+/// \param session The session containing the task that requested authentication.
+///
+/// \param challenge An object that contains the request for authentication.
+///
+/// \param completionHandler A handler that your delegate method must call providing the disposition
+/// and credential.
+///
+- (void)URLSession:(NSURLSession * _Nonnull)session didReceiveChallenge:(NSURLAuthenticationChallenge * _Nonnull)challenge completionHandler:(void (^ _Nonnull)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler;
+/// Tells the delegate that all messages enqueued for a session have been delivered.
+/// \param session The session that no longer has any outstanding requests.
+///
+- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession * _Nonnull)session;
+@end
+
 @class NSURLSessionDataTask;
 @class NSURLResponse;
 @class NSData;
@@ -387,32 +602,6 @@ SWIFT_CLASS("_TtC10FincodeSDK15SessionDelegate")
 /// handler; otherwise, your app leaks memory.
 ///
 - (void)URLSession:(NSURLSession * _Nonnull)session dataTask:(NSURLSessionDataTask * _Nonnull)dataTask willCacheResponse:(NSCachedURLResponse * _Nonnull)proposedResponse completionHandler:(void (^ _Nonnull)(NSCachedURLResponse * _Nullable))completionHandler;
-@end
-
-@class NSURLAuthenticationChallenge;
-@class NSURLCredential;
-
-@interface SessionDelegate (SWIFT_EXTENSION(FincodeSDK)) <NSURLSessionDelegate>
-/// Tells the delegate that the session has been invalidated.
-/// \param session The session object that was invalidated.
-///
-/// \param error The error that caused invalidation, or nil if the invalidation was explicit.
-///
-- (void)URLSession:(NSURLSession * _Nonnull)session didBecomeInvalidWithError:(NSError * _Nullable)error;
-/// Requests credentials from the delegate in response to a session-level authentication request from the
-/// remote server.
-/// \param session The session containing the task that requested authentication.
-///
-/// \param challenge An object that contains the request for authentication.
-///
-/// \param completionHandler A handler that your delegate method must call providing the disposition
-/// and credential.
-///
-- (void)URLSession:(NSURLSession * _Nonnull)session didReceiveChallenge:(NSURLAuthenticationChallenge * _Nonnull)challenge completionHandler:(void (^ _Nonnull)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler;
-/// Tells the delegate that all messages enqueued for a session have been delivered.
-/// \param session The session that no longer has any outstanding requests.
-///
-- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession * _Nonnull)session;
 @end
 
 @class NSURLSessionStreamTask;
@@ -519,6 +708,17 @@ SWIFT_AVAILABILITY(tvos,introduced=9.0) SWIFT_AVAILABILITY(macos,introduced=10.1
 ///
 - (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didCompleteWithError:(NSError * _Nullable)error;
 @end
+
+typedef SWIFT_ENUM(NSInteger, SubmitButtonType, open) {
+/// なし
+  SubmitButtonTypeNone = 0,
+/// クレジットカードを登録
+  SubmitButtonTypeRegisterCard = 1,
+/// クレジットカードを更新
+  SubmitButtonTypeUpdateCard = 2,
+/// 決済
+  SubmitButtonTypePayment = 3,
+};
 
 
 /// The task delegate is responsible for handling all delegate callbacks for the underlying task as well as
@@ -776,9 +976,53 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+/// 認証方式
+typedef SWIFT_ENUM(NSInteger, Authorization, open) {
+  AuthorizationNone = 0,
+/// Basic認証 ( Base64でエンコードしたAPIキー )
+  AuthorizationBasic = 1,
+/// Bearer認証
+  AuthorizationBearer = 2,
+};
+
+
+enum SubmitButtonType : NSInteger;
+@class NSString;
+
+SWIFT_CLASS("_TtC10FincodeSDK20FincodeConfiguration")
+@interface FincodeConfiguration : NSObject
+/// 利用目的を選択
+/// payment : 決済
+/// registerCard : クレジットカード登録
+/// updateCard :  クレジットカード更新
+@property (nonatomic) enum SubmitButtonType useCase;
+/// 認証方式およびパブリックキー
+/// Basic認証 ( Base64でエンコードしたパブリックキー )
+/// Bearer認証
+@property (nonatomic) enum Authorization authorizationPublic;
+/// API キー
+@property (nonatomic, copy) NSString * _Nonnull apiKey;
+/// APIバージョン
+@property (nonatomic, copy) NSString * _Nonnull apiVersion;
+/// 顧客ID
+@property (nonatomic, copy) NSString * _Nonnull customerId;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC10FincodeSDK32FincodeCardRegisterConfiguration")
+@interface FincodeCardRegisterConfiguration : FincodeConfiguration
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC10FincodeSDK30FincodeCardUpdateConfiguration")
+@interface FincodeCardUpdateConfiguration : FincodeConfiguration
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
 
 @class NSCoder;
-@class NSString;
+@protocol ResultDelegate;
 
 IB_DESIGNABLE
 SWIFT_CLASS("_TtC10FincodeSDK13FincodeCommon")
@@ -797,13 +1041,50 @@ SWIFT_CLASS("_TtC10FincodeSDK13FincodeCommon")
 /// true: 表示
 /// false: 非表示
 @property (nonatomic) IBInspectable BOOL holderNameHidden;
-@property (nonatomic, copy) IBInspectable NSString * _Nonnull placeHolderName;
 /// お支払い回数の表示・非表示を設定します
 /// true: 表示
 /// false: 非表示
 @property (nonatomic) IBInspectable BOOL payTimesHidden;
+@property (nonatomic, copy) IBInspectable NSString * _Nonnull placeHolderName;
+/// 処理に必要な情報を設定します
+/// 処理に対応したクラスを使用してください
+/// \param config 設定情報
+/// <ul>
+///   <li>
+///     決済: FincodePaymentConfiguration
+///   </li>
+///   <li>
+///     カード登録: FincodeCardRegisterConfiguration
+///   </li>
+///   <li>
+///     カード更新: FincodeCardUpdateConfiguration
+///   </li>
+/// </ul>
+///
+/// \param delegate 処理結果
+/// <ul>
+///   <li>
+///     決済: FincodePaymentRequest
+///   </li>
+///   <li>
+///     カード登録: FincodeCardRegisterRequest
+///   </li>
+///   <li>
+///     カード更新: FincodeCardUpdateResponse
+///   </li>
+/// </ul>
+///
+- (void)configuration:(FincodeConfiguration * _Nullable)config delegate:(id <ResultDelegate> _Nonnull)delegate;
 @end
 
+
+
+
+SWIFT_CLASS("_TtC10FincodeSDK20FincodeErrorResponse")
+@interface FincodeErrorResponse : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
 
 
 IB_DESIGNABLE
@@ -814,11 +1095,112 @@ SWIFT_CLASS("_TtC10FincodeSDK21FincodeHorizontalView")
 @end
 
 
-IB_DESIGNABLE
-SWIFT_CLASS("_TtC10FincodeSDK23FincodeSubmitButtonView")
-@interface FincodeSubmitButtonView : UIView
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+SWIFT_CLASS("_TtC10FincodeSDK27FincodePaymentConfiguration")
+@interface FincodePaymentConfiguration : FincodeConfiguration
+/// 決済種別
+@property (nonatomic, copy) NSString * _Nonnull payType;
+/// 取引ID
+@property (nonatomic, copy) NSString * _Nonnull accessId;
+/// オーダーID
+@property (nonatomic, copy) NSString * _Nonnull id;
+/// 加盟店戻りURL
+@property (nonatomic, copy) NSString * _Nonnull tds2RetUrl;
+/// 3DSリクエスター アカウント最終更新日
+@property (nonatomic, copy) NSString * _Nonnull tds2ChAccChange;
+/// 3DSリクエスター アカウント開設日
+@property (nonatomic, copy) NSString * _Nonnull tds2ChAccDate;
+/// 3DSリクエスター アカウントパスワード変更日
+@property (nonatomic, copy) NSString * _Nonnull tds2ChAccPwChange;
+/// 過去6ヶ月間の購入回数
+@property (nonatomic, copy) NSString * _Nonnull tds2NbPurchaseAccount;
+/// カード登録日
+@property (nonatomic, copy) NSString * _Nonnull tds2PaymentAccAge;
+/// 過去24時間のカード追加の試行回数
+@property (nonatomic, copy) NSString * _Nonnull tds2ProvisionAttemptsDay;
+/// 出荷先住所の最初の使用日
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddressUsage;
+/// カード顧客名と出荷先名の一致/不一致情報
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipNameInd;
+/// アカウントの不審行為情報
+@property (nonatomic, copy) NSString * _Nonnull tds2SuspiciousAccActivity;
+/// 過去24時間の取引回数
+@property (nonatomic, copy) NSString * _Nonnull tds2TxnActivityDay;
+/// 前年の取引回数
+@property (nonatomic, copy) NSString * _Nonnull tds2TxnActivityYear;
+/// ログイン証跡
+@property (nonatomic, copy) NSString * _Nonnull tds2ThreeDsReqAuthData;
+/// ログイン方法
+@property (nonatomic, copy) NSString * _Nonnull tds2ThreeDsReqAuthMethod;
+/// ログイン日時
+@property (nonatomic, copy) NSString * _Nonnull tds2ThreeDsReqAuthTimestamp;
+/// 請求先住所と配送先住所の一致/不一致情報
+@property (nonatomic, copy) NSString * _Nonnull tds2AddrMatch;
+/// カード顧客の請求先住所の都市
+@property (nonatomic, copy) NSString * _Nonnull tds2BillAddrCity;
+/// カード顧客の請求先住所の国コード
+@property (nonatomic, copy) NSString * _Nonnull tds2BillAddrCountry;
+/// カード顧客の請求先住所の区域部分の１行目
+@property (nonatomic, copy) NSString * _Nonnull tds2BillAddrLine1;
+/// カード顧客の請求先住所の区域部分の２行目
+@property (nonatomic, copy) NSString * _Nonnull tds2BillAddrLine2;
+/// カード顧客の請求先住所の区域部分の３行目
+@property (nonatomic, copy) NSString * _Nonnull tds2BillAddrLine3;
+/// カード顧客の請求先住所の郵便番号
+@property (nonatomic, copy) NSString * _Nonnull tds2BillAddrPostCode;
+/// カード顧客の請求先住所の州または都道府県コード
+@property (nonatomic, copy) NSString * _Nonnull tds2BillAddrState;
+/// カード顧客のメールアドレス
+@property (nonatomic, copy) NSString * _Nonnull tds2Email;
+/// 自宅電話の国コード
+@property (nonatomic, copy) NSString * _Nonnull tds2HomePhoneCc;
+/// 自宅電話番号
+@property (nonatomic, copy) NSString * _Nonnull tds2HomePhoneNo;
+/// 携帯電話の国コード
+@property (nonatomic, copy) NSString * _Nonnull tds2MobilePhoneCc;
+/// 携帯電話番号
+@property (nonatomic, copy) NSString * _Nonnull tds2MobilePhoneNo;
+/// 出荷先住所の都市
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddrCity;
+/// 出荷先住所の国コード
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddrCountry;
+/// 出荷先住所の区域部分の１行目
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddrLine1;
+/// 出荷先住所の区域部分の２行目
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddrLine2;
+/// 出荷先住所の区域部分の３行目
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddrLine3;
+/// 出荷先住所の郵便番号
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddrPostCode;
+/// 出荷先住所の州または都道府県コード
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipAddrState;
+/// 納品先電子メールアドレス
+@property (nonatomic, copy) NSString * _Nonnull tds2DeliveryEmailAddress;
+/// 商品納品時間枠
+@property (nonatomic, copy) NSString * _Nonnull tds2DeliveryTimeframe;
+/// プリペイドカードまたはギフトカードの総購入金額
+@property (nonatomic, copy) NSString * _Nonnull tds2GiftCardAmount;
+/// 購入されたプリペイドカードまたはギフトカード / コードの総数
+@property (nonatomic, copy) NSString * _Nonnull tds2GiftCardCount;
+/// 通貨コード
+@property (nonatomic, copy) NSString * _Nonnull tds2GiftCardCurr;
+/// 商品の発売予定日
+@property (nonatomic, copy) NSString * _Nonnull tds2PreOrderDate;
+/// 商品の販売時期情報
+@property (nonatomic, copy) NSString * _Nonnull tds2PreOrderPurchaseInd;
+/// 商品の注文情報
+@property (nonatomic, copy) NSString * _Nonnull tds2ReorderItemsInd;
+/// 取引の出荷方法
+@property (nonatomic, copy) NSString * _Nonnull tds2ShipInd;
+/// 継続課金の期限
+@property (nonatomic, copy) NSString * _Nonnull tds2RecurringExpiry;
+/// 継続課金の課金最小間隔日数
+@property (nonatomic, copy) NSString * _Nonnull tds2RecurringFrequency;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_PROTOCOL("_TtP10FincodeSDK15FincodeResponse_")
+@protocol FincodeResponse
 @end
 
 
@@ -830,6 +1212,13 @@ SWIFT_CLASS("_TtC10FincodeSDK19FincodeVerticalView")
 @end
 
 
+
+
+SWIFT_PROTOCOL("_TtP10FincodeSDK14ResultDelegate_")
+@protocol ResultDelegate
+- (void)success:(id <FincodeResponse> _Nonnull)result;
+- (void)failure:(FincodeErrorResponse * _Nonnull)result;
+@end
 
 
 /// Responsible for handling all delegate callbacks for the underlying session.
@@ -896,6 +1285,32 @@ SWIFT_CLASS("_TtC10FincodeSDK15SessionDelegate")
 - (void)URLSession:(NSURLSession * _Nonnull)session downloadTask:(NSURLSessionDownloadTask * _Nonnull)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes;
 @end
 
+@class NSURLAuthenticationChallenge;
+@class NSURLCredential;
+
+@interface SessionDelegate (SWIFT_EXTENSION(FincodeSDK)) <NSURLSessionDelegate>
+/// Tells the delegate that the session has been invalidated.
+/// \param session The session object that was invalidated.
+///
+/// \param error The error that caused invalidation, or nil if the invalidation was explicit.
+///
+- (void)URLSession:(NSURLSession * _Nonnull)session didBecomeInvalidWithError:(NSError * _Nullable)error;
+/// Requests credentials from the delegate in response to a session-level authentication request from the
+/// remote server.
+/// \param session The session containing the task that requested authentication.
+///
+/// \param challenge An object that contains the request for authentication.
+///
+/// \param completionHandler A handler that your delegate method must call providing the disposition
+/// and credential.
+///
+- (void)URLSession:(NSURLSession * _Nonnull)session didReceiveChallenge:(NSURLAuthenticationChallenge * _Nonnull)challenge completionHandler:(void (^ _Nonnull)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler;
+/// Tells the delegate that all messages enqueued for a session have been delivered.
+/// \param session The session that no longer has any outstanding requests.
+///
+- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession * _Nonnull)session;
+@end
+
 @class NSURLSessionDataTask;
 @class NSURLResponse;
 @class NSData;
@@ -945,32 +1360,6 @@ SWIFT_CLASS("_TtC10FincodeSDK15SessionDelegate")
 /// handler; otherwise, your app leaks memory.
 ///
 - (void)URLSession:(NSURLSession * _Nonnull)session dataTask:(NSURLSessionDataTask * _Nonnull)dataTask willCacheResponse:(NSCachedURLResponse * _Nonnull)proposedResponse completionHandler:(void (^ _Nonnull)(NSCachedURLResponse * _Nullable))completionHandler;
-@end
-
-@class NSURLAuthenticationChallenge;
-@class NSURLCredential;
-
-@interface SessionDelegate (SWIFT_EXTENSION(FincodeSDK)) <NSURLSessionDelegate>
-/// Tells the delegate that the session has been invalidated.
-/// \param session The session object that was invalidated.
-///
-/// \param error The error that caused invalidation, or nil if the invalidation was explicit.
-///
-- (void)URLSession:(NSURLSession * _Nonnull)session didBecomeInvalidWithError:(NSError * _Nullable)error;
-/// Requests credentials from the delegate in response to a session-level authentication request from the
-/// remote server.
-/// \param session The session containing the task that requested authentication.
-///
-/// \param challenge An object that contains the request for authentication.
-///
-/// \param completionHandler A handler that your delegate method must call providing the disposition
-/// and credential.
-///
-- (void)URLSession:(NSURLSession * _Nonnull)session didReceiveChallenge:(NSURLAuthenticationChallenge * _Nonnull)challenge completionHandler:(void (^ _Nonnull)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler;
-/// Tells the delegate that all messages enqueued for a session have been delivered.
-/// \param session The session that no longer has any outstanding requests.
-///
-- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession * _Nonnull)session;
 @end
 
 @class NSURLSessionStreamTask;
@@ -1077,6 +1466,17 @@ SWIFT_AVAILABILITY(tvos,introduced=9.0) SWIFT_AVAILABILITY(macos,introduced=10.1
 ///
 - (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task didCompleteWithError:(NSError * _Nullable)error;
 @end
+
+typedef SWIFT_ENUM(NSInteger, SubmitButtonType, open) {
+/// なし
+  SubmitButtonTypeNone = 0,
+/// クレジットカードを登録
+  SubmitButtonTypeRegisterCard = 1,
+/// クレジットカードを更新
+  SubmitButtonTypeUpdateCard = 2,
+/// 決済
+  SubmitButtonTypePayment = 3,
+};
 
 
 /// The task delegate is responsible for handling all delegate callbacks for the underlying task as well as

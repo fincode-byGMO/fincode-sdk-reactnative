@@ -7,11 +7,12 @@
 
 import FincodeSDK
 
-@objc(FincodeHorizontalViewManager)
-class FincodeHorizontalViewManager: RCTViewManager {
+@objc(RCTFincodeHorizontalViewManager)
+class RCTFincodeHorizontalViewManager: RCTFincodeViewManager {
 
-  override func view() -> FincodeHorizontalView {
-    return FincodeHorizontalView()
+  override func view() -> UIView {
+    fincodeView = FincodeHorizontalView()
+    return fincodeView!
   }
 
   @objc override static func requiresMainQueueSetup() -> Bool {

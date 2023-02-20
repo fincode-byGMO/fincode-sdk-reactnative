@@ -1,11 +1,13 @@
-import React, { useEffect, useRef } from 'react';
-import { SafeAreaView, findNodeHandle, PixelRatio, ScrollView, useWindowDimensions, NativeSyntheticEvent } from 'react-native';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import { SafeAreaView, findNodeHandle, PixelRatio, ScrollView, useWindowDimensions, NativeSyntheticEvent, NativeModules } from 'react-native';
 import { logPaymentResponse, logFincodeErrorResponse } from './Log';
 
-import { FincodeVerticalView } from './fincode_component/FincodeComponent';
-import { FincodePaymentResponse, FincodeErrorResponse } from './fincode_component/types/FincodeTypes';
-import { BEARER } from './fincode_component/constant/FincodeConst';
-import { initPayment } from './fincode_component/event/FincodeInitEvent';
+// import { FincodeVerticalView } from './fincode_component/FincodeComponent';
+// import { FincodePaymentResponse, FincodeErrorResponse } from './fincode_component/types/FincodeTypes';
+// import { BEARER } from './fincode_component/constant/FincodeConst';
+// import { initPayment } from './fincode_component/event/FincodeInitEvent';
+
+import { FincodeVerticalView, FincodePaymentResponse, FincodeErrorResponse, BEARER, initPayment } from './fincode_component/Fincode';
 
 // **************************
 // const
@@ -54,14 +56,14 @@ const AppPayment = () => {
         <FincodeVerticalView
           style={{
             height: PixelRatio.getPixelSizeForLayoutSize(800),
-            width: PixelRatio.getPixelSizeForLayoutSize(windowSize.width),
+            // width: PixelRatio.getPixelSizeForLayoutSize(windowSize.width), // TODO：これを入れるとiOSで幅が画面外になる。Android側で必須か再確認する
           }}
           headingHidden={true}
           dynamicLogDisplay={true}
           holderNameHidden={true}
           payTimesHidden={true}
-          paymentSuccessCallback={paymentSuccessCallback}
-          failureCallback={failureCallback}
+          // paymentSuccessCallback={paymentSuccessCallback}
+          // failureCallback={failureCallback}
           ref={fincodeVerticalViewRef}
         />
       </ScrollView>
