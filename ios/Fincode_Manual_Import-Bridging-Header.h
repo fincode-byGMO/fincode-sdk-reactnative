@@ -4,8 +4,4 @@
 #import <React/RCTViewManager.h>
 #import <React/RCTUIManager.h>
 #import <React/RCTBridgeModule.h>
-//#import <FincodeSDK/FincodeSDK-Swift.h>
-
-//@interface FincodeUtil: NSObject
-//+ (FincodePaymentConfiguration *)
-//@end
+#import <React/RCTEventEmitter.h>

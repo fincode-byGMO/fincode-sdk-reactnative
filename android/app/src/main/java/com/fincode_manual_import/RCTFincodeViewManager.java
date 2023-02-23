@@ -83,17 +83,17 @@ public abstract class RCTFincodeViewManager<T extends FincodeCommon> extends Vie
     public Map getExportedCustomDirectEventTypeConstants() {
 
         MapBuilder.Builder b = MapBuilder.builder();
-        b.put("paymentSuccessCallback",
-                MapBuilder.of("registrationName", "paymentSuccessCallback"));
+        b.put(RCTFincodeResultEvent.PAYMENT_SUCCESS_CALLBACK,
+                MapBuilder.of(RCTFincodeResultEvent.REGISTRATION_NAME, RCTFincodeResultEvent.PAYMENT_SUCCESS_CALLBACK));
 
-        b.put("cardRegisterSuccessCallback",
-                MapBuilder.of("registrationName", "cardRegisterSuccessCallback"));
+        b.put(RCTFincodeResultEvent.CARD_REGISTER_SUCCESS_CALLBACK,
+                MapBuilder.of(RCTFincodeResultEvent.REGISTRATION_NAME, RCTFincodeResultEvent.CARD_REGISTER_SUCCESS_CALLBACK));
 
-        b.put("cardUpdateSuccessCallback",
-                MapBuilder.of("registrationName", "cardUpdateSuccessCallback"));
+        b.put(RCTFincodeResultEvent.CARD_UPDATE_SUCCESS_CALLBACK,
+                MapBuilder.of(RCTFincodeResultEvent.REGISTRATION_NAME, RCTFincodeResultEvent.CARD_UPDATE_SUCCESS_CALLBACK));
 
-        b.put("failureCallback",
-                MapBuilder.of("registrationName", "failureCallback"));
+        b.put(RCTFincodeResultEvent.FAILURE_CALLBACK,
+                MapBuilder.of(RCTFincodeResultEvent.REGISTRATION_NAME, RCTFincodeResultEvent.FAILURE_CALLBACK));
 
         return b.build();
     }

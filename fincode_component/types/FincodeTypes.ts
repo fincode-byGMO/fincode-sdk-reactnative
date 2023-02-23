@@ -37,6 +37,7 @@ export type FincodePaymentResponse = {
   merchantName: string;
   sendUrl: string;
   subscriptionId: string;
+  bulkPaymentId: string;
   cardBrand: string;
   errorCode: string;
   acsUrl: string;
@@ -99,24 +100,24 @@ export type FincodeOptProps = Readonly<{
 export type FincodePaymentViewProps = Readonly<
   ViewProps &
     FincodeOptProps & {
-      paymentSuccessCallback: (e: NativeSyntheticEvent<FincodePaymentResponse>) => void;
-      paymentFailureCallback: (e: NativeSyntheticEvent<FincodeErrorResponse>) => void;
+      onPaymentSuccessCallback: (e: NativeSyntheticEvent<FincodePaymentResponse>) => void;
+      onFailureCallback: (e: NativeSyntheticEvent<FincodeErrorResponse>) => void;
     }
 >;
 
 export type FincodeCardRegisterViewProps = Readonly<
   ViewProps &
     FincodeOptProps & {
-      cardRegisterSuccessCallback: (e: NativeSyntheticEvent<FincodeCardRegisterResponse>) => void;
-      paymentFailureCallback: (e: NativeSyntheticEvent<FincodeErrorResponse>) => void;
+      onCardRegisterSuccessCallback: (e: NativeSyntheticEvent<FincodeCardRegisterResponse>) => void;
+      onFailureCallback: (e: NativeSyntheticEvent<FincodeErrorResponse>) => void;
     }
 >;
 
 export type FincodeCardUpdateViewProps = Readonly<
   ViewProps &
     FincodeOptProps & {
-      cardUpdateSuccessCallback: (e: NativeSyntheticEvent<FincodeCardUpdateResponse>) => void;
-      paymentFailureCallback: (e: NativeSyntheticEvent<FincodeErrorResponse>) => void;
+      onCardUpdateSuccessCallback: (e: NativeSyntheticEvent<FincodeCardUpdateResponse>) => void;
+      onFailureCallback: (e: NativeSyntheticEvent<FincodeErrorResponse>) => void;
     }
 >;
 

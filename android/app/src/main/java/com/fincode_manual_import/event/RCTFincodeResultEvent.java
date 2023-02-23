@@ -14,6 +14,12 @@ import com.facebook.react.uimanager.events.RCTEventEmitter;
 
 public class RCTFincodeResultEvent {
 
+    public static String PAYMENT_SUCCESS_CALLBACK = "onPaymentSuccessCallback";
+    public static String CARD_REGISTER_SUCCESS_CALLBACK = "onCardRegisterSuccessCallback";
+    public static String CARD_UPDATE_SUCCESS_CALLBACK = "onCardUpdateSuccessCallback";
+    public static String FAILURE_CALLBACK = "onFailureCallback";
+    public static String REGISTRATION_NAME = "registrationName";
+
     public static void sendPaymentSuccess(Context context, int viewId, FincodePaymentResponse res) {
         WritableNativeMapWrap event = new WritableNativeMapWrap();
         event.putString("acs", res.getAcs());
@@ -52,6 +58,7 @@ public class RCTFincodeResultEvent {
         event.putString("merchantName", res.getMerchantName());
         event.putString("sendUrl", res.getSendUrl());
         event.putString("subscriptionId", res.getSubscriptionId());
+        event.putString("bulkPaymentId", res.getBulkPaymentId());
         event.putString("cardBrand", res.getCardBrand());
         event.putString("errorCode", res.getErrorCode());
         event.putString("acsUrl", res.getAcsUrl());
@@ -61,7 +68,7 @@ public class RCTFincodeResultEvent {
 
         if(context instanceof ReactContext) {
             ReactContext reactContext = (ReactContext) context;
-            reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(viewId, "paymentSuccessCallback", event.getArgs());
+            reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(viewId, PAYMENT_SUCCESS_CALLBACK, event.getArgs());
         }
     }
 
@@ -81,7 +88,7 @@ public class RCTFincodeResultEvent {
 
         if(context instanceof ReactContext) {
             ReactContext reactContext = (ReactContext) context;
-            reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(viewId, "cardRegisterSuccessCallback", event.getArgs());
+            reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(viewId, CARD_REGISTER_SUCCESS_CALLBACK, event.getArgs());
         }
     }
 
@@ -101,7 +108,7 @@ public class RCTFincodeResultEvent {
 
         if(context instanceof ReactContext) {
             ReactContext reactContext = (ReactContext) context;
-            reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(viewId, "cardUpdateSuccessCallback", event.getArgs());
+            reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(viewId, CARD_UPDATE_SUCCESS_CALLBACK, event.getArgs());
         }
     }
 
@@ -117,7 +124,7 @@ public class RCTFincodeResultEvent {
 
         if(context instanceof ReactContext) {
             ReactContext reactContext = (ReactContext) context;
-            reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(viewId, "failureCallback", event.getArgs());
+            reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(viewId, FAILURE_CALLBACK, event.getArgs());
         }
     }
 

@@ -1,4 +1,4 @@
-import { FincodePaymentResponse, FincodeCardRegisterResponse, FincodeCardUpdateResponse, FincodeErrorResponse } from './fincode_component/types/FincodeTypes';
+import { FincodePaymentResponse, FincodeCardRegisterResponse, FincodeCardUpdateResponse, FincodeErrorResponse, FincodeErrorInfo } from './fincode_component/types/FincodeTypes';
 
 export const logPaymentResponse = (res: FincodePaymentResponse) => {
   console.log('■■■ successCallback  acs  ' + res.acs);
@@ -37,6 +37,7 @@ export const logPaymentResponse = (res: FincodePaymentResponse) => {
   console.log('■■■ successCallback  merchantName  ' + res.merchantName);
   console.log('■■■ successCallback  sendUrl  ' + res.sendUrl);
   console.log('■■■ successCallback  subscriptionId  ' + res.subscriptionId);
+  console.log('■■■ successCallback  bulkPaymentId  ' + res.bulkPaymentId);
   console.log('■■■ successCallback  cardBrand  ' + res.cardBrand);
   console.log('■■■ successCallback  errorCode  ' + res.errorCode);
   console.log('■■■ successCallback  acsUrl  ' + res.acsUrl);
@@ -73,7 +74,7 @@ export const logFincodeCardUpdateResponse = (res: FincodeCardUpdateResponse) => 
   console.log('■■■ successCallback  cardBrand  ' + res.cardBrand);
 };
 
-export const logFincodeErrorResponse = (res: FincodePaymentResponse) => {
+export const logFincodeErrorResponse = (res: FincodeErrorResponse) => {
   console.log('■■■ failureCallback status code:  ' + res.statusCode);
   for (const value of res.errors) {
     console.log('■■■ failureCallback error code:  ' + value.code);

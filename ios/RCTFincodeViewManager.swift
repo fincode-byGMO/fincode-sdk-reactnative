@@ -7,70 +7,23 @@
 
 import FincodeSDK
 
-@objc(RCTFincodeViewManager)
 class RCTFincodeViewManager: RCTViewManager {
 
-  public var fincodeView: FincodeCommon? = nil;
-  
-//  public func auth(_ value: String) -> Authorization {
-//    if value.lowercased() == "basic" {
-//      return .Basic
-//    } else if value.lowercased() == "bearer" {
-//      return .Bearer
-//    } else {
-//      return .none
-//    }
-//  }
+  public var fincodeView: RCTFincodeCommonView?
   
   @objc func initPayment(_ authorization: String, apiKey: String, apiVersion: String, customerId: String, payType: String, accessId: String, id: String) {
-    DispatchQueue.main.async {
-      let config = FincodePaymentConfiguration()
-      config.authorizationPublic = Authorization.getValue(authorization)
-      config.apiKey = apiKey
-      config.apiVersion = apiVersion
-      config.customerId = customerId
-      config.payType = payType
-      config.accessId = accessId
-      config.id = id
-      
-      self.fincodeView?.configuration(config, delegate: self)
-    }
+    
+    self.fincodeView?.initPayment(authorization, apiKey: apiKey, apiVersion: apiVersion, customerId: customerId, payType: payType, accessId: accessId, id: id)
   }
   
   @objc func initCardRegister(_ authorization: String, apiKey: String, apiVersion: String, customerId: String, defaultFlg: String) {
-    DispatchQueue.main.async {
-      let config = FincodeCardRegisterConfiguration()
-      config.authorizationPublic = Authorization.getValue(authorization)
-      config.apiKey = apiKey
-      config.apiVersion = apiVersion
-      config.customerId = customerId
-      config.defaultFlag = DefaultFlg.getValue(defaultFlg)
-      
-      self.fincodeView?.configuration(config, delegate: self)
-    }
+
+    self.fincodeView?.initCardRegister(authorization, apiKey: apiKey, apiVersion: apiVersion, customerId: customerId, defaultFlg: defaultFlg)
   }
   
   @objc func initCardUpdate(_ authorization: String, apiKey: String, apiVersion: String, customerId: String, defaultFlg: String, cardId: String) {
-    DispatchQueue.main.async {
-      let config = FincodeCardUpdateConfiguration()
-      config.authorizationPublic = Authorization.getValue(authorization)
-      config.apiKey = apiKey
-      config.apiVersion = apiVersion
-      config.customerId = customerId
-      config.defaultFlag = DefaultFlg.getValue(defaultFlg)
-      config.cardId = cardId
-      
-      self.fincodeView?.configuration(config, delegate: self)
-    }
-  }
-}
-
-extension RCTFincodeViewManager: ResultDelegate {
-  func success(_ result: FincodeResponse) {
     
+    self.fincodeView?.initCardUpdate(authorization, apiKey: apiKey, apiVersion: apiVersion, customerId: customerId, defaultFlg: defaultFlg, cardId: cardId)
   }
   
-  func failure(_ result: FincodeErrorResponse) {
-    
-  }
 }
