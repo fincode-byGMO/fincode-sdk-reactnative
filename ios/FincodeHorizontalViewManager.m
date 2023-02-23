@@ -3,7 +3,7 @@
 #import <React/RCTBridgeModule.h>
 #import <React/RCTEventEmitter.h>
 
-@interface RCT_EXTERN_MODULE(FincodeVerticalViewManager, RCTViewManager)
+@interface RCT_EXTERN_MODULE(FincodeHorizontalViewManager, RCTViewManager)
 
 // オプションを設定するプロパティをReact(JS)から呼び出せるように定義する (React → swift)
 RCT_EXPORT_VIEW_PROPERTY(headingHidden, BOOL)

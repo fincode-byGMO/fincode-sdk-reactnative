@@ -9,4 +9,4 @@ import AppPayment from './AppPayment';
 import AppRegister from './AppRegister';
 import AppCardUpdate from './AppCardUpdate';
 
-AppRegistry.registerComponent(appName, () => AppPayment);
+AppRegistry.registerComponent(appName, () => AppRegister);

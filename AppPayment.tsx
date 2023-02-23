@@ -16,8 +16,8 @@ const sample_apiKey = 'p_test_NjRhNGFhYTctZDQ1YS00MzYxLTkzOTgtOWZlMjY0ODhhNWRlMG
 const sample_apiVersion = '';
 const sample_customerId = 'user001';
 const sample_payType = 'Card';
-const sample_accessId = 'a_7tgjScrzSYqkMhqGu-ePKA';
-const sample_id = 'o_ZK9HopiVSjmY8w4p8m5SDg';
+const sample_accessId = 'a_sR9x8NJGRRaeMBWboevycw';
+const sample_id = 'o_2fzlftwoTiaDfw8htPJAbw';
 
 // **************************
 // component
@@ -56,14 +56,14 @@ const AppPayment = () => {
         <FincodeVerticalView
           style={{
             height: PixelRatio.getPixelSizeForLayoutSize(800),
-            // width: PixelRatio.getPixelSizeForLayoutSize(windowSize.width), // TODO：これを入れるとiOSで幅が画面外になる。Android側で必須か再確認する
+            //width: PixelRatio.getPixelSizeForLayoutSize(windowSize.width), // TODO：これを入れるとiOSで幅が画面外になる。Android側で必須か再確認する
           }}
           headingHidden={true}
           dynamicLogDisplay={true}
           holderNameHidden={true}
           payTimesHidden={true}
-          // paymentSuccessCallback={paymentSuccessCallback}
-          // failureCallback={failureCallback}
+          onPaymentSuccessCallback={paymentSuccessCallback}
+          onFailureCallback={failureCallback}
           ref={fincodeVerticalViewRef}
         />
       </ScrollView>

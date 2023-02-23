@@ -14,11 +14,14 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		4F457D81299A282B00DBA60D /* RCTFincodeViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F457D80299A282A00DBA60D /* RCTFincodeViewManager.swift */; };
 		4F7EF7FE297F80D30037F935 /* FincodeVerticalViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EF7FA297F80D30037F935 /* FincodeVerticalViewManager.swift */; };
-		4F7EF7FF297F80D30037F935 /* RCTFincodeHorizontalViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EF7FB297F80D30037F935 /* RCTFincodeHorizontalViewManager.swift */; };
-		4F7EF800297F80D30037F935 /* RCTFincodeHorizontalViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EF7FC297F80D30037F935 /* RCTFincodeHorizontalViewManager.m */; };
+		4F7EF7FF297F80D30037F935 /* FincodeHorizontalViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EF7FB297F80D30037F935 /* FincodeHorizontalViewManager.swift */; };
+		4F7EF800297F80D30037F935 /* FincodeHorizontalViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EF7FC297F80D30037F935 /* FincodeHorizontalViewManager.m */; };
 		4F7EF801297F80D30037F935 /* FincodeVerticalViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EF7FD297F80D30037F935 /* FincodeVerticalViewManager.m */; };
 		4F9DD788299D082400521463 /* FincodeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9DD787299D082400521463 /* FincodeSDK.framework */; };
-		4F9DD789299D082400521463 /* FincodeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9DD787299D082400521463 /* FincodeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4F9DD789299D082400521463 /* FincodeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9DD787299D082400521463 /* FincodeSDK.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4F9DD79029A481F500521463 /* RCTFincodeVerticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9DD78F29A481F500521463 /* RCTFincodeVerticalView.swift */; };
+		4F9DD79429A5CA8300521463 /* RCTFincodeCommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9DD79329A5CA8300521463 /* RCTFincodeCommonView.swift */; };
+		4F9DD79629A75CB600521463 /* RCTFincodeHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9DD79529A75CB600521463 /* RCTFincodeHorizontalView.swift */; };
 		7699B88040F8A987B510C191 /* libPods-Fincode_Manual_Import-Fincode_Manual_ImportTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Fincode_Manual_Import-Fincode_Manual_ImportTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -64,10 +67,13 @@
 		4F7EF7F5297F775A0037F935 /* FincodeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FincodeSDK.xcframework; path = framework/FincodeSDK.xcframework; sourceTree = "<group>"; };
 		4F7EF7F9297F80D30037F935 /* Fincode_Manual_Import-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fincode_Manual_Import-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F7EF7FA297F80D30037F935 /* FincodeVerticalViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FincodeVerticalViewManager.swift; sourceTree = "<group>"; };
-		4F7EF7FB297F80D30037F935 /* RCTFincodeHorizontalViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCTFincodeHorizontalViewManager.swift; sourceTree = "<group>"; };
-		4F7EF7FC297F80D30037F935 /* RCTFincodeHorizontalViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTFincodeHorizontalViewManager.m; sourceTree = "<group>"; };
+		4F7EF7FB297F80D30037F935 /* FincodeHorizontalViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FincodeHorizontalViewManager.swift; sourceTree = "<group>"; };
+		4F7EF7FC297F80D30037F935 /* FincodeHorizontalViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FincodeHorizontalViewManager.m; sourceTree = "<group>"; };
 		4F7EF7FD297F80D30037F935 /* FincodeVerticalViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FincodeVerticalViewManager.m; sourceTree = "<group>"; };
 		4F9DD787299D082400521463 /* FincodeSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FincodeSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F9DD78F29A481F500521463 /* RCTFincodeVerticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTFincodeVerticalView.swift; sourceTree = "<group>"; };
+		4F9DD79329A5CA8300521463 /* RCTFincodeCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTFincodeCommonView.swift; sourceTree = "<group>"; };
+		4F9DD79529A75CB600521463 /* RCTFincodeHorizontalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTFincodeHorizontalView.swift; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Fincode_Manual_Import.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fincode_Manual_Import.release.xcconfig"; path = "Target Support Files/Pods-Fincode_Manual_Import/Pods-Fincode_Manual_Import.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Fincode_Manual_Import-Fincode_Manual_ImportTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fincode_Manual_Import-Fincode_Manual_ImportTests.debug.xcconfig"; path = "Target Support Files/Pods-Fincode_Manual_Import-Fincode_Manual_ImportTests/Pods-Fincode_Manual_Import-Fincode_Manual_ImportTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Fincode_Manual_Import.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Fincode_Manual_Import.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,11 +124,14 @@
 			isa = PBXGroup;
 			children = (
 				4F7EF7F9297F80D30037F935 /* Fincode_Manual_Import-Bridging-Header.h */,
-				4F457D80299A282A00DBA60D /* RCTFincodeViewManager.swift */,
-				4F7EF7FC297F80D30037F935 /* RCTFincodeHorizontalViewManager.m */,
-				4F7EF7FB297F80D30037F935 /* RCTFincodeHorizontalViewManager.swift */,
+				4F7EF7FC297F80D30037F935 /* FincodeHorizontalViewManager.m */,
 				4F7EF7FD297F80D30037F935 /* FincodeVerticalViewManager.m */,
+				4F457D80299A282A00DBA60D /* RCTFincodeViewManager.swift */,
+				4F7EF7FB297F80D30037F935 /* FincodeHorizontalViewManager.swift */,
 				4F7EF7FA297F80D30037F935 /* FincodeVerticalViewManager.swift */,
+				4F9DD79329A5CA8300521463 /* RCTFincodeCommonView.swift */,
+				4F9DD78F29A481F500521463 /* RCTFincodeVerticalView.swift */,
+				4F9DD79529A75CB600521463 /* RCTFincodeHorizontalView.swift */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -454,11 +463,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
-				4F7EF7FF297F80D30037F935 /* RCTFincodeHorizontalViewManager.swift in Sources */,
+				4F9DD79429A5CA8300521463 /* RCTFincodeCommonView.swift in Sources */,
+				4F7EF7FF297F80D30037F935 /* FincodeHorizontalViewManager.swift in Sources */,
 				4F7EF7FE297F80D30037F935 /* FincodeVerticalViewManager.swift in Sources */,
 				4F457D81299A282B00DBA60D /* RCTFincodeViewManager.swift in Sources */,
+				4F9DD79629A75CB600521463 /* RCTFincodeHorizontalView.swift in Sources */,
 				4F7EF801297F80D30037F935 /* FincodeVerticalViewManager.m in Sources */,
-				4F7EF800297F80D30037F935 /* RCTFincodeHorizontalViewManager.m in Sources */,
+				4F9DD79029A481F500521463 /* RCTFincodeVerticalView.swift in Sources */,
+				4F7EF800297F80D30037F935 /* FincodeHorizontalViewManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,6 +593,7 @@
 					"\"$(SRCROOT)/framework/FincodeSDK.xcframework\"",
 				);
 				INFOPLIST_FILE = Fincode_Manual_Import/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -653,6 +666,7 @@
 					"\"$(SRCROOT)/framework/FincodeSDK.xcframework\"",
 				);
 				INFOPLIST_FILE = Fincode_Manual_Import/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

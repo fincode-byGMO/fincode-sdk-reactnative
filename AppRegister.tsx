@@ -49,13 +49,13 @@ const AppRegister = () => {
         <FincodeVerticalView
           style={{
             height: PixelRatio.getPixelSizeForLayoutSize(800),
-            width: PixelRatio.getPixelSizeForLayoutSize(windowSize.width),
+            //width: PixelRatio.getPixelSizeForLayoutSize(windowSize.width), // TODO：これを入れるとiOSで幅が画面外になる。Android側で必須か再確認する
           }}
           headingHidden={true}
           dynamicLogDisplay={true}
           holderNameHidden={true}
-          cardRegisterSuccessCallback={cardRegisterSuccessCallback}
-          failureCallback={failureCallback}
+          onCardRegisterSuccessCallback={cardRegisterSuccessCallback}
+          onFailureCallback={failureCallback}
           ref={fincodeVerticalViewRef}
         />
       </ScrollView>

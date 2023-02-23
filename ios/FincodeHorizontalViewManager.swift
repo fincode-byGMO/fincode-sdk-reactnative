@@ -7,12 +7,12 @@
 
 import FincodeSDK
 
-@objc(FincodeVerticalViewManager)
-class FincodeVerticalViewManager: RCTFincodeViewManager {
-  
+@objc(FincodeHorizontalViewManager)
+class FincodeHorizontalViewManager: RCTFincodeViewManager {
+
   override init() {
     super.init()
-    fincodeView = RCTFincodeVerticalView()
+    fincodeView = RCTFincodeHorizontalView()
   }
   
   override func view() -> UIView {
@@ -23,3 +23,4 @@ class FincodeVerticalViewManager: RCTFincodeViewManager {
     return true
   }
 }
+
