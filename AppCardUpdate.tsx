@@ -49,9 +49,9 @@ const AppCardUpdate = () => {
       <ScrollView>
         <FincodeVerticalView
           style={{
-            height: PixelRatio.getPixelSizeForLayoutSize(800),
-           // width: PixelRatio.getPixelSizeForLayoutSize(windowSize.width), // TODO：これを入れるとiOSで幅が画面外になる。Android側で必須か再確認する
-          }} 
+            height: PixelRatio.getPixelSizeForLayoutSize(800), // 加盟店アプリのレイアウトに応じて設定いただく
+            width: PixelRatio.getPixelSizeForLayoutSize(windowSize.width), // 加盟店アプリのレイアウトに応じて設定いただく
+          }}
           headingHidden={true}
           dynamicLogDisplay={true}
           holderNameHidden={true}
