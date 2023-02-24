@@ -217,10 +217,10 @@ public abstract class RCTFincodeViewManager<T extends FincodeCommon> extends Vie
     }
 
     private void setOpt(T view) {
-        view.headingHidden(opt.headingHidden);
-        view.dynamicLogDisplay(opt.dynamicLogDisplay);
-        view.holderNameHidden(opt.holderNameHidden);
-        view.payTimesHidden(opt.payTimesHidden);
+        view.headingHidden(!opt.headingHidden);
+        view.dynamicLogDisplay(!opt.dynamicLogDisplay);
+        view.holderNameHidden(!opt.holderNameHidden);
+        view.payTimesHidden(!opt.payTimesHidden);
     }
 
     private boolean isInitEvent(String commandId) {

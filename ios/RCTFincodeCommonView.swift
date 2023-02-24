@@ -163,17 +163,17 @@ class RCTFincodeCommonView: UIView {
     guard let onCardRegisterSuccessCallback = onCardRegisterSuccessCallback, let result = result as? FincodeCardRegisterResponse else { return }
     
     let map: Dictionary<String, Any?> = [
-      "customer_id" : result.customerId,
-      "id" : result.id,
-      "default_flag" : result.defaultFlag,
-      "card_no" : result.cardNo,
+      "customerId" : result.customerId,
+      "cardId" : result.id,
+      "defaltFlag" : result.defaultFlag,
+      "cardNo" : result.cardNo,
       "expire" : result.expire,
-      "holder_name" : result.holderName,
-      "card_no_hash" : result.cardNoHash,
+      "holderName" : result.holderName,
+      "cardNoHash" : result.cardNoHash,
       "created" : toString(result.created),
       "updated" : toString(result.updated),
-      "type" : result.type,
-      "brand" : result.brand
+      "cardType" : result.type,
+      "cardBrand" : result.brand
     ]
     
     onCardRegisterSuccessCallback(map as [AnyHashable : Any])
@@ -184,17 +184,17 @@ class RCTFincodeCommonView: UIView {
     guard let onCardUpdateSuccessCallback = onCardUpdateSuccessCallback, let result = result as? FincodeCardUpdateResponse else { return }
     
     let map: Dictionary<String, Any?> = [
-      "customer_id" : result.customerId,
-      "id" : result.id,
-      "default_flag" : result.defaultFlag,
-      "card_no" : result.cardNo,
+      "customerId" : result.customerId,
+      "cardId" : result.id,
+      "defaltFlag" : result.defaultFlag,
+      "cardNo" : result.cardNo,
       "expire" : result.expire,
-      "holder_name" : result.holderName,
-      "card_no_hash" : result.cardNoHash,
+      "holderName" : result.holderName,
+      "cardNoHash" : result.cardNoHash,
       "created" : toString(result.created),
       "updated" : toString(result.updated),
-      "type" : result.type,
-      "brand" : result.brand
+      "cardType" : result.type,
+      "cardBrand" : result.brand
     ]
     
     onCardUpdateSuccessCallback(map as [AnyHashable : Any])

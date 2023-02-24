@@ -2,11 +2,13 @@ import { UIManager, Platform, NativeModules } from 'react-native';
 import { ConfigPayment, ConfigCardRegister, ConfigCardUpdate } from './types/FincodeTypes';
 
 const module = NativeModules.FincodeVerticalViewManager;
+const apiMocule = NativeModules.FincodeApiModule;
 
 // ******************************
 // event: ReactNative to Native
 // ******************************
 
+// UIコンポーネント: 決済時の初期化
 export const initPayment = (viewId: number | null, c: ConfigPayment) => {
   if (Platform.OS === 'android') {
     UIManager.dispatchViewManagerCommand(viewId, UIManager.FincodeVerticalView.Commands.initPayment.toString(), [c.authorization, c.apiKey, c.apiVersion, c.customerId, c.payType, c.accessId, c.id]);
@@ -15,6 +17,7 @@ export const initPayment = (viewId: number | null, c: ConfigPayment) => {
   }
 };
 
+// UIコンポーネント: カード登録時の初期化
 export const initCardRegister = (viewId: number | null, c: ConfigCardRegister) => {
   if (Platform.OS === 'android') {
     UIManager.dispatchViewManagerCommand(viewId, UIManager.FincodeVerticalView.Commands.initCardRegister.toString(), [c.authorization, c.apiKey, c.apiVersion, c.customerId, c.defaultFlg]);
@@ -23,6 +26,7 @@ export const initCardRegister = (viewId: number | null, c: ConfigCardRegister) =
   }
 };
 
+// UIコンポーネント: カード更新時の初期化
 export const initCardUpdate = (viewId: number | null, c: ConfigCardUpdate) => {
   if (Platform.OS === 'android') {
     UIManager.dispatchViewManagerCommand(viewId, UIManager.FincodeVerticalView.Commands.initCardUpdate.toString(), [c.authorization, c.apiKey, c.apiVersion, c.customerId, c.defaultFlg, c.cardId]);
@@ -31,35 +35,7 @@ export const initCardUpdate = (viewId: number | null, c: ConfigCardUpdate) => {
   }
 };
 
-// // prettier-ignore
-// const initPaymentAndroid = (viewId: number | null, c: ConfigPayment) =>
-//   UIManager.dispatchViewManagerCommand(viewId, UIManager.FincodeVerticalView.Commands.initPayment.toString(), [
-//     c.authorization,
-//     c.apiKey,
-//     c.apiVersion,
-//     c.customerId,
-//     c.payType,
-//     c.accessId,
-//     c.id,
-//   ]);
-
-// // prettier-ignore
-// const initCardRegisterAndroid = (viewId: number | null, c: ConfigCardRegister) =>
-//   UIManager.dispatchViewManagerCommand(viewId, UIManager.FincodeVerticalView.Commands.initCardRegister.toString(), [
-//     c.authorization,
-//     c.apiKey,
-//     c.apiVersion,
-//     c.customerId,
-//     c.defaultFlg,
-//   ]);
-
-// // prettier-ignore
-// const initCardUpdateAndroid = (viewId: number | null, c: ConfigCardUpdate) =>
-//   UIManager.dispatchViewManagerCommand(viewId, UIManager.FincodeVerticalView.Commands.initCardUpdate.toString(), [
-//     c.authorization,
-//     c.apiKey,
-//     c.apiVersion,
-//     c.customerId,
-//     c.defaultFlg,
-//     c.cardId,
-//   ]);
+// API単体実行: 決済実行
+export const payment = () => {
+  // TODO 実装予定
+};
