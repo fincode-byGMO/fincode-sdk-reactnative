@@ -121,6 +121,73 @@ export type FincodeCardUpdateViewProps = Readonly<
     }
 >;
 
+export type PaymentRequest = ConfigPayment & {
+  token: string;
+  cardNo: string;
+  expire: string;
+  cardId: string;
+  method: string;
+  payTimes: string;
+  securityCode: string;
+  holderName: string;
+};
+
+export type PaymentResponse = {
+  acs: string;
+  shopId: string;
+  id: string;
+  payType: string;
+  status: string;
+  accessId: string;
+  processDate: string;
+  jobCode: string;
+  itemCode: string;
+  amount: string;
+  tax: string;
+  totalAmount: string;
+  customerGroupId: string;
+  customerId: string;
+  cardNo: string;
+  cardId: string;
+  expire: string;
+  holderName: string;
+  cardNoHash: string;
+  method: string;
+  payTimes: string;
+  forward: string;
+  issuer: string;
+  transactionId: string;
+  approve: string;
+  authMaxDate: string;
+  clientField1: string;
+  clientField2: string;
+  clientField3: string;
+  tdsType: string;
+  tds2Type: string;
+  tds2RetUrl: string;
+  tds2Status: string;
+  merchantName: string;
+  sendUrl: string;
+  subscriptionId: string;
+  bulkPaymentId: string;
+  brand: string;
+  errorCode: string;
+  acsUrl: string;
+  paReq: string;
+  created: string;
+  updated: string;
+};
+
+export type ErrorResponse = {
+  status: string;
+  errors: Error[];
+};
+
+export type Error = {
+  code: string;
+  message: string;
+};
+
 export type ConfigPayment = {
   authorization: string;
   apiKey: string;
@@ -147,3 +214,6 @@ export type ConfigCardUpdate = {
   defaultFlg: string;
   cardId: string;
 };
+
+export type ApiPaymentSuccessCallback = (response: PaymentResponse) => void;
+export type ApiFailureCallback = (error: ErrorResponse) => void;

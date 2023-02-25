@@ -116,7 +116,7 @@ class RCTFincodeCommonView: UIView {
       "payType" : result.payType,
       "status" : result.status,
       "accessId" : result.accessId,
-      "processDate" : toString(result.processDate),
+      "processDate" : FincodeUtil.toString(result.processDate),
       "jobCode" : result.jobCode,
       "itemCode" : result.itemCode,
       "amount" : result.amount,
@@ -135,7 +135,7 @@ class RCTFincodeCommonView: UIView {
       "issuer" : result.issuer,
       "transactionId" : result.transactionId,
       "approve" : result.approve,
-      "authMaxDate" : toString(result.authMaxDate),
+      "authMaxDate" : FincodeUtil.toString(result.authMaxDate),
       "clientField1" : result.clientField1,
       "clientField2" : result.clientField2,
       "clientField3" : result.clientField3,
@@ -151,8 +151,8 @@ class RCTFincodeCommonView: UIView {
       "errorCode" : result.errorCode,
       "acsUrl" : result.acsUrl,
       "paReq" : result.paReq,
-      "created" : toString(result.created),
-      "updated" : toString(result.updated)
+      "created" : FincodeUtil.toString(result.created),
+      "updated" : FincodeUtil.toString(result.updated)
     ]
     
     onPaymentSuccessCallback(map as [AnyHashable : Any])
@@ -170,8 +170,8 @@ class RCTFincodeCommonView: UIView {
       "expire" : result.expire,
       "holderName" : result.holderName,
       "cardNoHash" : result.cardNoHash,
-      "created" : toString(result.created),
-      "updated" : toString(result.updated),
+      "created" : FincodeUtil.toString(result.created),
+      "updated" : FincodeUtil.toString(result.updated),
       "cardType" : result.type,
       "cardBrand" : result.brand
     ]
@@ -191,8 +191,8 @@ class RCTFincodeCommonView: UIView {
       "expire" : result.expire,
       "holderName" : result.holderName,
       "cardNoHash" : result.cardNoHash,
-      "created" : toString(result.created),
-      "updated" : toString(result.updated),
+      "created" : FincodeUtil.toString(result.created),
+      "updated" : FincodeUtil.toString(result.updated),
       "cardType" : result.type,
       "cardBrand" : result.brand
     ]
@@ -219,21 +219,6 @@ class RCTFincodeCommonView: UIView {
     map.updateValue(list as Any, forKey: "errors")
     
     onFailureCallback(map)
-  }
-  
-  private func toString(_ value: Date?) -> String? {
-    guard let value = value else { return nil }
-    
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
-    
-    return dateFormatter.string(from: value)
-  }
-  
-  private func toString(_ value: Int64?) -> String? {
-    guard let value = value else { return nil }
-    
-    return String(value)
   }
   
 }
