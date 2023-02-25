@@ -1,4 +1,58 @@
-import { FincodePaymentResponse, FincodeCardRegisterResponse, FincodeCardUpdateResponse, FincodeErrorResponse, FincodeErrorInfo } from './fincode_component/types/FincodeTypes';
+import { FincodePaymentResponse, FincodeCardRegisterResponse, FincodeCardUpdateResponse, FincodeErrorResponse, FincodeErrorInfo, PaymentResponse } from './fincode_component/types/FincodeTypes';
+
+export const logApiFailureResponse = (response: PaymentResponse) => {
+  console.log('■■■ status :  ' + response.status);
+  for (const error of response.errors) {
+    console.log('■■■ code :  ' + error.code);
+    console.log('■■■ message :  ' + error.message);
+  }
+};
+
+export const logApiPaymentResponse = (response: PaymentResponse) => {
+  console.log('■■■  acs  ' + response.acs);
+  console.log('■■■  shopId  ' + response.shopId);
+  console.log('■■■  id  ' + response.id);
+  console.log('■■■  payType  ' + response.payType);
+  console.log('■■■  status  ' + response.status);
+  console.log('■■■  accessId  ' + response.accessId);
+  console.log('■■■  processDate  ' + response.processDate);
+  console.log('■■■  jobCode  ' + response.jobCode);
+  console.log('■■■  itemCode  ' + response.itemCode);
+  console.log('■■■  amount  ' + response.amount);
+  console.log('■■■  tax  ' + response.tax);
+  console.log('■■■  totalAmount  ' + response.totalAmount);
+  console.log('■■■  customerGroupId  ' + response.customerGroupId);
+  console.log('■■■  customerId  ' + response.customerId);
+  console.log('■■■  cardNo  ' + response.cardNo);
+  console.log('■■■  cardId  ' + response.cardId);
+  console.log('■■■  expire  ' + response.expire);
+  console.log('■■■  holderName  ' + response.holderName);
+  console.log('■■■  cardNoHash  ' + response.cardNoHash);
+  console.log('■■■  method  ' + response.method);
+  console.log('■■■  payTimes  ' + response.payTimes);
+  console.log('■■■  forward  ' + response.forward);
+  console.log('■■■  issuer  ' + response.issuer);
+  console.log('■■■  transactionId  ' + response.transactionId);
+  console.log('■■■  approve  ' + response.approve);
+  console.log('■■■  authMaxDate  ' + response.authMaxDate);
+  console.log('■■■  clientField1  ' + response.clientField1);
+  console.log('■■■  clientField2  ' + response.clientField2);
+  console.log('■■■  clientField3  ' + response.clientField3);
+  console.log('■■■  tdsType  ' + response.tdsType);
+  console.log('■■■  tds2Type  ' + response.tds2Type);
+  console.log('■■■  tds2RetUrl  ' + response.tds2RetUrl);
+  console.log('■■■  tds2Status  ' + response.tds2Status);
+  console.log('■■■  merchantName  ' + response.merchantName);
+  console.log('■■■  sendUrl  ' + response.sendUrl);
+  console.log('■■■  subscriptionId  ' + response.subscriptionId);
+  console.log('■■■  bulkPaymentId  ' + response.bulkPaymentId);
+  console.log('■■■  brand  ' + response.brand);
+  console.log('■■■  errorCode  ' + response.errorCode);
+  console.log('■■■  acsUrl  ' + response.acsUrl);
+  console.log('■■■  paReq  ' + response.paReq);
+  console.log('■■■  created  ' + response.created);
+  console.log('■■■  updated  ' + response.updated);
+};
 
 export const logPaymentResponse = (res: FincodePaymentResponse) => {
   console.log('■■■ successCallback  acs  ' + res.acs);

@@ -10,8 +10,7 @@
 
 @interface RCT_EXTERN_MODULE(FincodeApiModule, NSObject)
 
-RCT_EXTERN_METHOD(payment:(NSString *)orderId
-                  authorization(NSString *)authorization
+RCT_EXTERN_METHOD(payment:(NSString *)authorization
                   apiKey:(NSString *)apiKey
                   apiVersion:(NSString *)apiVersion
                   payType:(NSString *)payType
@@ -26,6 +25,6 @@ RCT_EXTERN_METHOD(payment:(NSString *)orderId
                   payTimes:(NSString *)payTimes
                   securityCode:(NSString *)securityCode
                   holderName:(NSString *)holderName
-                  resolve:(RCTPromiseResolveBlock)resolve
-                  reject:(RCTPromiseRejectBlock)reject)
+                  errorCallback:(RCTResponseSenderBlock)errorCallback
+                  successCallback:(RCTResponseSenderBlock)successCallback)
 @end
