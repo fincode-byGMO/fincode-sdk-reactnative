@@ -159,9 +159,11 @@ const apiPaymentSuccess = (
 
 const apiFailure = (status, errors) => {
   let err: Error[] = [];
-  for (var value of errors) {
-    let v: Error = { code: value.code, message: value.message };
-    err.push(v);
+  if (errors !== undefined) {
+    for (var value of errors) {
+      let v: Error = { code: value.code, message: value.message };
+      err.push(v);
+    }
   }
 
   apiFailureCallback({ status: status, errors: err });
