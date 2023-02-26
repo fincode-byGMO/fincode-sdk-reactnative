@@ -16,7 +16,7 @@ public class FincodePackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactApplicationContext) {
         List<NativeModule> list = new ArrayList<NativeModule>();
-        list.add(new FincodeVerticalModule(reactApplicationContext));
+        list.add(new FincodeApiModule(reactApplicationContext));
 
         return list;
     }

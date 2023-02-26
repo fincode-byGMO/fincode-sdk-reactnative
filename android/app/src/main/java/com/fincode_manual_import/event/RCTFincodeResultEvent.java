@@ -8,6 +8,7 @@ import com.epsilon.fincode.fincodesdk.entities.api.FincodeErrorInfo;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeErrorResponse;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodePaymentResponse;
 import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
@@ -128,7 +129,7 @@ public class RCTFincodeResultEvent {
         }
     }
 
-    private static WritableNativeMap createInfo(String code, String message) {
+    public static WritableNativeMap createInfo(String code, String message) {
         WritableNativeMap map = new WritableNativeMap();
         map.putString("code", code);
         map.putString("message", message);
