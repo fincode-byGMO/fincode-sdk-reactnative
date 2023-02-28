@@ -1,13 +1,8 @@
 import React, { useEffect, useLayoutEffect, useRef } from 'react';
-import { SafeAreaView, findNodeHandle, PixelRatio, ScrollView, useWindowDimensions, NativeSyntheticEvent, NativeModules } from 'react-native';
+import { SafeAreaView, findNodeHandle, PixelRatio, ScrollView, useWindowDimensions, NativeSyntheticEvent, NativeModules, Platform } from 'react-native';
 import { logPaymentResponse, logFincodeErrorResponse } from './Log';
 
-// import { FincodeVerticalView } from './fincode_component/FincodeComponent';
-// import { FincodePaymentResponse, FincodeErrorResponse } from './fincode_component/types/FincodeTypes';
-// import { BEARER } from './fincode_component/constant/FincodeConst';
-// import { initPayment } from './fincode_component/event/FincodeInitEvent';
-
-import { FincodeVerticalView, FincodePaymentResponse, FincodeErrorResponse, BEARER, initPayment } from './fincode_component/Fincode';
+import { FincodeVerticalView, FincodeHorizontalView, FincodePaymentResponse, FincodeErrorResponse, BEARER, initPayment, VERTICAL, HORIZONTAL } from './fincode_component/Fincode';
 
 // **************************
 // const
@@ -16,8 +11,8 @@ const sample_apiKey = 'p_test_NjRhNGFhYTctZDQ1YS00MzYxLTkzOTgtOWZlMjY0ODhhNWRlMG
 const sample_apiVersion = '';
 const sample_customerId = 'user001';
 const sample_payType = 'Card';
-const sample_accessId = 'a_sR9x8NJGRRaeMBWboevycw';
-const sample_id = 'o_2fzlftwoTiaDfw8htPJAbw';
+const sample_accessId = 'a_kwEmLleASMu-UdcOgvSW9A';
+const sample_id = 'o_aKbyjiqYTcWJCda_KqKSIg';
 
 // **************************
 // component
@@ -27,11 +22,17 @@ const AppPayment = () => {
   const windowSize: ScaledSize = useWindowDimensions();
   const fincodeVerticalViewRef = useRef(null);
 
+  // 加盟店アプリのレイアウトに応じて設定いただく
+  const viewStyle =
+    Platform.OS === 'android'
+      ? { height: PixelRatio.getPixelSizeForLayoutSize(800), width: PixelRatio.getPixelSizeForLayoutSize(windowSize.width) }
+      : { height: PixelRatio.getPixelSizeForLayoutSize(800) };
+
   useEffect(() => {
     const viewId = findNodeHandle(fincodeVerticalViewRef.current);
 
     // initialize
-    initPayment(viewId, {
+    initPayment(viewId, VERTICAL, {
       authorization: BEARER,
       apiKey: sample_apiKey,
       apiVersion: sample_apiVersion,
@@ -54,10 +55,7 @@ const AppPayment = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
         <FincodeVerticalView
-          style={{
-            height: PixelRatio.getPixelSizeForLayoutSize(800), // 加盟店アプリのレイアウトに応じて設定いただく
-            width: PixelRatio.getPixelSizeForLayoutSize(windowSize.width), // 加盟店アプリのレイアウトに応じて設定いただく
-          }}
+          style={viewStyle}
           headingHidden={true}
           dynamicLogDisplay={true}
           holderNameHidden={true}

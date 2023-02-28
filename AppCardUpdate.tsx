@@ -1,18 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import { SafeAreaView, findNodeHandle, PixelRatio, ScrollView, useWindowDimensions, NativeSyntheticEvent } from 'react-native';
+import { logFincodeCardUpdateResponse, logFincodeErrorResponse } from './Log';
 
-import { FincodeVerticalView } from './fincode_component/FincodeComponent';
-import { FincodeCardUpdateResponse, FincodeErrorResponse } from './fincode_component/types/FincodeTypes';
-import { BEARER, DEFAULT_FLG_ON } from './fincode_component/constant/FincodeConst';
-import { initCardUpdate } from './fincode_component/event/FincodeInitEvent';
+import { FincodeVerticalView, FincodeHorizontalView, FincodePaymentResponse, FincodeErrorResponse, BEARER, initCardUpdate, VERTICAL, HORIZONTAL, DEFAULT_FLG_ON } from './fincode_component/Fincode';
 
 // **************************
 // const
 // **************************
-const sample_apiKey = 'p_test_NjRhNGFhYTctZDQ1YS00MzYxLTkzOTgtOWZlMjY0ODhhNWRlMGY0ZDNlMjUtMzg1Yi00ZTNlLTgyNzQtMTQ2ZDhhODAxNGVhc18yMzAyMDg2OTU1M';
+const sample_apiKey = 'p_test_NjRhNGFhYTctZDQ1YS00MzYxLTkzOTgtOWZlMjY0ODhhNWRlMGY0ZDNlMjUtMzg1Yi00ZTNlLTgyNzQtMTQ2ZDhhODAxNGVhc18yMzAyMDg2OTU1Mw';
 const sample_apiVersion = '';
 const sample_customerId = 'user001';
-const sample_cardId = '';
+const sample_cardId = 'cs_XzZqEMyBRfK7ZGmnb785EQ';
 
 // **************************
 // component
@@ -22,11 +20,17 @@ const AppCardUpdate = () => {
   const windowSize: ScaledSize = useWindowDimensions();
   const fincodeVerticalViewRef = useRef(null);
 
+  // 加盟店アプリのレイアウトに応じて設定いただく
+  const viewStyle =
+    Platform.OS === 'android'
+      ? { height: PixelRatio.getPixelSizeForLayoutSize(800), width: PixelRatio.getPixelSizeForLayoutSize(windowSize.width) }
+      : { height: PixelRatio.getPixelSizeForLayoutSize(800) };
+
   useEffect(() => {
     const viewId = findNodeHandle(fincodeVerticalViewRef.current);
 
     // initialize
-    initCardUpdate(viewId, {
+    initCardUpdate(viewId, VERTICAL, {
       authorization: BEARER,
       apiKey: sample_apiKey,
       apiVersion: sample_apiVersion,
@@ -37,21 +41,18 @@ const AppCardUpdate = () => {
   }, []);
 
   const cardUpdateSuccessCallback = (e: NativeSyntheticEvent<FincodeCardUpdateResponse>) => {
-    console.log('■■■ successCallback  ' + e.nativeEvent.cardId);
+    logFincodeCardUpdateResponse(e.nativeEvent);
   };
 
   const failureCallback = (e: NativeSyntheticEvent<FincodeErrorResponse>) => {
-    console.log('■■■ failureCallback  ' + e.nativeEvent.value);
+    logFincodeErrorResponse(e.nativeEvent);
   };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
         <FincodeVerticalView
-          style={{
-            height: PixelRatio.getPixelSizeForLayoutSize(800), // 加盟店アプリのレイアウトに応じて設定いただく
-            width: PixelRatio.getPixelSizeForLayoutSize(windowSize.width), // 加盟店アプリのレイアウトに応じて設定いただく
-          }}
+          style={viewStyle}
           headingHidden={true}
           dynamicLogDisplay={true}
           holderNameHidden={true}

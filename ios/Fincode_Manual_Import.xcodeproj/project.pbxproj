@@ -17,6 +17,9 @@
 		4F7EF7FF297F80D30037F935 /* FincodeHorizontalViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EF7FB297F80D30037F935 /* FincodeHorizontalViewManager.swift */; };
 		4F7EF800297F80D30037F935 /* FincodeHorizontalViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EF7FC297F80D30037F935 /* FincodeHorizontalViewManager.m */; };
 		4F7EF801297F80D30037F935 /* FincodeVerticalViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EF7FD297F80D30037F935 /* FincodeVerticalViewManager.m */; };
+		4F8FF49929ACE48B0075DF53 /* FincodeViewModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8FF49829ACE48B0075DF53 /* FincodeViewModule.m */; };
+		4F8FF49B29ACE4DD0075DF53 /* FincodeViewModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8FF49A29ACE4DD0075DF53 /* FincodeViewModule.swift */; };
+		4F8FF49D29ACE7040075DF53 /* FincodeViewHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8FF49C29ACE7040075DF53 /* FincodeViewHolder.swift */; };
 		4F9DD788299D082400521463 /* FincodeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9DD787299D082400521463 /* FincodeSDK.framework */; };
 		4F9DD789299D082400521463 /* FincodeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9DD787299D082400521463 /* FincodeSDK.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4F9DD79029A481F500521463 /* RCTFincodeVerticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9DD78F29A481F500521463 /* RCTFincodeVerticalView.swift */; };
@@ -73,6 +76,9 @@
 		4F7EF7FB297F80D30037F935 /* FincodeHorizontalViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FincodeHorizontalViewManager.swift; sourceTree = "<group>"; };
 		4F7EF7FC297F80D30037F935 /* FincodeHorizontalViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FincodeHorizontalViewManager.m; sourceTree = "<group>"; };
 		4F7EF7FD297F80D30037F935 /* FincodeVerticalViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FincodeVerticalViewManager.m; sourceTree = "<group>"; };
+		4F8FF49829ACE48B0075DF53 /* FincodeViewModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FincodeViewModule.m; sourceTree = "<group>"; };
+		4F8FF49A29ACE4DD0075DF53 /* FincodeViewModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FincodeViewModule.swift; sourceTree = "<group>"; };
+		4F8FF49C29ACE7040075DF53 /* FincodeViewHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FincodeViewHolder.swift; sourceTree = "<group>"; };
 		4F9DD787299D082400521463 /* FincodeSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FincodeSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F9DD78F29A481F500521463 /* RCTFincodeVerticalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTFincodeVerticalView.swift; sourceTree = "<group>"; };
 		4F9DD79329A5CA8300521463 /* RCTFincodeCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTFincodeCommonView.swift; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 				4F7EF7F9297F80D30037F935 /* Fincode_Manual_Import-Bridging-Header.h */,
 				4F7EF7FC297F80D30037F935 /* FincodeHorizontalViewManager.m */,
 				4F7EF7FD297F80D30037F935 /* FincodeVerticalViewManager.m */,
+				4F8FF49829ACE48B0075DF53 /* FincodeViewModule.m */,
 				4FB889B329A77AAC00BE9C27 /* FincodeApiModule.m */,
 				4F457D80299A282A00DBA60D /* RCTFincodeViewManager.swift */,
 				4F7EF7FB297F80D30037F935 /* FincodeHorizontalViewManager.swift */,
@@ -139,8 +146,10 @@
 				4F9DD79329A5CA8300521463 /* RCTFincodeCommonView.swift */,
 				4F9DD78F29A481F500521463 /* RCTFincodeVerticalView.swift */,
 				4F9DD79529A75CB600521463 /* RCTFincodeHorizontalView.swift */,
+				4F8FF49A29ACE4DD0075DF53 /* FincodeViewModule.swift */,
 				4FB889B129A779FC00BE9C27 /* FincodeApiModule.swift */,
 				4FB889B529A8D72200BE9C27 /* FincodeUtil.swift */,
+				4F8FF49C29ACE7040075DF53 /* FincodeViewHolder.swift */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -474,6 +483,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				4F9DD79429A5CA8300521463 /* RCTFincodeCommonView.swift in Sources */,
 				4F7EF7FF297F80D30037F935 /* FincodeHorizontalViewManager.swift in Sources */,
+				4F8FF49D29ACE7040075DF53 /* FincodeViewHolder.swift in Sources */,
 				4F7EF7FE297F80D30037F935 /* FincodeVerticalViewManager.swift in Sources */,
 				4F457D81299A282B00DBA60D /* RCTFincodeViewManager.swift in Sources */,
 				4FB889B629A8D72200BE9C27 /* FincodeUtil.swift in Sources */,
@@ -482,6 +492,8 @@
 				4F7EF801297F80D30037F935 /* FincodeVerticalViewManager.m in Sources */,
 				4FB889B229A779FC00BE9C27 /* FincodeApiModule.swift in Sources */,
 				4F9DD79029A481F500521463 /* RCTFincodeVerticalView.swift in Sources */,
+				4F8FF49B29ACE4DD0075DF53 /* FincodeViewModule.swift in Sources */,
+				4F8FF49929ACE48B0075DF53 /* FincodeViewModule.m in Sources */,
 				4F7EF800297F80D30037F935 /* FincodeHorizontalViewManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);

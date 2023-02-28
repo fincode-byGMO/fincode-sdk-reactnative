@@ -12,6 +12,7 @@ import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardRegisterResponse;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardUpdateResponse;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeErrorResponse;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodePaymentResponse;
+import com.epsilon.fincode.fincodesdk.enumeration.SubmitButtonType;
 import com.epsilon.fincode.fincodesdk.views.FincodeCommon;
 
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -55,7 +56,7 @@ public abstract class RCTFincodeViewManager<T extends FincodeCommon> extends Vie
         return createFincodeViewInstance(themedReactContext);
     }
 
-    // event add: react native to native
+    // ReactからAndroid側に処理を通知する際のメソッドを登録
     @Override
     public Map<String, Integer> getCommandsMap() {
         Map<String, Integer> map = new HashMap<>();
@@ -73,8 +74,8 @@ public abstract class RCTFincodeViewManager<T extends FincodeCommon> extends Vie
         if(isInitEvent(commandId)) {
             // initialize fincode view
             setupLayout(root);
-            init(root, commandId, args);
-            setOpt(root);
+            SubmitButtonType type = init(root, commandId, args);
+            setOpt(root, type);
         }
     }
 
@@ -165,14 +166,16 @@ public abstract class RCTFincodeViewManager<T extends FincodeCommon> extends Vie
     }
 
     // initialize fincode view
-    private void init(@NonNull T root, String commandId, @Nullable ReadableArray args) {
+    private SubmitButtonType init(@NonNull T root, String commandId, @Nullable ReadableArray args) {
 
+        SubmitButtonType result = SubmitButtonType.NONE;
         switch (Event.getValue(commandId)) {
             case NONE:
                 Log.d("fincode", "■■■ event NONE");
                 break;
             case INIT_PAYMENT:
                 Log.d("fincode", "■■■ event INIT_PAYMENT");
+                result = SubmitButtonType.PAYMENT;
                 root.initForPayment(ConfigUtil.payment(args), new FincodeCallback<FincodePaymentResponse>() {
                     @Override
                     public void onResponse(FincodePaymentResponse fincodePaymentResponse) {
@@ -187,6 +190,7 @@ public abstract class RCTFincodeViewManager<T extends FincodeCommon> extends Vie
                 break;
             case INIT_CARD_REGISTER:
                 Log.d("fincode", "■■■ event INIT_CARD_REGISTER");
+                result = SubmitButtonType.CARD_REGISTER;
                 root.initForCardRegister(ConfigUtil.cardRegister(args), new FincodeCallback<FincodeCardRegisterResponse>() {
                     @Override
                     public void onResponse(FincodeCardRegisterResponse fincodeCardRegisterResponse) {
@@ -201,6 +205,7 @@ public abstract class RCTFincodeViewManager<T extends FincodeCommon> extends Vie
                 break;
             case IINT_CARD_UPDATE:
                 Log.d("fincode", "■■■ event IINT_CARD_UPDATE");
+                result = SubmitButtonType.CARD_UPDATE;
                 root.initForCardUpdate(ConfigUtil.cardUpdate(args), new FincodeCallback<FincodeCardUpdateResponse>() {
                     @Override
                     public void onResponse(FincodeCardUpdateResponse fincodeCardUpdateResponse) {
@@ -214,13 +219,15 @@ public abstract class RCTFincodeViewManager<T extends FincodeCommon> extends Vie
                 });
                 break;
         }
+
+        return result;
     }
 
-    private void setOpt(T view) {
+    private void setOpt(T view, SubmitButtonType type) {
         view.headingHidden(!opt.headingHidden);
         view.dynamicLogDisplay(!opt.dynamicLogDisplay);
         view.holderNameHidden(!opt.holderNameHidden);
-        view.payTimesHidden(!opt.payTimesHidden);
+        view.payTimesHidden(!opt.payTimesHidden, type);
     }
 
     private boolean isInitEvent(String commandId) {

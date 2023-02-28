@@ -2,10 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { SafeAreaView, findNodeHandle, PixelRatio, ScrollView, useWindowDimensions, NativeSyntheticEvent } from 'react-native';
 import { logFincodeCardRegisterResponse, logFincodeErrorResponse } from './Log';
 
-import { FincodeVerticalView } from './fincode_component/FincodeComponent';
-import { FincodeCardRegisterResponse, FincodeErrorResponse } from './fincode_component/types/FincodeTypes';
-import { BEARER, DEFAULT_FLG_ON } from './fincode_component/constant/FincodeConst';
-import { initCardRegister } from './fincode_component/event/FincodeInitEvent';
+import { FincodeVerticalView, FincodeHorizontalView, FincodePaymentResponse, FincodeErrorResponse, BEARER, initCardRegister, VERTICAL, HORIZONTAL, DEFAULT_FLG_ON } from './fincode_component/Fincode';
 
 // **************************
 // const
@@ -22,11 +19,17 @@ const AppRegister = () => {
   const windowSize: ScaledSize = useWindowDimensions();
   const fincodeVerticalViewRef = useRef(null);
 
+  // 加盟店アプリのレイアウトに応じて設定いただく
+  const viewStyle =
+    Platform.OS === 'android'
+      ? { height: PixelRatio.getPixelSizeForLayoutSize(800), width: PixelRatio.getPixelSizeForLayoutSize(windowSize.width) }
+      : { height: PixelRatio.getPixelSizeForLayoutSize(800) };
+
   useEffect(() => {
     const viewId = findNodeHandle(fincodeVerticalViewRef.current);
 
     // initialize
-    initCardRegister(viewId, {
+    initCardRegister(viewId, VERTICAL, {
       authorization: BEARER,
       apiKey: sample_apiKey,
       apiVersion: sample_apiVersion,
@@ -47,10 +50,7 @@ const AppRegister = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
         <FincodeVerticalView
-          style={{
-            height: PixelRatio.getPixelSizeForLayoutSize(800), // 加盟店アプリのレイアウトに応じて設定いただく
-            width: PixelRatio.getPixelSizeForLayoutSize(windowSize.width), // 加盟店アプリのレイアウトに応じて設定いただく
-          }}
+          style={viewStyle}
           headingHidden={true}
           dynamicLogDisplay={true}
           holderNameHidden={true}
