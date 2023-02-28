@@ -12,7 +12,9 @@ class FincodeVerticalViewManager: RCTFincodeViewManager {
   
   override init() {
     super.init()
-    fincodeView = RCTFincodeVerticalView()
+    let view = RCTFincodeVerticalView()
+    fincodeView = view
+    FincodeViewHolder.sharedInstance.vertical = view
   }
   
   override func view() -> UIView {

@@ -1,7 +1,8 @@
 import { UIManager, Platform, NativeModules } from 'react-native';
 import { ConfigPayment, ConfigCardRegister, ConfigCardUpdate, PaymentRequest, PaymentResponse, ErrorResponse, Error, ApiPaymentSuccessCallback, ApiFailureCallback } from './types/FincodeTypes';
 
-const module = NativeModules.FincodeVerticalViewManager;
+//const module = NativeModules.FincodeVerticalViewManager;
+const module = NativeModules.FincodeViewModule;
 const apiMocule = NativeModules.FincodeApiModule;
 
 // ******************************
@@ -9,29 +10,29 @@ const apiMocule = NativeModules.FincodeApiModule;
 // ******************************
 
 // UIコンポーネント: 決済時の初期化
-export const initPayment = (viewId: number | null, c: ConfigPayment) => {
+export const initPayment = (viewId: number | null, viewType: string, c: ConfigPayment) => {
   if (Platform.OS === 'android') {
     UIManager.dispatchViewManagerCommand(viewId, UIManager.FincodeVerticalView.Commands.initPayment.toString(), [c.authorization, c.apiKey, c.apiVersion, c.customerId, c.payType, c.accessId, c.id]);
   } else {
-    module.initPayment(c.authorization, c.apiKey, c.apiVersion, c.customerId, c.payType, c.accessId, c.id);
+    module.initPayment(viewType, c.authorization, c.apiKey, c.apiVersion, c.customerId, c.payType, c.accessId, c.id);
   }
 };
 
 // UIコンポーネント: カード登録時の初期化
-export const initCardRegister = (viewId: number | null, c: ConfigCardRegister) => {
+export const initCardRegister = (viewId: number | null, viewType: string, c: ConfigCardRegister) => {
   if (Platform.OS === 'android') {
     UIManager.dispatchViewManagerCommand(viewId, UIManager.FincodeVerticalView.Commands.initCardRegister.toString(), [c.authorization, c.apiKey, c.apiVersion, c.customerId, c.defaultFlg]);
   } else {
-    module.initCardRegister(c.authorization, c.apiKey, c.apiVersion, c.customerId, c.defaultFlg);
+    module.initCardRegister(viewType, c.authorization, c.apiKey, c.apiVersion, c.customerId, c.defaultFlg);
   }
 };
 
 // UIコンポーネント: カード更新時の初期化
-export const initCardUpdate = (viewId: number | null, c: ConfigCardUpdate) => {
+export const initCardUpdate = (viewId: number | null, viewType: string, c: ConfigCardUpdate) => {
   if (Platform.OS === 'android') {
     UIManager.dispatchViewManagerCommand(viewId, UIManager.FincodeVerticalView.Commands.initCardUpdate.toString(), [c.authorization, c.apiKey, c.apiVersion, c.customerId, c.defaultFlg, c.cardId]);
   } else {
-    module.initCardUpdate(c.authorization, c.apiKey, c.apiVersion, c.customerId, c.defaultFlg, c.cardId);
+    module.initCardUpdate(viewType, c.authorization, c.apiKey, c.apiVersion, c.customerId, c.defaultFlg, c.cardId);
   }
 };
 

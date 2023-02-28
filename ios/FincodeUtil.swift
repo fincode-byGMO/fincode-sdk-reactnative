@@ -14,7 +14,7 @@ class FincodeUtil {
     guard let value = value else { return nil }
     
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+    dateFormatter.dateFormat = "yyyy/MM/dd'T'HH:mm:ss.SSS"
     
     return dateFormatter.string(from: value)
   }

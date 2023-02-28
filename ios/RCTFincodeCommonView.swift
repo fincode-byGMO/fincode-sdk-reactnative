@@ -60,7 +60,7 @@ class RCTFincodeCommonView: UIView {
   }
   
   /// UIコンポーネント利用の際で、決済向けUIの初期化を行う
-  @objc public func initPayment(_ authorization: String, apiKey: String, apiVersion: String, customerId: String, payType: String, accessId: String, id: String) {
+  public func initPayment(_ authorization: String, apiKey: String, apiVersion: String, customerId: String, payType: String, accessId: String, id: String) {
     
     DispatchQueue.main.async {
       let config = FincodePaymentConfiguration()
@@ -151,8 +151,8 @@ class RCTFincodeCommonView: UIView {
       "errorCode" : result.errorCode,
       "acsUrl" : result.acsUrl,
       "paReq" : result.paReq,
-      "created" : FincodeUtil.toString(result.created),
-      "updated" : FincodeUtil.toString(result.updated)
+      "created" : result.created,
+      "updated" : result.updated
     ]
     
     onPaymentSuccessCallback(map as [AnyHashable : Any])
@@ -170,8 +170,8 @@ class RCTFincodeCommonView: UIView {
       "expire" : result.expire,
       "holderName" : result.holderName,
       "cardNoHash" : result.cardNoHash,
-      "created" : FincodeUtil.toString(result.created),
-      "updated" : FincodeUtil.toString(result.updated),
+      "created" : result.created,
+      "updated" : result.updated,
       "cardType" : result.type,
       "cardBrand" : result.brand
     ]
@@ -191,8 +191,8 @@ class RCTFincodeCommonView: UIView {
       "expire" : result.expire,
       "holderName" : result.holderName,
       "cardNoHash" : result.cardNoHash,
-      "created" : FincodeUtil.toString(result.created),
-      "updated" : FincodeUtil.toString(result.updated),
+      "created" : result.created,
+      "updated" : result.updated,
       "cardType" : result.type,
       "cardBrand" : result.brand
     ]
@@ -220,7 +220,6 @@ class RCTFincodeCommonView: UIView {
     
     onFailureCallback(map)
   }
-  
 }
 
 extension RCTFincodeCommonView: ResultDelegate {
@@ -231,9 +230,9 @@ extension RCTFincodeCommonView: ResultDelegate {
     if result is FincodePaymentResponse {
       paymentSuccessEvent(result)
     } else if result is FincodeCardRegisterResponse {
-      
+      cardRegisterSuccessEvent(result)
     } else if result is FincodeCardUpdateResponse {
-      
+      cardUpdateSuccessEvent(result)
     } else {
       // do nothing
     }

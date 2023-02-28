@@ -10,4 +10,4 @@ import AppRegister from './AppRegister'; // UIコンポーネント : カード�
 import AppCardUpdate from './AppCardUpdate'; // UIコンポーネント : カード更新
 import ApiPayment from './ApiPayment'; // API単体実行 : 決済実行API
 
-AppRegistry.registerComponent(appName, () => ApiPayment);
+AppRegistry.registerComponent(appName, () => AppPayment);
