@@ -5,9 +5,12 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.epsilon.fincode.fincodesdk.Repository.FincodePaymentRepository;
+import com.epsilon.fincode.fincodesdk.Repository.FincodeCardOperateRepository;
 import com.epsilon.fincode.fincodesdk.api.FincodeCallback;
 import com.epsilon.fincode.fincodesdk.config.DataHolder;
 import com.epsilon.fincode.fincodesdk.config.FincodeConfiguration;
+import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardInfo;
+import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardInfoListResponse;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeErrorInfo;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeErrorResponse;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodePaymentRequest;
@@ -17,10 +20,12 @@ import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.fincode_manual_import.event.RCTFincodeResultEvent;
 import com.fincode_manual_import.event.WritableNativeMapWrap;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -175,6 +180,72 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         }
 
         return map;
+    }
+    @ReactMethod
+    public void cardInfoList(String authorization,
+                        String apiKey,
+                        String apiVersion,
+                        String customerId,
+                        Callback failureCallback, Callback successCallback) {
+
+        this.successCallback = successCallback;
+        this.failureCallback = failureCallback;
+
+        Log.d("fincode","■■■ native カード一覧取得API :  開始");
+        Log.d("fincode","authorization : " + authorization);
+        Log.d("fincode","apiKey : " + apiKey);
+        Log.d("fincode","apiVersion : " + apiVersion);
+        Log.d("fincode","customerId : " + customerId);
+
+        HashMap<String, String> header = createHeader(authorization, apiKey, apiVersion);
+        FincodeCardOperateRepository.getInstance().getCardInfoList(header, customerId, new FincodeCallback<FincodeCardInfoListResponse>() {
+            @Override
+            public void onResponse(FincodeCardInfoListResponse fincodeCardInfoListResponse) {
+                Log.d("fincode", "■■■ native　API　成功");
+                WritableNativeArray args1 = new WritableNativeArray();
+                for (FincodeCardInfo v : fincodeCardInfoListResponse.cardInfoList) {
+                    args1.pushArray(RCTFincodeResultEvent.createArray(
+                            v.getCustomerId(),
+                            v.getCardId(),
+                            v.getDefaltFlag(),
+                            v.getCardNo(),
+                            v.getExpire(),
+                            v.getHolderName(),
+                            v.getCardNoHash(),
+                            v.getCreated(),
+                            v.getUpdated(),
+                            v.getCardType(),
+                            v.getCardBrand()
+                    ));
+                }
+
+
+                if (successCallback != null) {
+                    successCallback.invoke(
+
+
+                    );
+
+                }
+            }
+
+            @Override
+            public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
+                Log.d("fincode","■■■ native　API　失敗");
+
+                WritableNativeArray args1 = new WritableNativeArray();
+                args1.pushString(fincodeErrorResponse.statusCode.toString());
+
+                WritableNativeArray args2 = new WritableNativeArray();
+                for (FincodeErrorInfo v : fincodeErrorResponse.errorInfo.getList()) {
+                    args2.pushMap(RCTFincodeResultEvent.createInfo(v.getCode(), v.getMessage()));
+                }
+
+                if(failureCallback != null) {
+                    failureCallback.invoke(args1, args2);
+                }
+            }
+        });
     }
 
     private Authorization getAuth(String auth) {

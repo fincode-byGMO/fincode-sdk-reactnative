@@ -157,7 +157,40 @@ const apiPaymentSuccess = (
     updated: updated,
   });
 };
+// API単体実行: カード一覧取得
 
+let apiCardInfoListSuccessCallback: ApiCardInfoListSuccessCallback;
+
+export const cardInfoList = (req: CardInfoListRequest, successCallback: ApiCardInfoListSuccessCallback, failureCallback: ApiFailureCallback) => {
+  apiCardInfoListSuccessCallback = successCallback;
+  apiFailureCallback = failureCallback;
+
+  apiMocule.cardInfoList(req.authorization, req.apiKey, req.apiVersion, req.customerId, apiFailure, apiCardInfoListSuccess);
+};
+
+const apiCardInfoListSuccess = (...cards) => {
+  let list: CardInfo[] = [];
+  if (cards !== undefined) {
+    for (var card of cards) {
+      let v: CardInfo = {
+        customerId: card[0],
+        id: card[1],
+        defaultFlag: card[2],
+        cardNo: card[3],
+        expire: card[4],
+        holderName: card[5],
+        cardNoHash: card[6],
+        created: card[7],
+        updated: card[8],
+        type: card[9],
+        brand: card[10],
+      };
+      list.push(v);
+    }
+  }
+
+  apiCardInfoListSuccessCallback({ cardInfoList: list });
+};
 const apiFailure = (status, errors) => {
   let err: Error[] = [];
   if (errors !== undefined) {

@@ -27,4 +27,11 @@ RCT_EXTERN_METHOD(payment:(NSString *)authorization
                   holderName:(NSString *)holderName
                   errorCallback:(RCTResponseSenderBlock)errorCallback
                   successCallback:(RCTResponseSenderBlock)successCallback)
+
+RCT_EXTERN_METHOD(cardInfoList:(NSString *)authorization
+                  apiKey:(NSString *)apiKey
+                  apiVersion:(NSString *)apiVersion
+                  customerId:(NSString *)customerId
+                  errorCallback:(RCTResponseSenderBlock)errorCallback
+                  successCallback:(RCTResponseSenderBlock)successCallback)
 @end
