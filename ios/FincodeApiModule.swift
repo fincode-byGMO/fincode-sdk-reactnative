@@ -97,6 +97,55 @@ class FincodeApiModule: NSObject {
     }
   }
   
+  @objc public func cardInfoList(_ authorization: String, apiKey: String, apiVersion: String?, customerId: String?,
+                            errorCallback: @escaping RCTResponseSenderBlock, successCallback: @escaping RCTResponseSenderBlock) {
+    
+    FincodeCardOperateRepository.sharedInstance.cardInfoList(customerId ?? "", header: createHeader(auth: authorization, apiKey: apiKey, apiVersion: apiVersion)) { result in
+      switch result {
+      case .success(let data):
+        var cards: [Any] = []
+        var sample: [Any] = []
+        for cardInfo in data.cardInfoList {
+            print(cardInfo)
+          var params: [Any] = []
+          params.append(FincodeUtil.param(cardInfo.customerId))
+          params.append(FincodeUtil.param(cardInfo.id))
+          params.append(FincodeUtil.param(cardInfo.defaultFlag.rawValue))
+          params.append(FincodeUtil.param(cardInfo.cardNo))
+          params.append(FincodeUtil.param(cardInfo.expire))
+          params.append(FincodeUtil.param(cardInfo.holderName))
+          params.append(FincodeUtil.param(cardInfo.cardNoHash))
+          params.append(FincodeUtil.param(cardInfo.created))
+          params.append(FincodeUtil.param(cardInfo.updated))
+          params.append(FincodeUtil.param(cardInfo.type))
+          params.append(FincodeUtil.param(cardInfo.brand))
+          cards.append(params)
+          params.removeAll()
+          
+        }
+      
+        successCallback(
+          cards
+        )
+        
+      case .failure(let error):
+        var params: [Any] = []
+        params.append(error.errorResponse.statusCode ?? "")
+        
+        var errors: [Dictionary<AnyHashable, Any>] = []
+        for e in error.errorResponse.errors {
+          var map: Dictionary<AnyHashable, Any> = [:]
+          map.updateValue(e.code ?? "", forKey: "code")
+          map.updateValue(e.message, forKey: "message")
+          errors.append(map)
+        }
+        params.append(errors)
+        
+        errorCallback(params)
+      }
+    }
+  }
+  
   private func createHeader(auth: String, apiKey: String, apiVersion: String?) -> [String : String] {
     var h: [String : String] = [:]
     h.updateValue(Authorization.getValue(auth).authorization(apiKey), forKey: "Authorization")

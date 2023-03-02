@@ -178,6 +178,31 @@ export type PaymentResponse = {
   updated: string;
 };
 
+export type CardInfoListRequest = {
+  authorization: string;
+  apiKey: string;
+  apiVersion: string;
+  customerId: string;
+};
+
+export type CardInfoListResponse = {
+  cardInfoList: CardInfo[];
+};
+
+export type CardInfo = {
+  customerId: string;
+  id: string;
+  defaultFlag: string;
+  cardNo: string;
+  expire: string;
+  holderName: string;
+  cardNoHash: string;
+  created: string;
+  updated: string;
+  type: string;
+  brand: string;
+};
+
 export type ErrorResponse = {
   status: string;
   errors: Error[];
@@ -216,4 +241,5 @@ export type ConfigCardUpdate = {
 };
 
 export type ApiPaymentSuccessCallback = (response: PaymentResponse) => void;
+export type ApiCardInfoListSuccessCallback = (response: CardInfoListResponse) => void;
 export type ApiFailureCallback = (error: ErrorResponse) => void;

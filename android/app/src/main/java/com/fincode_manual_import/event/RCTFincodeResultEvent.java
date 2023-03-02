@@ -2,6 +2,7 @@ package com.fincode_manual_import.event;
 
 import android.content.Context;
 
+import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardInfo;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardRegisterResponse;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardUpdateResponse;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeErrorInfo;
@@ -135,5 +136,13 @@ public class RCTFincodeResultEvent {
         map.putString("message", message);
 
         return map;
+    }
+
+    public static WritableNativeArray createArray(String... param) {
+        WritableNativeArray array = new WritableNativeArray();
+        for(String str : param){
+            array.pushString(str);
+        }
+        return array;
     }
 }

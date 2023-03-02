@@ -1,4 +1,12 @@
-import { FincodePaymentResponse, FincodeCardRegisterResponse, FincodeCardUpdateResponse, FincodeErrorResponse, FincodeErrorInfo, PaymentResponse } from './fincode_component/types/FincodeTypes';
+import {
+  FincodePaymentResponse,
+  FincodeCardRegisterResponse,
+  FincodeCardUpdateResponse,
+  FincodeErrorResponse,
+  FincodeErrorInfo,
+  PaymentResponse,
+  CardInfoListResponse,
+} from './fincode_component/types/FincodeTypes';
 
 export const logApiFailureResponse = (response: PaymentResponse) => {
   console.log('■■■ status :  ' + response.status);
@@ -52,6 +60,26 @@ export const logApiPaymentResponse = (response: PaymentResponse) => {
   console.log('■■■  paReq  ' + response.paReq);
   console.log('■■■  created  ' + response.created);
   console.log('■■■  updated  ' + response.updated);
+};
+
+export const logApiCardInfoListResponse = (response: CardInfoListResponse) => {
+  let num = 1;
+  for (const card of response.cardInfoList) {
+    console.log('■■■  カード  ' + num + ' 枚目');
+    console.log('■■■  customerId  ' + card.customerId);
+    console.log('■■■  id  ' + card.id);
+    console.log('■■■  defaultFlag  ' + card.defaultFlag);
+    console.log('■■■  cardNo  ' + card.cardNo);
+    console.log('■■■  expire  ' + card.expire);
+    console.log('■■■  holderName  ' + card.holderName);
+    console.log('■■■  cardNoHash  ' + card.cardNoHash);
+    console.log('■■■  holderName  ' + card.holderName);
+    console.log('■■■  created  ' + card.created);
+    console.log('■■■  updated  ' + card.updated);
+    console.log('■■■  type  ' + card.type);
+    console.log('■■■  brand  ' + card.brand);
+    num++;
+  }
 };
 
 export const logPaymentResponse = (res: FincodePaymentResponse) => {
