@@ -2,25 +2,42 @@ package com.fincode_manual_import;
 
 import android.util.Log;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.facebook.react.bridge.Arguments;
 
 import com.epsilon.fincode.fincodesdk.Repository.FincodePaymentRepository;
 import com.epsilon.fincode.fincodesdk.Repository.FincodeCardOperateRepository;
+import com.epsilon.fincode.fincodesdk.Repository.FincodeAuthRepository;
 import com.epsilon.fincode.fincodesdk.api.FincodeCallback;
 import com.epsilon.fincode.fincodesdk.config.DataHolder;
 import com.epsilon.fincode.fincodesdk.config.FincodeConfiguration;
+import com.epsilon.fincode.fincodesdk.entities.api.FincodeAuthRequest;
+import com.epsilon.fincode.fincodesdk.entities.api.FincodeAuthResponse;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardInfo;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardInfoListResponse;
+import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardRegisterRequest;
+import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardRegisterResponse;
+import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardUpdateRequest;
+import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardUpdateResponse;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeErrorInfo;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeErrorResponse;
+import com.epsilon.fincode.fincodesdk.entities.api.FincodeGetResultResponse;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodePaymentRequest;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodePaymentResponse;
+import com.epsilon.fincode.fincodesdk.entities.api.FincodePaymentSecureRequest;
+import com.epsilon.fincode.fincodesdk.entities.api.FincodePaymentSecureResponse;
 import com.epsilon.fincode.fincodesdk.enumeration.Authorization;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.fincode_manual_import.event.RCTFincodeResultEvent;
@@ -29,6 +46,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.ListIterator;
 
 public class FincodeApiModule extends ReactContextBaseJavaModule {
 
@@ -202,30 +220,15 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
             @Override
             public void onResponse(FincodeCardInfoListResponse fincodeCardInfoListResponse) {
                 Log.d("fincode", "■■■ native　API　成功");
-                WritableNativeArray args1 = new WritableNativeArray();
+                WritableNativeArray args = new WritableNativeArray();
+
                 for (FincodeCardInfo v : fincodeCardInfoListResponse.cardInfoList) {
-                    args1.pushArray(RCTFincodeResultEvent.createArray(
-                            v.getCustomerId(),
-                            v.getCardId(),
-                            v.getDefaltFlag(),
-                            v.getCardNo(),
-                            v.getExpire(),
-                            v.getHolderName(),
-                            v.getCardNoHash(),
-                            v.getCreated(),
-                            v.getUpdated(),
-                            v.getCardType(),
-                            v.getCardBrand()
-                    ));
+                    args.pushMap(RCTFincodeResultEvent.sendCardInfoListCallback(v));
                 }
-
-
                 if (successCallback != null) {
                     successCallback.invoke(
-
-
+                            args
                     );
-
                 }
             }
 
@@ -247,6 +250,330 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
             }
         });
     }
+
+    @ReactMethod
+    public void registerCard(String authorization,
+                             String apiKey,
+                             String apiVersion,
+                             String customerId,
+                             String defaultFlg,
+                             String cardNo,
+                             String expire,
+                             String holderName,
+                             String securityCode,
+                             String token,
+                             Callback failureCallback, Callback successCallback) {
+
+        this.successCallback = successCallback;
+        this.failureCallback = failureCallback;
+
+        Log.d("fincode","■■■ native カード登録API :  開始");
+        FincodeCardRegisterRequest req = new FincodeCardRegisterRequest();
+        req.setDefaltFlag(defaultFlg);
+        req.setCardNo(cardNo);
+        req.setExpire(expire);
+        req.setHolderName(holderName);
+        req.setSecurityCode(securityCode);
+        req.setToken(token);
+
+
+        HashMap<String, String> header = createHeader(authorization, apiKey, apiVersion);
+        FincodeCardOperateRepository.getInstance().cardRegister(header, customerId, req, new FincodeCallback<FincodeCardRegisterResponse>() {
+            @Override
+            public void onResponse(FincodeCardRegisterResponse fincodeCardRegisterResponse) {
+                Log.d("fincode", "■■■ native　API　成功");
+
+                if (successCallback != null) {
+                    successCallback.invoke(
+                            fincodeCardRegisterResponse.getCustomerId(),
+                            fincodeCardRegisterResponse.getCardId(),
+                            fincodeCardRegisterResponse.getDefaltFlag(),
+                            fincodeCardRegisterResponse.getCardNo(),
+                            fincodeCardRegisterResponse.getExpire(),
+                            fincodeCardRegisterResponse.getHolderName(),
+                            fincodeCardRegisterResponse.getCardNoHash(),
+                            fincodeCardRegisterResponse.getCreated(),
+                            fincodeCardRegisterResponse.getUpdated(),
+                            fincodeCardRegisterResponse.getCardType(),
+                            fincodeCardRegisterResponse.getCardBrand()
+                    );
+                }
+            }
+
+            @Override
+            public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
+                Log.d("fincode","■■■ native　API　失敗");
+
+                WritableNativeArray args1 = new WritableNativeArray();
+                args1.pushString(fincodeErrorResponse.statusCode.toString());
+
+                WritableNativeArray args2 = new WritableNativeArray();
+                for (FincodeErrorInfo v : fincodeErrorResponse.errorInfo.getList()) {
+                    args2.pushMap(RCTFincodeResultEvent.createInfo(v.getCode(), v.getMessage()));
+                }
+
+                if(failureCallback != null) {
+                    failureCallback.invoke(args1, args2);
+                }
+            }
+        });
+    }
+
+    @ReactMethod
+    public void updateCard(String authorization,
+                             String apiKey,
+                             String apiVersion,
+                             String customerId,
+                             String cardId,
+                             String defaultFlg,
+                             String expire,
+                             String holderName,
+                             String securityCode,
+                             String token,
+                             Callback failureCallback, Callback successCallback) {
+
+        this.successCallback = successCallback;
+        this.failureCallback = failureCallback;
+
+        Log.d("fincode", "■■■ native カード更新API :  開始");
+        FincodeCardUpdateRequest req = new FincodeCardUpdateRequest();
+        req.setDefaltFlag(defaultFlg);
+        req.setExpire(expire);
+        req.setHolderName(holderName);
+        req.setSecurityCode(securityCode);
+        req.setToken(token);
+
+        HashMap<String, String> header = createHeader(authorization, apiKey, apiVersion);
+        FincodeCardOperateRepository.getInstance().cardUpdate(header, customerId, cardId, req, new FincodeCallback<FincodeCardUpdateResponse>() {
+            @Override
+            public void onResponse(FincodeCardUpdateResponse fincodeCardUpdateResponse) {
+                Log.d("fincode", "■■■ native　API　成功");
+
+                if (successCallback != null) {
+                    successCallback.invoke(
+                            fincodeCardUpdateResponse.getCustomerId(),
+                            fincodeCardUpdateResponse.getCardId(),
+                            fincodeCardUpdateResponse.getDefaltFlag(),
+                            fincodeCardUpdateResponse.getCardNo(),
+                            fincodeCardUpdateResponse.getExpire(),
+                            fincodeCardUpdateResponse.getHolderName(),
+                            fincodeCardUpdateResponse.getCardNoHash(),
+                            fincodeCardUpdateResponse.getCreated(),
+                            fincodeCardUpdateResponse.getUpdated(),
+                            fincodeCardUpdateResponse.getCardType(),
+                            fincodeCardUpdateResponse.getCardBrand()
+                    );
+                }
+            }
+
+            @Override
+            public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
+                Log.d("fincode", "■■■ native　API　失敗");
+
+                WritableNativeArray args1 = new WritableNativeArray();
+                args1.pushString(fincodeErrorResponse.statusCode.toString());
+
+                WritableNativeArray args2 = new WritableNativeArray();
+                for (FincodeErrorInfo v : fincodeErrorResponse.errorInfo.getList()) {
+                    args2.pushMap(RCTFincodeResultEvent.createInfo(v.getCode(), v.getMessage()));
+                }
+
+                if (failureCallback != null) {
+                    failureCallback.invoke(args1, args2);
+                }
+            }
+        });
+    }
+    @ReactMethod
+    public void authentication(String authorization,
+                           String apiKey,
+                           String apiVersion,
+                           String id,
+                           String param,
+                           Callback failureCallback, Callback successCallback) {
+
+        this.successCallback = successCallback;
+        this.failureCallback = failureCallback;
+
+        Log.d("fincode", "■■■ native 3DS2.0認証実行API :  開始");
+        FincodeAuthRequest req = new FincodeAuthRequest();
+        req.setParam(param);
+
+        HashMap<String, String> header = createHeader(authorization, apiKey, apiVersion);
+        FincodeAuthRepository.getInstance().authentication(header, id, req, new FincodeCallback<FincodeAuthResponse>() {
+            @Override
+            public void onResponse(FincodeAuthResponse fincodeAuthResponse) {
+                Log.d("fincode", "■■■ native　API　成功");
+
+                if (successCallback != null) {
+                    successCallback.invoke(
+                            fincodeAuthResponse.getTdsTransResult(),
+                            fincodeAuthResponse.getTdsTransResultReason(),
+                            fincodeAuthResponse.getChallegeUrl()
+                    );
+                }
+            }
+
+            @Override
+            public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
+                Log.d("fincode", "■■■ native　API　失敗");
+
+                WritableNativeArray args1 = new WritableNativeArray();
+                args1.pushString(fincodeErrorResponse.statusCode.toString());
+
+                WritableNativeArray args2 = new WritableNativeArray();
+                for (FincodeErrorInfo v : fincodeErrorResponse.errorInfo.getList()) {
+                    args2.pushMap(RCTFincodeResultEvent.createInfo(v.getCode(), v.getMessage()));
+                }
+
+                if (failureCallback != null) {
+                    failureCallback.invoke(args1, args2);
+                }
+            }
+        });
+    }
+
+    @ReactMethod
+    public void getResult(String authorization,
+                               String apiKey,
+                               String apiVersion,
+                               String id,
+                               Callback failureCallback, Callback successCallback) {
+
+        this.successCallback = successCallback;
+        this.failureCallback = failureCallback;
+
+        Log.d("fincode", "■■■ native 3DS2.0認証結果取得API :  開始");
+
+        HashMap<String, String> header = createHeader(authorization, apiKey, apiVersion);
+        FincodeAuthRepository.getInstance().getResult(header, id, new FincodeCallback<FincodeGetResultResponse>() {
+            @Override
+            public void onResponse(FincodeGetResultResponse fincodeGetResultResponse) {
+                Log.d("fincode", "■■■ native　API　成功");
+
+                if (successCallback != null) {
+                    successCallback.invoke(
+                            //FincodeGetResultResponseにgetterがない
+//                            fincodeGetResultResponse.getTdsTransResult(),
+//                            fincodeGetResultResponse.getTdsTransResultReason()
+                    );
+                }
+            }
+
+            @Override
+            public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
+                Log.d("fincode", "■■■ native　API　失敗");
+
+                WritableNativeArray args1 = new WritableNativeArray();
+                args1.pushString(fincodeErrorResponse.statusCode.toString());
+
+                WritableNativeArray args2 = new WritableNativeArray();
+                for (FincodeErrorInfo v : fincodeErrorResponse.errorInfo.getList()) {
+                    args2.pushMap(RCTFincodeResultEvent.createInfo(v.getCode(), v.getMessage()));
+                }
+
+                if (failureCallback != null) {
+                    failureCallback.invoke(args1, args2);
+                }
+            }
+        });
+    }
+
+
+    @ReactMethod
+    public void paymentSecure(String authorization,
+                        String apiKey,
+                        String apiVersion,
+                        String id,
+                        String payType,
+                        String accessId,
+                        Callback failureCallback, Callback successCallback) {
+
+        this.successCallback = successCallback;
+        this.failureCallback = failureCallback;
+
+        Log.d("fincode","■■■ native 認証後決済API :  開始");
+        Log.d("fincode","authorization : " + authorization);
+        Log.d("fincode","apiKey : " + apiKey);
+        Log.d("fincode","apiVersion : " + apiVersion);
+        Log.d("fincode","id : " + id);
+        Log.d("fincode","payType : " + payType);
+        Log.d("fincode","accessId : " + accessId);
+
+        HashMap<String, String> header = createHeader(authorization, apiKey, apiVersion);
+        FincodePaymentSecureRequest req = new FincodePaymentSecureRequest();
+        req.setId(id);
+        req.setPayType(payType);
+        req.setAccessId(accessId);
+
+        FincodePaymentRepository.getInstance().paymentSecure(header, id, req, new FincodeCallback<FincodePaymentSecureResponse>() {
+            @Override
+            public void onResponse(FincodePaymentSecureResponse fincodePaymentSecureResponse) {
+                Log.d("fincode", "■■■ native　API　成功");
+
+                if (successCallback != null) {
+                    successCallback.invoke(
+                            fincodePaymentSecureResponse.getShopId(),
+                            fincodePaymentSecureResponse.getPayType(),
+                            fincodePaymentSecureResponse.getStatus(),
+                            fincodePaymentSecureResponse.getAccessId(),
+                            fincodePaymentSecureResponse.getProcessDate(),
+                            fincodePaymentSecureResponse.getJobCode(),
+                            fincodePaymentSecureResponse.getItemCode(),
+                            fincodePaymentSecureResponse.getAmount() != null ? fincodePaymentSecureResponse.getAmount().toString() : "",
+                            fincodePaymentSecureResponse.getTax() != null ? fincodePaymentSecureResponse.getTax().toString() : "",
+                            fincodePaymentSecureResponse.getTotalAmount() != null ? fincodePaymentSecureResponse.getTotalAmount().toString() : "",
+                            fincodePaymentSecureResponse.getCustomerGroupId(),
+                            fincodePaymentSecureResponse.getCustomerId(),
+                            fincodePaymentSecureResponse.getCardNo(),
+                            fincodePaymentSecureResponse.getCardId(),
+                            fincodePaymentSecureResponse.getExpire(),
+                            fincodePaymentSecureResponse.getHolderName(),
+                            fincodePaymentSecureResponse.getCardNoHash(),
+                            fincodePaymentSecureResponse.getMethod(),
+                            fincodePaymentSecureResponse.getPayTimes() != null ? fincodePaymentSecureResponse.getPayTimes().toString() : "",
+                            fincodePaymentSecureResponse.getForward(),
+                            fincodePaymentSecureResponse.getIssuer(),
+                            fincodePaymentSecureResponse.getTransactionId(),
+                            fincodePaymentSecureResponse.getApprove(),
+                            fincodePaymentSecureResponse.getAuthMaxDate(),
+                            fincodePaymentSecureResponse.getClientField1(),
+                            fincodePaymentSecureResponse.getClientField2(),
+                            fincodePaymentSecureResponse.getClientField3(),
+                            fincodePaymentSecureResponse.getTdsType(),
+                            fincodePaymentSecureResponse.getTds2Type(),
+                            fincodePaymentSecureResponse.getTds2RetUrl(),
+                            fincodePaymentSecureResponse.getTds2Status(),
+                            fincodePaymentSecureResponse.getMerchantName(),
+                            fincodePaymentSecureResponse.getSendUrl(),
+                            fincodePaymentSecureResponse.getSubscriptionId(),
+                            fincodePaymentSecureResponse.getBulkPaymentId(),
+                            //fincodePaymentSecureResponse.getCardBrand(),
+                            fincodePaymentSecureResponse.getErrorCode(),
+                            fincodePaymentSecureResponse.getCreated(),
+                            fincodePaymentSecureResponse.getUpdated());
+                }
+            }
+
+            @Override
+            public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
+                Log.d("fincode","■■■ native　API　失敗");
+
+                WritableNativeArray args1 = new WritableNativeArray();
+                args1.pushString(fincodeErrorResponse.statusCode.toString());
+
+                WritableNativeArray args2 = new WritableNativeArray();
+                for (FincodeErrorInfo v : fincodeErrorResponse.errorInfo.getList()) {
+                    args2.pushMap(RCTFincodeResultEvent.createInfo(v.getCode(), v.getMessage()));
+                }
+
+                if(failureCallback != null) {
+                    failureCallback.invoke(args1, args2);
+                }
+            }
+        });
+    }
+
 
     private Authorization getAuth(String auth) {
         if(auth == null || auth.isEmpty()) {

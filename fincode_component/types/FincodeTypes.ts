@@ -178,6 +178,97 @@ export type PaymentResponse = {
   updated: string;
 };
 
+export type PaymentSecureRequest = {
+  payType: string;
+  accessId: string;
+  id: string;
+};
+
+export type PaymentSecureResponse = {
+  shopId: string;
+  id: string;
+  payType: string;
+  status: string;
+  accessId: string;
+  processDate: string;
+  jobCode: string;
+  itemCode: string;
+  amount: string;
+  tax: string;
+  totalAmount: string;
+  customerGroupId: string;
+  customerId: string;
+  cardNo: string;
+  cardId: string;
+  expire: string;
+  holderName: string;
+  cardNoHash: string;
+  method: string;
+  payTimes: string;
+  forward: string;
+  issuer: string;
+  transactionId: string;
+  approve: string;
+  authMaxDate: string;
+  clientField1: string;
+  clientField2: string;
+  clientField3: string;
+  tdsType: string;
+  tds2Type: string;
+  tds2RetUrl: string;
+  tds2Status: string;
+  merchantName: string;
+  sendUrl: string;
+  subscriptionId: string;
+  //brand: string;
+  errorCode: string;
+  created: string;
+  updated: string;
+};
+
+export type CardRegisterRequest = ConfigCardRegister & {
+  cardNo: string;
+  expire: string;
+  holderName: string;
+  securityCode: string;
+  token: string;
+};
+
+export type CardRegisterResponse = {
+  customerId: string;
+  id: string;
+  defaultFlag: string;
+  cardNo: string;
+  expire: string;
+  holderName: string;
+  cardNoHash: string;
+  created: string;
+  updated: string;
+  type: string;
+  brand: string;
+};
+
+export type CardUpdateRequest = ConfigCardUpdate & {
+  expire: string;
+  holderName: string;
+  securityCode: string;
+  token: string;
+};
+
+export type CardUpdateResponse = {
+  customerId: string;
+  id: string;
+  defaultFlag: string;
+  cardNo: string;
+  expire: string;
+  holderName: string;
+  cardNoHash: string;
+  created: string;
+  updated: string;
+  type: string;
+  brand: string;
+};
+
 export type CardInfoListRequest = {
   authorization: string;
   apiKey: string;
@@ -201,6 +292,32 @@ export type CardInfo = {
   updated: string;
   type: string;
   brand: string;
+};
+
+export type AuthRequest = {
+  authorization: string;
+  apiKey: string;
+  apiVersion: string;
+  id: string;
+  param: string;
+};
+
+export type AuthResponse = {
+  tds2TransResult: string;
+  tds2TransResultReason: string;
+  challengeUrl: string;
+};
+
+export type GetResultRequest = {
+  authorization: string;
+  apiKey: string;
+  apiVersion: string;
+  id: string;
+};
+
+export type GetResultResponse = {
+  tds2TransResult: string;
+  tds2TransResultReason: string;
 };
 
 export type ErrorResponse = {
@@ -241,5 +358,10 @@ export type ConfigCardUpdate = {
 };
 
 export type ApiPaymentSuccessCallback = (response: PaymentResponse) => void;
+export type ApiCardRegisterSuccessCallback = (response: CardRegisterResponse) => void;
+export type ApiCardUpdateSuccessCallback = (response: CardUpdateResponse) => void;
 export type ApiCardInfoListSuccessCallback = (response: CardInfoListResponse) => void;
+export type ApiAuthSuccessCallback = (response: AuthResponse) => void;
+export type ApiGetResultSuccessCallback = (response: GetResultResponse) => void;
+export type ApiPaymentSecureSuccessCallback = (response: PaymentSecureResponse) => void;
 export type ApiFailureCallback = (error: ErrorResponse) => void;
