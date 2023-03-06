@@ -5,6 +5,7 @@ import {
   FincodeErrorResponse,
   FincodeErrorInfo,
   PaymentResponse,
+  CardRegisterResponse,
   CardInfoListResponse,
 } from './fincode_component/types/FincodeTypes';
 
@@ -80,6 +81,20 @@ export const logApiCardInfoListResponse = (response: CardInfoListResponse) => {
     console.log('■■■  brand  ' + card.brand);
     num++;
   }
+};
+
+export const logApiRegisterCardResponse = (response: CardRegisterResponse) => {
+  console.log('■■■  customerId  ' + response.customerId);
+  console.log('■■■  id  ' + response.id);
+  console.log('■■■  defaultFlag  ' + response.defaultFlag);
+  console.log('■■■  cardNo  ' + response.cardNo);
+  console.log('■■■  expire  ' + response.expire);
+  console.log('■■■  holderName  ' + response.holderName);
+  console.log('■■■  cardNoHash  ' + response.cardNoHash);
+  console.log('■■■  created  ' + response.created);
+  console.log('■■■  updated  ' + response.updated);
+  console.log('■■■  type  ' + response.type);
+  console.log('■■■  brand  ' + response.brand);
 };
 
 export const logPaymentResponse = (res: FincodePaymentResponse) => {

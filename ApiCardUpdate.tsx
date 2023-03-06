@@ -1,53 +1,53 @@
 import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import { SafeAreaView, findNodeHandle, PixelRatio, ScrollView, useWindowDimensions, NativeSyntheticEvent, NativeModules, Text, View } from 'react-native';
-import { logApiCardInfoListResponse, logApiFailureResponse } from './Log';
+import { logApiRegisterCardResponse, logApiFailureResponse } from './Log';
 
-import {
-  FincodeVerticalView,
-  FincodePaymentResponse,
-  FincodeErrorResponse,
-  BEARER,
-  initPayment,
-  payment,
-  PaymentResponse,
-  CardInfo,
-  cardInfoList,
-  CardInfoListResponse,
-  ErrorResponse,
-} from './fincode_component/Fincode';
+import { FincodeVerticalView, CardUpdateResponse, FincodeErrorResponse, BEARER, cardUpdate, ErrorResponse, CardUpdateRequest } from './fincode_component/Fincode';
 
 // **************************
 // const
 // **************************
 
-const sample_apiKey = 'p_test_OTVhZDdkZTUtYTMzMy00YWU1LTk2YjktMzA5NjA0MjBmMDI3YzYyNzYyOTEtYTk3My00ZTFjLWJiMTktNTc5NzgxNzczYjgwc18yMjA1MTkwMDkxNA';
+const sample_apiKey = 'p_test_NjRhNGFhYTctZDQ1YS00MzYxLTkzOTgtOWZlMjY0ODhhNWRlMGY0ZDNlMjUtMzg1Yi00ZTNlLTgyNzQtMTQ2ZDhhODAxNGVhc18yMzAyMDg2OTU1Mw';
 const sample_apiVersion = '';
-const sample_customerId = 'User001';
+const sample_customerId = 'user001';
+const sample_cardId = '';
+const sample_defaultFlag = '';
+const sample_expire = '2612';
+const sample_holderName = 'TARO YAMADA';
+const sample_securityCode = '1111';
+const sample_token = '';
 
 // **************************
 // component
 // **************************
-const ApiCardInfoList = () => {
+const ApiCardUpdate = () => {
   useEffect(() => {
-    // カード一覧取得APIを単体で呼び出す
+    // カード更新APIを単体で呼び出す
     // 補足：
     //   動作確認の容易さからuseEffect内で実行しているが、加盟店様の任意のタイミングで実行してください
-    console.log('■■■ カード一覧取得 API >>>>>');
-    cardInfoList(
+    console.log('■■■ カード更新 API >>>>>');
+    updateCard(
       {
         authorization: BEARER,
         apiKey: sample_apiKey,
         apiVersion: sample_apiVersion,
         customerId: sample_customerId,
+        cardId: sample_cardId,
+        defaultFlg: sample_defaultFlag,
+        expire: sample_expire,
+        holderName: sample_holderName,
+        securityCode: sample_securityCode,
+        token: sample_token,
       },
       successCallback,
       failureCallback,
     );
   }, []);
 
-  const successCallback = (response: CardInfoListResponse) => {
+  const successCallback = (response: CardUpdateResponse) => {
     console.log('■■■ コールバック :  成功');
-    logApiCardInfoListResponse(response);
+    logApiRegisterCardResponse(response);
   };
 
   const failureCallback = (response: ErrorResponse) => {
@@ -59,11 +59,11 @@ const ApiCardInfoList = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
         <View>
-          <Text>カード一覧取得API : 単体で実行</Text>
+          <Text>カード更新API : 単体で実行</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
 
-export default ApiCardInfoList;
+export default ApiCardUpdate;

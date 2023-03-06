@@ -3,6 +3,7 @@ package com.fincode_manual_import.event;
 import android.content.Context;
 
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardInfo;
+import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardInfoListResponse;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardRegisterResponse;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeCardUpdateResponse;
 import com.epsilon.fincode.fincodesdk.entities.api.FincodeErrorInfo;
@@ -138,11 +139,20 @@ public class RCTFincodeResultEvent {
         return map;
     }
 
-    public static WritableNativeArray createArray(String... param) {
-        WritableNativeArray array = new WritableNativeArray();
-        for(String str : param){
-            array.pushString(str);
-        }
-        return array;
+    public static WritableNativeMap sendCardInfoListCallback(FincodeCardInfo v) {
+        WritableNativeMap map = new WritableNativeMap();
+        map.putString("customerId", v.getCustomerId());
+        map.putString("id", v.getCardId());
+        map.putString("defaltFlag", v.getDefaltFlag());
+        map.putString("cardNo", v.getCardNo());
+        map.putString("expire", v.getExpire());
+        map.putString("holderName", v.getHolderName());
+        map.putString("cardNoHash", v.getCardNoHash());
+        map.putString("created", v.getCreated());
+        map.putString("updated", v.getUpdated());
+        map.putString("cardType", v.getCardType());
+        map.putString("cardBrand", v.getCardBrand());
+
+        return map;
     }
 }
