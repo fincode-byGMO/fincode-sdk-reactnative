@@ -10,10 +10,10 @@ import { FincodeVerticalView, FincodePaymentResponse, FincodeErrorResponse, BEAR
 
 const sample_apiKey = 'p_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
 const sample_apiVersion = '';
-const sample_customerId = 'user001';
+const sample_customerId = 'User001';
 const sample_payType = 'Card';
-const sample_accessId = 'a_mgGF9DWdR4GhWXsUuw4yeQ';
-const sample_id = 'o_LlCwOx6ET7WxAS3SiC7LyA';
+const sample_accessId = 'a_LkTmy8kHTZazoXaoCw6rLg';
+const sample_id = 'o_SfNW4hqPQoK3wkF7sM-ndA';
 const sample_token = '';
 const sample_cardNo = '4111111111111111';
 const sample_expire = '2612';

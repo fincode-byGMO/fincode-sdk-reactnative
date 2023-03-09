@@ -9,7 +9,7 @@ import { FincodeVerticalView, FincodeHorizontalView, FincodePaymentResponse, Fin
 // **************************
 const sample_apiKey = 'p_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
 const sample_apiVersion = '';
-const sample_customerId = 'user001';
+const sample_customerId = 'User001';
 const sample_payType = 'Card';
 const sample_accessId = 'a_kwEmLleASMu-UdcOgvSW9A';
 const sample_id = 'o_aKbyjiqYTcWJCda_KqKSIg';

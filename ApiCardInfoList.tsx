@@ -2,19 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import { SafeAreaView, findNodeHandle, PixelRatio, ScrollView, useWindowDimensions, NativeSyntheticEvent, NativeModules, Text, View } from 'react-native';
 import { logApiCardInfoListResponse, logApiFailureResponse } from './Log';
 
-import {
-  FincodeVerticalView,
-  FincodePaymentResponse,
-  FincodeErrorResponse,
-  BEARER,
-  initPayment,
-  payment,
-  PaymentResponse,
-  CardInfo,
-  cardInfoList,
-  CardInfoListResponse,
-  ErrorResponse,
-} from './fincode_component/Fincode';
+import { BEARER, cardInfoList, CardInfoListResponse, ErrorResponse } from './fincode_component/Fincode';
 
 // **************************
 // const

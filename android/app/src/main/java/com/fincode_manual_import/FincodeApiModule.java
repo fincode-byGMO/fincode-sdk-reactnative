@@ -79,27 +79,75 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
                         String payTimes,
                         String securityCode,
                         String holderName,
+                        String tds2RetUrl,
+                        String tds2ChAccChange,
+                        String tds2ChAccDate,
+                        String tds2ChAccPwChange,
+                        String tds2NbPurchaseAccount,
+                        String tds2PaymentAccAge,
+                        String tds2ProvisionAttemptsDay,
+                        String tds2ShipAddressUsage,
+                        String tds2ShipNameInd,
+                        String tds2SuspiciousAccActivity,
+                        String tds2TxnActivityDay,
+                        String tds2TxnActivityYear,
+                        String tds2ThreeDsReqAuthData,
+                        String tds2ThreeDsReqAuthMethod,
+                        String tds2ThreeDsReqAuthTimestamp,
+                        String tds2AddrMatch,
+                        String tds2BillAddrCity,
+                        String tds2BillAddrCountry,
+                        String tds2BillAddrLine1,
+                        String tds2BillAddrLine2,
+                        String tds2BillAddrLine3,
+                        String tds2BillAddrPostCode,
+                        String tds2BillAddrState,
+                        String tds2Email,
+                        String tds2HomePhoneCc,
+                        String tds2HomePhoneNo,
+                        String tds2MobilePhoneCc,
+                        String tds2MobilePhoneNo,
+                        String tds2WorkPhoneCc,
+                        String tds2WorkPhoneNo,
+                        String tds2ShipAddrCity,
+                        String tds2ShipAddrCountry,
+                        String tds2ShipAddrLine1,
+                        String tds2ShipAddrLine2,
+                        String tds2ShipAddrLine3,
+                        String tds2ShipAddrPostCode,
+                        String tds2ShipAddrState,
+                        String tds2DeliveryEmailAddress,
+                        String tds2DeliveryTimeframe,
+                        String tds2GiftCardAmount,
+                        String tds2GiftCardCount,
+                        String tds2GiftCardCurr,
+                        String tds2PreOrderDate,
+                        String tds2PreOrderPurchaseInd,
+                        String tds2ReorderItemsInd,
+                        String tds2ShipInd,
+                        String tds2RecurringExpiry,
+                        String tds2RecurringFrequency,
                         Callback failureCallback, Callback successCallback) {
 
         this.successCallback = successCallback;
         this.failureCallback = failureCallback;
 
-        Log.d("fincode","■■■ native 決済実行API :  開始");
-        Log.d("fincode","authorization : " + authorization);
-        Log.d("fincode","apiKey : " + apiKey);
-        Log.d("fincode","apiVersion : " + apiVersion);
-        Log.d("fincode","customerId : " + customerId);
-        Log.d("fincode","payType : " + payType);
-        Log.d("fincode","accessId : " + accessId);
-        Log.d("fincode","id : " + id);
-        Log.d("fincode","token : " + token);
-        Log.d("fincode","cardNo : " + cardNo);
-        Log.d("fincode","expire : " + expire);
-        Log.d("fincode","cardId : " + cardId);
-        Log.d("fincode","method : " + method);
-        Log.d("fincode","payTimes : " + payTimes);
-        Log.d("fincode","securityCode : " + securityCode);
-        Log.d("fincode","holderName : " + holderName);
+        Log.d("fincode", "■■■ native 決済実行API :  開始");
+        Log.d("fincode", "authorization : " + authorization);
+        Log.d("fincode", "apiKey : " + apiKey);
+        Log.d("fincode", "apiVersion : " + apiVersion);
+        Log.d("fincode", "customerId : " + customerId);
+        Log.d("fincode", "payType : " + payType);
+        Log.d("fincode", "accessId : " + accessId);
+        Log.d("fincode", "id : " + id);
+        Log.d("fincode", "token : " + token);
+        Log.d("fincode", "cardNo : " + cardNo);
+        Log.d("fincode", "expire : " + expire);
+        Log.d("fincode", "cardId : " + cardId);
+        Log.d("fincode", "method : " + method);
+        Log.d("fincode", "payTimes : " + payTimes);
+        Log.d("fincode", "securityCode : " + securityCode);
+        Log.d("fincode", "holderName : " + holderName);
 
         HashMap<String, String> header = createHeader(authorization, apiKey, apiVersion);
         FincodePaymentRequest req = new FincodePaymentRequest();
@@ -115,6 +163,54 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         req.setPayTimes(payTimes);
         req.setSecurityCode(securityCode);
         req.setHolderName(holderName);
+        req.setTds2RetUrl(tds2RetUrl);
+        req.setTds2ChAccChange(tds2ChAccChange);
+        req.setTds2ChAccDate(tds2ChAccDate);
+        req.setTds2ChAccPwChange(tds2ChAccPwChange);
+        req.setTds2NbPurchaseAccount(tds2NbPurchaseAccount);
+        req.setTds2PaymentAccAge(tds2PaymentAccAge);
+        req.setTds2ProvisionAttemptsDay(tds2ProvisionAttemptsDay);
+        req.setTds2ShipAddressUsage(tds2ShipAddressUsage);
+        req.setTds2ShipNameInd(tds2ShipNameInd);
+        req.setTds2SuspiciousAccActivity(tds2SuspiciousAccActivity);
+        req.setTds2TxnActivityDay(tds2TxnActivityDay);
+        req.setTds2TxnActivityYear(tds2TxnActivityYear);
+        req.setTds2ThreeDsReqAuthData(tds2ThreeDsReqAuthData);
+        req.setTds2ThreeDsReqAuthMethod(tds2ThreeDsReqAuthMethod);
+        req.setTds2ThreeDsReqAuthTimestamp(tds2ThreeDsReqAuthTimestamp);
+        req.setTds2AddrMatch(tds2AddrMatch);
+        req.setTds2BillAddrCity(tds2BillAddrCity);
+        req.setTds2BillAddrCountry(tds2BillAddrCountry);
+        req.setTds2BillAddrLine1(tds2BillAddrLine1);
+        req.setTds2BillAddrLine2(tds2BillAddrLine2);
+        req.setTds2BillAddrLine3(tds2BillAddrLine3);
+        req.setTds2BillAddrPostCode(tds2BillAddrPostCode);
+        req.setTds2BillAddrState(tds2BillAddrState);
+        req.setTds2Email(tds2Email);
+        req.setTds2HomePhoneCc(tds2HomePhoneCc);
+        req.setTds2HomePhoneNo(tds2HomePhoneNo);
+        req.setTds2MobilePhoneCc(tds2MobilePhoneCc);
+        req.setTds2MobilePhoneNo(tds2MobilePhoneNo);
+        req.setTds2WorkPhoneCc(tds2WorkPhoneCc);
+        req.setTds2WorkPhoneNo(tds2WorkPhoneNo);
+        req.setTds2ShipAddrCity(tds2ShipAddrCity);
+        req.setTds2ShipAddrCountry(tds2ShipAddrCountry);
+        req.setTds2ShipAddrLine1(tds2ShipAddrLine1);
+        req.setTds2ShipAddrLine2(tds2ShipAddrLine2);
+        req.setTds2ShipAddrLine3(tds2ShipAddrLine3);
+        req.setTds2ShipAddrPostCode(tds2ShipAddrPostCode);
+        req.setTds2ShipAddrState(tds2ShipAddrState);
+        req.setTds2DeliveryEmailAddress(tds2DeliveryEmailAddress);
+        req.setTds2DeliveryTimeframe(tds2DeliveryTimeframe);
+        req.setTds2GiftCardAmount(tds2GiftCardAmount);
+        req.setTds2GiftCardCount(tds2GiftCardCount);
+        req.setTds2GiftCardCurr(tds2GiftCardCurr);
+        req.setTds2PreOrderDate(tds2PreOrderDate);
+        req.setTds2PreOrderPurchaseInd(tds2PreOrderPurchaseInd);
+        req.setTds2ReorderItemsInd(tds2ReorderItemsInd);
+        req.setTds2ShipInd(tds2ShipInd);
+        req.setTds2RecurringExpiry(tds2RecurringExpiry);
+        req.setTds2RecurringFrequency(tds2RecurringFrequency);
 
         FincodePaymentRepository.getInstance().payment(header, id, req, new FincodeCallback<FincodePaymentResponse>() {
             @Override
@@ -171,7 +267,7 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
             @Override
             public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
-                Log.d("fincode","■■■ native　API　失敗");
+                Log.d("fincode", "■■■ native　API　失敗");
 
                 WritableNativeArray args1 = new WritableNativeArray();
                 args1.pushString(fincodeErrorResponse.statusCode.toString());
@@ -181,7 +277,7 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
                     args2.pushMap(RCTFincodeResultEvent.createInfo(v.getCode(), v.getMessage()));
                 }
 
-                if(failureCallback != null) {
+                if (failureCallback != null) {
                     failureCallback.invoke(args1, args2);
                 }
             }
@@ -193,27 +289,28 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         map.put("Content-Type", "application/json");
         map.put("Authorization", getAuth(auth).getValue() + " " + apiKey);
 
-        if(apiVersion != null && !apiVersion.isEmpty()) {
+        if (apiVersion != null && !apiVersion.isEmpty()) {
             map.put("Api-Version", apiVersion);
         }
 
         return map;
     }
+
     @ReactMethod
     public void cardInfoList(String authorization,
-                        String apiKey,
-                        String apiVersion,
-                        String customerId,
-                        Callback failureCallback, Callback successCallback) {
+                             String apiKey,
+                             String apiVersion,
+                             String customerId,
+                             Callback failureCallback, Callback successCallback) {
 
         this.successCallback = successCallback;
         this.failureCallback = failureCallback;
 
-        Log.d("fincode","■■■ native カード一覧取得API :  開始");
-        Log.d("fincode","authorization : " + authorization);
-        Log.d("fincode","apiKey : " + apiKey);
-        Log.d("fincode","apiVersion : " + apiVersion);
-        Log.d("fincode","customerId : " + customerId);
+        Log.d("fincode", "■■■ native カード一覧取得API :  開始");
+        Log.d("fincode", "authorization : " + authorization);
+        Log.d("fincode", "apiKey : " + apiKey);
+        Log.d("fincode", "apiVersion : " + apiVersion);
+        Log.d("fincode", "customerId : " + customerId);
 
         HashMap<String, String> header = createHeader(authorization, apiKey, apiVersion);
         FincodeCardOperateRepository.getInstance().getCardInfoList(header, customerId, new FincodeCallback<FincodeCardInfoListResponse>() {
@@ -234,7 +331,7 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
             @Override
             public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
-                Log.d("fincode","■■■ native　API　失敗");
+                Log.d("fincode", "■■■ native　API　失敗");
 
                 WritableNativeArray args1 = new WritableNativeArray();
                 args1.pushString(fincodeErrorResponse.statusCode.toString());
@@ -244,7 +341,7 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
                     args2.pushMap(RCTFincodeResultEvent.createInfo(v.getCode(), v.getMessage()));
                 }
 
-                if(failureCallback != null) {
+                if (failureCallback != null) {
                     failureCallback.invoke(args1, args2);
                 }
             }
@@ -267,7 +364,7 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         this.successCallback = successCallback;
         this.failureCallback = failureCallback;
 
-        Log.d("fincode","■■■ native カード登録API :  開始");
+        Log.d("fincode", "■■■ native カード登録API :  開始");
         FincodeCardRegisterRequest req = new FincodeCardRegisterRequest();
         req.setDefaltFlag(defaultFlg);
         req.setCardNo(cardNo);
@@ -302,7 +399,7 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
             @Override
             public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
-                Log.d("fincode","■■■ native　API　失敗");
+                Log.d("fincode", "■■■ native　API　失敗");
 
                 WritableNativeArray args1 = new WritableNativeArray();
                 args1.pushString(fincodeErrorResponse.statusCode.toString());
@@ -312,7 +409,7 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
                     args2.pushMap(RCTFincodeResultEvent.createInfo(v.getCode(), v.getMessage()));
                 }
 
-                if(failureCallback != null) {
+                if (failureCallback != null) {
                     failureCallback.invoke(args1, args2);
                 }
             }
@@ -321,16 +418,16 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void updateCard(String authorization,
-                             String apiKey,
-                             String apiVersion,
-                             String customerId,
-                             String cardId,
-                             String defaultFlg,
-                             String expire,
-                             String holderName,
-                             String securityCode,
-                             String token,
-                             Callback failureCallback, Callback successCallback) {
+                           String apiKey,
+                           String apiVersion,
+                           String customerId,
+                           String cardId,
+                           String defaultFlg,
+                           String expire,
+                           String holderName,
+                           String securityCode,
+                           String token,
+                           Callback failureCallback, Callback successCallback) {
 
         this.successCallback = successCallback;
         this.failureCallback = failureCallback;
@@ -384,13 +481,14 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
             }
         });
     }
+
     @ReactMethod
     public void authentication(String authorization,
-                           String apiKey,
-                           String apiVersion,
-                           String id,
-                           String param,
-                           Callback failureCallback, Callback successCallback) {
+                               String apiKey,
+                               String apiVersion,
+                               String id,
+                               String param,
+                               Callback failureCallback, Callback successCallback) {
 
         this.successCallback = successCallback;
         this.failureCallback = failureCallback;
@@ -435,10 +533,10 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void getResult(String authorization,
-                               String apiKey,
-                               String apiVersion,
-                               String id,
-                               Callback failureCallback, Callback successCallback) {
+                          String apiKey,
+                          String apiVersion,
+                          String id,
+                          Callback failureCallback, Callback successCallback) {
 
         this.successCallback = successCallback;
         this.failureCallback = failureCallback;
@@ -453,9 +551,8 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
                 if (successCallback != null) {
                     successCallback.invoke(
-                            //FincodeGetResultResponseにgetterがない
-//                            fincodeGetResultResponse.getTdsTransResult(),
-//                            fincodeGetResultResponse.getTdsTransResultReason()
+                            fincodeGetResultResponse.getTdsTransResult(),
+                            fincodeGetResultResponse.getTdsTransResultReason()
                     );
                 }
             }
@@ -482,23 +579,23 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void paymentSecure(String authorization,
-                        String apiKey,
-                        String apiVersion,
-                        String id,
-                        String payType,
-                        String accessId,
-                        Callback failureCallback, Callback successCallback) {
+                              String apiKey,
+                              String apiVersion,
+                              String id,
+                              String payType,
+                              String accessId,
+                              Callback failureCallback, Callback successCallback) {
 
         this.successCallback = successCallback;
         this.failureCallback = failureCallback;
 
-        Log.d("fincode","■■■ native 認証後決済API :  開始");
-        Log.d("fincode","authorization : " + authorization);
-        Log.d("fincode","apiKey : " + apiKey);
-        Log.d("fincode","apiVersion : " + apiVersion);
-        Log.d("fincode","id : " + id);
-        Log.d("fincode","payType : " + payType);
-        Log.d("fincode","accessId : " + accessId);
+        Log.d("fincode", "■■■ native 認証後決済API :  開始");
+        Log.d("fincode", "authorization : " + authorization);
+        Log.d("fincode", "apiKey : " + apiKey);
+        Log.d("fincode", "apiVersion : " + apiVersion);
+        Log.d("fincode", "id : " + id);
+        Log.d("fincode", "payType : " + payType);
+        Log.d("fincode", "accessId : " + accessId);
 
         HashMap<String, String> header = createHeader(authorization, apiKey, apiVersion);
         FincodePaymentSecureRequest req = new FincodePaymentSecureRequest();
@@ -548,7 +645,7 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
                             fincodePaymentSecureResponse.getSendUrl(),
                             fincodePaymentSecureResponse.getSubscriptionId(),
                             fincodePaymentSecureResponse.getBulkPaymentId(),
-                            //fincodePaymentSecureResponse.getCardBrand(),
+                            fincodePaymentSecureResponse.getBrand(),
                             fincodePaymentSecureResponse.getErrorCode(),
                             fincodePaymentSecureResponse.getCreated(),
                             fincodePaymentSecureResponse.getUpdated());
@@ -557,7 +654,7 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
             @Override
             public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
-                Log.d("fincode","■■■ native　API　失敗");
+                Log.d("fincode", "■■■ native　API　失敗");
 
                 WritableNativeArray args1 = new WritableNativeArray();
                 args1.pushString(fincodeErrorResponse.statusCode.toString());
@@ -567,7 +664,7 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
                     args2.pushMap(RCTFincodeResultEvent.createInfo(v.getCode(), v.getMessage()));
                 }
 
-                if(failureCallback != null) {
+                if (failureCallback != null) {
                     failureCallback.invoke(args1, args2);
                 }
             }
@@ -576,14 +673,14 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
 
     private Authorization getAuth(String auth) {
-        if(auth == null || auth.isEmpty()) {
+        if (auth == null || auth.isEmpty()) {
             return Authorization.NONE;
         }
 
         String value = auth.toLowerCase();
-        if("basic".equals(value)) {
+        if ("basic".equals(value)) {
             return Authorization.BASIC;
-        } else if("bearer".equals(value)) {
+        } else if ("bearer".equals(value)) {
             return Authorization.BEARER;
         } else {
             return Authorization.NONE;
