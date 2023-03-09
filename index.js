@@ -15,5 +15,6 @@ import ApiCardInfoList from './ApiCardInfoList'; // API単体実行 : カード�
 import ApiAuthentication from './ApiAuthentication'; // API単体実行 : 3DS2.0認証実行API
 import ApiGetResult from './ApiGetResult'; // API単体実行 : 3DS2.0認証実行API
 import ApiPaymentSecure from './ApiPaymentSecure'; // API単体実行 : 認証後決済API
+import ApiPayment3ds from './ApiPayment3ds'; // API単体実行 : 決済実行API
 
-AppRegistry.registerComponent(appName, () => ApiCardInfoList);
+AppRegistry.registerComponent(appName, () => ApiRegister);

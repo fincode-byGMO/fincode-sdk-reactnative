@@ -7,9 +7,9 @@ import { FincodeVerticalView, FincodeHorizontalView, FincodePaymentResponse, Fin
 // **************************
 // const
 // **************************
-const sample_apiKey = 'p_test_NjRhNGFhYTctZDQ1YS00MzYxLTkzOTgtOWZlMjY0ODhhNWRlMGY0ZDNlMjUtMzg1Yi00ZTNlLTgyNzQtMTQ2ZDhhODAxNGVhc18yMzAyMDg2OTU1Mw';
+const sample_apiKey = 'p_test_OTVhZDdkZTUtYTMzMy00YWU1LTk2YjktMzA5NjA0MjBmMDI3YzYyNzYyOTEtYTk3My00ZTFjLWJiMTktNTc5NzgxNzczYjgwc18yMjA1MTkwMDkxNA';
 const sample_apiVersion = '';
-const sample_customerId = 'user001';
+const sample_customerId = 'User001';
 const sample_payType = 'Card';
 const sample_accessId = 'a_kwEmLleASMu-UdcOgvSW9A';
 const sample_id = 'o_aKbyjiqYTcWJCda_KqKSIg';

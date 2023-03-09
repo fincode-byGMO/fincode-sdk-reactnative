@@ -8,12 +8,12 @@ import { FincodeVerticalView, FincodePaymentResponse, FincodeErrorResponse, BEAR
 // const
 // **************************
 
-const sample_apiKey = 'p_test_NjRhNGFhYTctZDQ1YS00MzYxLTkzOTgtOWZlMjY0ODhhNWRlMGY0ZDNlMjUtMzg1Yi00ZTNlLTgyNzQtMTQ2ZDhhODAxNGVhc18yMzAyMDg2OTU1Mw';
+const sample_apiKey = 'p_test_OTVhZDdkZTUtYTMzMy00YWU1LTk2YjktMzA5NjA0MjBmMDI3YzYyNzYyOTEtYTk3My00ZTFjLWJiMTktNTc5NzgxNzczYjgwc18yMjA1MTkwMDkxNA';
 const sample_apiVersion = '';
-const sample_customerId = 'user001';
+const sample_customerId = 'User001';
 const sample_payType = 'Card';
-const sample_accessId = 'a_mgGF9DWdR4GhWXsUuw4yeQ';
-const sample_id = 'o_LlCwOx6ET7WxAS3SiC7LyA';
+const sample_accessId = 'a_LkTmy8kHTZazoXaoCw6rLg';
+const sample_id = 'o_SfNW4hqPQoK3wkF7sM-ndA';
 const sample_token = '';
 const sample_cardNo = '4111111111111111';
 const sample_expire = '2612';
