@@ -2,15 +2,15 @@ import React, { useEffect, useRef } from 'react';
 import { SafeAreaView, findNodeHandle, PixelRatio, ScrollView, useWindowDimensions, NativeSyntheticEvent } from 'react-native';
 import { logFincodeCardUpdateResponse, logFincodeErrorResponse } from './Log';
 
-import { FincodeVerticalView, FincodeHorizontalView, FincodePaymentResponse, FincodeErrorResponse, BEARER, initCardUpdate, VERTICAL, HORIZONTAL, DEFAULT_FLG_ON } from './fincode_component/Fincode';
+import { FincodeVerticalView, FincodeHorizontalView, FincodeCardUpdateResponse, FincodeErrorResponse, BEARER, initCardUpdate, VERTICAL, HORIZONTAL, DEFAULT_FLG_ON } from './fincode_component/Fincode';
 
 // **************************
 // const
 // **************************
-const sample_apiKey = 'p_test_NjRhNGFhYTctZDQ1YS00MzYxLTkzOTgtOWZlMjY0ODhhNWRlMGY0ZDNlMjUtMzg1Yi00ZTNlLTgyNzQtMTQ2ZDhhODAxNGVhc18yMzAyMDg2OTU1Mw';
+const sample_apiKey = '';
 const sample_apiVersion = '';
-const sample_customerId = 'user001';
-const sample_cardId = 'cs_XzZqEMyBRfK7ZGmnb785EQ';
+const sample_customerId = '';
+const sample_cardId = '';
 
 // **************************
 // component

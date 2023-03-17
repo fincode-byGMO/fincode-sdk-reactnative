@@ -8,11 +8,11 @@ import { FincodeVerticalView, FincodePaymentSecureResponse, FincodeErrorResponse
 // const
 // **************************
 
-const sample_apiKey = 'p_test_NjRhNGFhYTctZDQ1YS00MzYxLTkzOTgtOWZlMjY0ODhhNWRlMGY0ZDNlMjUtMzg1Yi00ZTNlLTgyNzQtMTQ2ZDhhODAxNGVhc18yMzAyMDg2OTU1Mw';
+const sample_apiKey = '';
 const sample_apiVersion = '';
 const sample_id = '';
 const sample_payType = 'Card';
-const sample_accessId = 'a_mgGF9DWdR4GhWXsUuw4yeQ';
+const sample_accessId = '';
 
 // **************************
 // component
@@ -40,7 +40,6 @@ const ApiPaymentSecure = () => {
   const successCallback = (response: PaymentSecureResponse) => {
     console.log('■■■ コールバック :  成功');
     console.log(response);
-    //logApiPaymentResponse(response);
   };
 
   const failureCallback = (response: ErrorResponse) => {

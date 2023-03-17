@@ -8,10 +8,10 @@ import { CardUpdateResponse, FincodeErrorResponse, BEARER, updateCard, ErrorResp
 // const
 // **************************
 
-const sample_apiKey = 'p_test_NjRhNGFhYTctZDQ1YS00MzYxLTkzOTgtOWZlMjY0ODhhNWRlMGY0ZDNlMjUtMzg1Yi00ZTNlLTgyNzQtMTQ2ZDhhODAxNGVhc18yMzAyMDg2OTU1Mw';
+const sample_apiKey = '';
 const sample_apiVersion = '';
 const sample_customerId = 'user001';
-const sample_cardId = 'cs_XzZqEMyBRfK7ZGmnb785EQ';
+const sample_cardId = '';
 const sample_defaultFlag = '1';
 const sample_expire = '2612';
 const sample_holderName = 'TARO YAMADA';

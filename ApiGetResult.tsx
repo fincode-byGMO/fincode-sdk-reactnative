@@ -8,7 +8,7 @@ import { FincodeVerticalView, GetResultResponse, FincodeErrorResponse, BEARER, g
 // const
 // **************************
 
-const sample_apiKey = 'p_test_NjRhNGFhYTctZDQ1YS00MzYxLTkzOTgtOWZlMjY0ODhhNWRlMGY0ZDNlMjUtMzg1Yi00ZTNlLTgyNzQtMTQ2ZDhhODAxNGVhc18yMzAyMDg2OTU1Mw';
+const sample_apiKey = '';
 const sample_apiVersion = '';
 const sample_id = '';
 
@@ -35,8 +35,7 @@ const ApiGetResult = () => {
 
   const successCallback = (response: GetResultResponse) => {
     console.log('■■■ コールバック :  成功');
-    consoke.log(response);
-    //logApiRegisterCardResponse(response);
+    console.log(response);
   };
 
   const failureCallback = (response: ErrorResponse) => {

@@ -8,7 +8,7 @@ import { BEARER, cardInfoList, CardInfoListResponse, ErrorResponse } from './fin
 // const
 // **************************
 
-const sample_apiKey = 'p_test_OTVhZDdkZTUtYTMzMy00YWU1LTk2YjktMzA5NjA0MjBmMDI3YzYyNzYyOTEtYTk3My00ZTFjLWJiMTktNTc5NzgxNzczYjgwc18yMjA1MTkwMDkxNA';
+const sample_apiKey = '';
 const sample_apiVersion = '';
 const sample_customerId = 'User001';
 
