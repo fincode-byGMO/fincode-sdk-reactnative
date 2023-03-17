@@ -1,18 +1,32 @@
 import { UIManager, Platform, NativeModules } from 'react-native';
 import {
+  PaymentRequest,
+  PaymentResponse,
+  PaymentSecureRequest,
+  PaymentSecureResponse,
+  CardRegisterRequest,
+  CardRegisterResponse,
+  CardUpdateRequest,
+  CardUpdateResponse,
+  CardInfoListRequest,
+  CardInfoListResponse,
+  CardInfo,
+  AuthRequest,
+  AuthResponse,
+  GetResultRequest,
+  GetResultResponse,
+  ErrorResponse,
+  Error,
   ConfigPayment,
   ConfigCardRegister,
   ConfigCardUpdate,
-  PaymentRequest,
-  PaymentResponse,
-  CardRegisterRequest,
-  CardRegisterResponse,
-  ErrorResponse,
-  Error,
   ApiPaymentSuccessCallback,
   ApiCardRegisterSuccessCallback,
+  ApiCardUpdateSuccessCallback,
   ApiCardInfoListSuccessCallback,
   ApiAuthSuccessCallback,
+  ApiGetResultSuccessCallback,
+  ApiPaymentSecureSuccessCallback,
   ApiFailureCallback,
 } from './types/FincodeTypes';
 
@@ -223,7 +237,7 @@ const apiPaymentSuccess = (
 // API単体実行: カード登録
 let apiCardRegisterSuccessCallback: ApiCardRegisterSuccessCallback;
 
-export const register = (req: CardRegisterRequest, successCallback: ApiCardRegisterSuccessCallback, failureCallback: ApiFailureCallback) => {
+export const registerCard = (req: CardRegisterRequest, successCallback: ApiCardRegisterSuccessCallback, failureCallback: ApiFailureCallback) => {
   apiCardRegisterSuccessCallback = successCallback;
   apiFailureCallback = failureCallback;
 
@@ -376,9 +390,9 @@ const apiAuthSuccess = (tds2TransResult: string, tds2TransResultReason: string, 
 };
 
 // API単体実行: 3DS2.0認証結果取得
-let apiGetResultCallback: ApiGetResultCallback;
+let apiGetResultCallback: ApiGetResultSuccessCallback;
 
-export const getResult = (req: GetResultRequest, successCallback: ApiGetResultCallback, failureCallback: ApiFailureCallback) => {
+export const getResult = (req: GetResultRequest, successCallback: ApiGetResultSuccessCallback, failureCallback: ApiFailureCallback) => {
   apiGetResultSuccessCallback = successCallback;
   apiFailureCallback = failureCallback;
 
@@ -393,9 +407,9 @@ const apiGetResultSuccess = (tds2TransResult: string, tds2TransResultReason: str
 };
 
 // API単体実行: 認証後決済
-let apiPaymentSecureCallback: ApiPaymentSecureCallback;
+let apiPaymentSecureCallback: ApiPaymentSecureSuccessCallback;
 
-export const paymentSecure = (req: PaymentSecureRequest, successCallback: ApiPaymentSecureCallback, failureCallback: ApiFailureCallback) => {
+export const paymentSecure = (req: PaymentSecureRequest, successCallback: ApiPaymentSecureSuccessCallback, failureCallback: ApiFailureCallback) => {
   apiPaymentSecureCallback = successCallback;
   apiFailureCallback = failureCallback;
 
