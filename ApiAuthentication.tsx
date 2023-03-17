@@ -8,7 +8,7 @@ import { FincodeVerticalView, AuthenticationResponse, FincodeErrorResponse, BEAR
 // const
 // **************************
 
-const sample_apiKey = 'p_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+const sample_apiKey = '';
 const sample_apiVersion = '';
 const sample_id = '';
 const sample_param = '';
@@ -37,8 +37,7 @@ const ApiAuthentication = () => {
 
   const successCallback = (response: AuthenticationResponse) => {
     console.log('■■■ コールバック :  成功');
-    consoke.log(response);
-    //logApiRegisterCardResponse(response);
+    console.log(response);
   };
 
   const failureCallback = (response: ErrorResponse) => {

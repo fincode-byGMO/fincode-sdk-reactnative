@@ -8,7 +8,7 @@ import { BEARER, cardInfoList, CardInfoListResponse, ErrorResponse } from './fin
 // const
 // **************************
 
-const sample_apiKey = 'p_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+const sample_apiKey = '';
 const sample_apiVersion = '';
 const sample_customerId = 'User001';
 

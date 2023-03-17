@@ -2,14 +2,24 @@ import React, { useEffect, useRef } from 'react';
 import { SafeAreaView, findNodeHandle, PixelRatio, ScrollView, useWindowDimensions, NativeSyntheticEvent } from 'react-native';
 import { logFincodeCardRegisterResponse, logFincodeErrorResponse } from './Log';
 
-import { FincodeVerticalView, FincodeHorizontalView, FincodePaymentResponse, FincodeErrorResponse, BEARER, initCardRegister, VERTICAL, HORIZONTAL, DEFAULT_FLG_ON } from './fincode_component/Fincode';
+import {
+  FincodeVerticalView,
+  FincodeHorizontalView,
+  FincodeCardRegisterResponse,
+  FincodeErrorResponse,
+  BEARER,
+  initCardRegister,
+  VERTICAL,
+  HORIZONTAL,
+  DEFAULT_FLG_ON,
+} from './fincode_component/Fincode';
 
 // **************************
 // const
 // **************************
-const sample_apiKey = 'p_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+const sample_apiKey = '';
 const sample_apiVersion = '';
-const sample_customerId = 'user001';
+const sample_customerId = '';
 
 // **************************
 // component
