@@ -342,13 +342,10 @@ let apiCardInfoListSuccessCallback: ApiCardInfoListSuccessCallback;
 export const cardInfoList = (req: CardInfoListRequest, successCallback: ApiCardInfoListSuccessCallback, failureCallback: ApiFailureCallback) => {
   apiCardInfoListSuccessCallback = successCallback;
   apiFailureCallback = failureCallback;
-  console.log('request');
   apiModule.cardInfoList(req.authorization, req.apiKey, req.apiVersion, req.customerId, apiFailure, apiCardInfoListSuccess);
 };
 
 const apiCardInfoListSuccess = cards => {
-  console.log(cards);
-  console.log('response');
   let list: CardInfo[] = [];
   if (cards !== undefined) {
     for (var card of cards) {
@@ -452,7 +449,7 @@ const apiPaymentSecureSuccess = (
   merchantName: string,
   sendUrl: string,
   subscriptionId: string,
-  //brand: string,
+  brand: string,
   errorCode: string,
   created: string,
   updated: string,
@@ -493,7 +490,7 @@ const apiPaymentSecureSuccess = (
     merchantName: merchantName,
     sendUrl: sendUrl,
     subscriptionId: subscriptionId,
-    //brand: brand,
+    brand: brand,
     errorCode: errorCode,
     created: created,
     updated: updated,
@@ -501,7 +498,6 @@ const apiPaymentSecureSuccess = (
 };
 
 const apiFailure = (status, errors) => {
-  console.log(errors);
   let err: Error[] = [];
   if (errors !== undefined) {
     for (var value of errors) {
