@@ -139,28 +139,24 @@ public abstract class RCTFincodeViewManager<T extends FincodeCommon> extends Vie
     // option
     @ReactProp(name = "headingHidden")
     public void headingHidden(T view, boolean value) {
-        Log.d("fincode", "■■■ opt headingHidden:  " + value);
         //view.headingHidden(value);
         opt.headingHidden = value;
     }
 
     @ReactProp(name = "dynamicLogDisplay")
     public void dynamicLogDisplay(T view, boolean value) {
-        Log.d("fincode", "■■■ opt dynamicLogDisplay:  " + value);
         //view.dynamicLogDisplay(value);
         opt.dynamicLogDisplay = value;
     }
 
     @ReactProp(name = "holderNameHidden")
     public void holderNameHidden(T view, boolean value) {
-        Log.d("fincode", "■■■ opt holderNameHidden" + value);
         //view.holderNameHidden(value);
         opt.holderNameHidden = value;
     }
 
     @ReactProp(name = "payTimesHidden")
     public void payTimesHidden(T view, boolean value) {
-        Log.d("fincode", "■■■ opt payTimesHidden:  " + value);
         //view.payTimesHidden(value);
         opt.payTimesHidden = value;
     }
@@ -171,10 +167,8 @@ public abstract class RCTFincodeViewManager<T extends FincodeCommon> extends Vie
         SubmitButtonType result = SubmitButtonType.NONE;
         switch (Event.getValue(commandId)) {
             case NONE:
-                Log.d("fincode", "■■■ event NONE");
                 break;
             case INIT_PAYMENT:
-                Log.d("fincode", "■■■ event INIT_PAYMENT");
                 result = SubmitButtonType.PAYMENT;
                 root.initForPayment(ConfigUtil.payment(args), new FincodeCallback<FincodePaymentResponse>() {
                     @Override
@@ -189,7 +183,6 @@ public abstract class RCTFincodeViewManager<T extends FincodeCommon> extends Vie
                 });
                 break;
             case INIT_CARD_REGISTER:
-                Log.d("fincode", "■■■ event INIT_CARD_REGISTER");
                 result = SubmitButtonType.CARD_REGISTER;
                 root.initForCardRegister(ConfigUtil.cardRegister(args), new FincodeCallback<FincodeCardRegisterResponse>() {
                     @Override
@@ -204,7 +197,6 @@ public abstract class RCTFincodeViewManager<T extends FincodeCommon> extends Vie
                 });
                 break;
             case IINT_CARD_UPDATE:
-                Log.d("fincode", "■■■ event IINT_CARD_UPDATE");
                 result = SubmitButtonType.CARD_UPDATE;
                 root.initForCardUpdate(ConfigUtil.cardUpdate(args), new FincodeCallback<FincodeCardUpdateResponse>() {
                     @Override
