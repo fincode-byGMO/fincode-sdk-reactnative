@@ -132,23 +132,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         this.successCallback = successCallback;
         this.failureCallback = failureCallback;
 
-        Log.d("fincode", "■■■ native 決済実行API :  開始");
-        Log.d("fincode", "authorization : " + authorization);
-        Log.d("fincode", "apiKey : " + apiKey);
-        Log.d("fincode", "apiVersion : " + apiVersion);
-        Log.d("fincode", "customerId : " + customerId);
-        Log.d("fincode", "payType : " + payType);
-        Log.d("fincode", "accessId : " + accessId);
-        Log.d("fincode", "id : " + id);
-        Log.d("fincode", "token : " + token);
-        Log.d("fincode", "cardNo : " + cardNo);
-        Log.d("fincode", "expire : " + expire);
-        Log.d("fincode", "cardId : " + cardId);
-        Log.d("fincode", "method : " + method);
-        Log.d("fincode", "payTimes : " + payTimes);
-        Log.d("fincode", "securityCode : " + securityCode);
-        Log.d("fincode", "holderName : " + holderName);
-
         HashMap<String, String> header = createHeader(authorization, apiKey, apiVersion);
         FincodePaymentRequest req = new FincodePaymentRequest();
         req.setPayType(payType);
@@ -215,7 +198,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         FincodePaymentRepository.getInstance().payment(header, id, req, new FincodeCallback<FincodePaymentResponse>() {
             @Override
             public void onResponse(FincodePaymentResponse fincodePaymentResponse) {
-                Log.d("fincode", "■■■ native　API　成功");
 
                 if (successCallback != null) {
                     successCallback.invoke(
@@ -267,7 +249,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
             @Override
             public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
-                Log.d("fincode", "■■■ native　API　失敗");
 
                 WritableNativeArray args1 = new WritableNativeArray();
                 args1.pushString(fincodeErrorResponse.statusCode.toString());
@@ -306,17 +287,10 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         this.successCallback = successCallback;
         this.failureCallback = failureCallback;
 
-        Log.d("fincode", "■■■ native カード一覧取得API :  開始");
-        Log.d("fincode", "authorization : " + authorization);
-        Log.d("fincode", "apiKey : " + apiKey);
-        Log.d("fincode", "apiVersion : " + apiVersion);
-        Log.d("fincode", "customerId : " + customerId);
-
         HashMap<String, String> header = createHeader(authorization, apiKey, apiVersion);
         FincodeCardOperateRepository.getInstance().getCardInfoList(header, customerId, new FincodeCallback<FincodeCardInfoListResponse>() {
             @Override
             public void onResponse(FincodeCardInfoListResponse fincodeCardInfoListResponse) {
-                Log.d("fincode", "■■■ native　API　成功");
                 WritableNativeArray args = new WritableNativeArray();
 
                 for (FincodeCardInfo v : fincodeCardInfoListResponse.cardInfoList) {
@@ -331,7 +305,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
             @Override
             public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
-                Log.d("fincode", "■■■ native　API　失敗");
 
                 WritableNativeArray args1 = new WritableNativeArray();
                 args1.pushString(fincodeErrorResponse.statusCode.toString());
@@ -364,7 +337,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         this.successCallback = successCallback;
         this.failureCallback = failureCallback;
 
-        Log.d("fincode", "■■■ native カード登録API :  開始");
         FincodeCardRegisterRequest req = new FincodeCardRegisterRequest();
         req.setDefaltFlag(defaultFlg);
         req.setCardNo(cardNo);
@@ -378,7 +350,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         FincodeCardOperateRepository.getInstance().cardRegister(header, customerId, req, new FincodeCallback<FincodeCardRegisterResponse>() {
             @Override
             public void onResponse(FincodeCardRegisterResponse fincodeCardRegisterResponse) {
-                Log.d("fincode", "■■■ native　API　成功");
 
                 if (successCallback != null) {
                     successCallback.invoke(
@@ -399,7 +370,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
             @Override
             public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
-                Log.d("fincode", "■■■ native　API　失敗");
 
                 WritableNativeArray args1 = new WritableNativeArray();
                 args1.pushString(fincodeErrorResponse.statusCode.toString());
@@ -432,7 +402,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         this.successCallback = successCallback;
         this.failureCallback = failureCallback;
 
-        Log.d("fincode", "■■■ native カード更新API :  開始");
         FincodeCardUpdateRequest req = new FincodeCardUpdateRequest();
         req.setDefaltFlag(defaultFlg);
         req.setExpire(expire);
@@ -444,7 +413,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         FincodeCardOperateRepository.getInstance().cardUpdate(header, customerId, cardId, req, new FincodeCallback<FincodeCardUpdateResponse>() {
             @Override
             public void onResponse(FincodeCardUpdateResponse fincodeCardUpdateResponse) {
-                Log.d("fincode", "■■■ native　API　成功");
 
                 if (successCallback != null) {
                     successCallback.invoke(
@@ -465,7 +433,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
             @Override
             public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
-                Log.d("fincode", "■■■ native　API　失敗");
 
                 WritableNativeArray args1 = new WritableNativeArray();
                 args1.pushString(fincodeErrorResponse.statusCode.toString());
@@ -493,7 +460,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         this.successCallback = successCallback;
         this.failureCallback = failureCallback;
 
-        Log.d("fincode", "■■■ native 3DS2.0認証実行API :  開始");
         FincodeAuthRequest req = new FincodeAuthRequest();
         req.setParam(param);
 
@@ -501,7 +467,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         FincodeAuthRepository.getInstance().authentication(header, id, req, new FincodeCallback<FincodeAuthResponse>() {
             @Override
             public void onResponse(FincodeAuthResponse fincodeAuthResponse) {
-                Log.d("fincode", "■■■ native　API　成功");
 
                 if (successCallback != null) {
                     successCallback.invoke(
@@ -514,7 +479,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
             @Override
             public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
-                Log.d("fincode", "■■■ native　API　失敗");
 
                 WritableNativeArray args1 = new WritableNativeArray();
                 args1.pushString(fincodeErrorResponse.statusCode.toString());
@@ -541,13 +505,11 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         this.successCallback = successCallback;
         this.failureCallback = failureCallback;
 
-        Log.d("fincode", "■■■ native 3DS2.0認証結果取得API :  開始");
 
         HashMap<String, String> header = createHeader(authorization, apiKey, apiVersion);
         FincodeAuthRepository.getInstance().getResult(header, id, new FincodeCallback<FincodeGetResultResponse>() {
             @Override
             public void onResponse(FincodeGetResultResponse fincodeGetResultResponse) {
-                Log.d("fincode", "■■■ native　API　成功");
 
                 if (successCallback != null) {
                     successCallback.invoke(
@@ -559,7 +521,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
             @Override
             public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
-                Log.d("fincode", "■■■ native　API　失敗");
 
                 WritableNativeArray args1 = new WritableNativeArray();
                 args1.pushString(fincodeErrorResponse.statusCode.toString());
@@ -589,14 +550,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         this.successCallback = successCallback;
         this.failureCallback = failureCallback;
 
-        Log.d("fincode", "■■■ native 認証後決済API :  開始");
-        Log.d("fincode", "authorization : " + authorization);
-        Log.d("fincode", "apiKey : " + apiKey);
-        Log.d("fincode", "apiVersion : " + apiVersion);
-        Log.d("fincode", "id : " + id);
-        Log.d("fincode", "payType : " + payType);
-        Log.d("fincode", "accessId : " + accessId);
-
         HashMap<String, String> header = createHeader(authorization, apiKey, apiVersion);
         FincodePaymentSecureRequest req = new FincodePaymentSecureRequest();
         req.setId(id);
@@ -606,7 +559,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
         FincodePaymentRepository.getInstance().paymentSecure(header, id, req, new FincodeCallback<FincodePaymentSecureResponse>() {
             @Override
             public void onResponse(FincodePaymentSecureResponse fincodePaymentSecureResponse) {
-                Log.d("fincode", "■■■ native　API　成功");
 
                 if (successCallback != null) {
                     successCallback.invoke(
@@ -654,7 +606,6 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
 
             @Override
             public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
-                Log.d("fincode", "■■■ native　API　失敗");
 
                 WritableNativeArray args1 = new WritableNativeArray();
                 args1.pushString(fincodeErrorResponse.statusCode.toString());
