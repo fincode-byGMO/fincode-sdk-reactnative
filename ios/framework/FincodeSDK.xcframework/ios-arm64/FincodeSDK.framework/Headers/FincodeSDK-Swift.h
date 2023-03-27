@@ -285,7 +285,6 @@ SWIFT_CLASS("_TtC10FincodeSDK13FincodeCommon")
 /// true: 表示
 /// false: 非表示
 @property (nonatomic) IBInspectable BOOL payTimesHidden;
-@property (nonatomic, copy) IBInspectable NSString * _Nonnull placeHolderName;
 /// 処理に必要な情報を設定します
 /// 処理に対応したクラスを使用してください
 /// \param config 設定情報
@@ -315,6 +314,8 @@ SWIFT_CLASS("_TtC10FincodeSDK13FincodeCommon")
 /// </ul>
 ///
 - (void)configuration:(FincodeConfiguration * _Nullable)config delegate:(id <ResultDelegate> _Nonnull)delegate;
+/// React Native向け
+- (void)configurationForReact:(FincodeConfiguration * _Nullable)config delegate:(id <ResultDelegate> _Nonnull)delegate;
 @end
 
 
@@ -399,6 +400,10 @@ SWIFT_CLASS("_TtC10FincodeSDK27FincodePaymentConfiguration")
 @property (nonatomic, copy) NSString * _Nonnull tds2MobilePhoneCc;
 /// 携帯電話番号
 @property (nonatomic, copy) NSString * _Nonnull tds2MobilePhoneNo;
+/// 職場電話の国コード
+@property (nonatomic, copy) NSString * _Nonnull tds2WorkPhoneCc;
+/// 職場電話番号
+@property (nonatomic, copy) NSString * _Nonnull tds2WorkPhoneNo;
 /// 出荷先住所の都市
 @property (nonatomic, copy) NSString * _Nonnull tds2ShipAddrCity;
 /// 出荷先住所の国コード

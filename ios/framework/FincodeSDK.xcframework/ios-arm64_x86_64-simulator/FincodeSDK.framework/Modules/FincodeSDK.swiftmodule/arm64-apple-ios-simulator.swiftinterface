@@ -46,6 +46,8 @@ import _Concurrency
   @objc public var tds2HomePhoneNo: Swift.String
   @objc public var tds2MobilePhoneCc: Swift.String
   @objc public var tds2MobilePhoneNo: Swift.String
+  @objc public var tds2WorkPhoneCc: Swift.String
+  @objc public var tds2WorkPhoneNo: Swift.String
   @objc public var tds2ShipAddrCity: Swift.String
   @objc public var tds2ShipAddrCountry: Swift.String
   @objc public var tds2ShipAddrLine1: Swift.String
@@ -138,7 +140,7 @@ public class FincodePaymentRequest {
   final public let payType: Swift.String?
   final public let status: Swift.String?
   final public let accessId: Swift.String?
-  final public let processDate: Foundation.Date?
+  final public let processDate: Swift.String?
   final public let jobCode: Swift.String?
   final public let itemCode: Swift.String?
   final public let amount: Swift.Int64?
@@ -157,7 +159,7 @@ public class FincodePaymentRequest {
   final public let issuer: Swift.String?
   final public let transactionId: Swift.String?
   final public let approve: Swift.String?
-  final public let authMaxDate: Foundation.Date?
+  final public let authMaxDate: Swift.String?
   final public let clientField1: Swift.String?
   final public let clientField2: Swift.String?
   final public let clientField3: Swift.String?
@@ -168,11 +170,13 @@ public class FincodePaymentRequest {
   final public let merchantName: Swift.String?
   final public let sendUrl: Swift.String?
   final public let subscriptionId: Swift.String?
+  final public let bulkPaymentId: Swift.String?
+  final public let brand: Swift.String?
   final public let errorCode: Swift.String?
   final public let acsUrl: Swift.String?
   final public let paReq: Swift.String?
-  final public let created: Foundation.Date?
-  final public let updated: Foundation.Date?
+  final public let created: Swift.String?
+  final public let updated: Swift.String?
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class FincodeCardOperateRepository {
@@ -209,6 +213,7 @@ public enum ServerTrustPolicy {
 public enum DefaultFlg : Swift.String {
   case OFF
   case ON
+  public static func getValue(_ value: Swift.String) -> FincodeSDK.DefaultFlg
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -340,7 +345,7 @@ public class FincodePaymentSecureRequest {
   final public let payType: Swift.String?
   final public let status: Swift.String?
   final public let accessId: Swift.String?
-  final public let processDate: Foundation.Date?
+  final public let processDate: Swift.String?
   final public let jobCode: Swift.String?
   final public let itemCode: Swift.String?
   final public let amount: Swift.Int64?
@@ -359,7 +364,7 @@ public class FincodePaymentSecureRequest {
   final public let issuer: Swift.String?
   final public let transactionId: Swift.String?
   final public let approve: Swift.String?
-  final public let authMaxDate: Foundation.Date?
+  final public let authMaxDate: Swift.String?
   final public let clientField1: Swift.String?
   final public let clientField2: Swift.String?
   final public let clientField3: Swift.String?
@@ -371,8 +376,8 @@ public class FincodePaymentSecureRequest {
   final public let sendUrl: Swift.String?
   final public let subscriptionId: Swift.String?
   final public let errorCode: Swift.String?
-  final public let created: Foundation.Date?
-  final public let updated: Foundation.Date?
+  final public let created: Swift.String?
+  final public let updated: Swift.String?
   @objc deinit
 }
 public enum SwiftyJSONError : Swift.Int, Swift.Error {
@@ -826,13 +831,13 @@ extension FincodeSDK.AFError : Foundation.LocalizedError {
   final public let expire: Swift.String
   final public let holderName: Swift.String
   final public let cardNoHash: Swift.String
-  final public let created: Foundation.Date?
-  final public let updated: Foundation.Date?
+  final public let created: Swift.String
+  final public let updated: Swift.String
   final public let type: Swift.String
   final public let brand: Swift.String
   @objc deinit
 }
-@_inheritsConvenienceInitializers @IBDesignable @objc @_Concurrency.MainActor(unsafe) public class FincodeCommon : UIKit.UIView {
+@_inheritsConvenienceInitializers @IBDesignable @objc @_Concurrency.MainActor(unsafe) open class FincodeCommon : UIKit.UIView {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var headingHidden: Swift.Bool {
@@ -851,14 +856,11 @@ extension FincodeSDK.AFError : Foundation.LocalizedError {
     @objc get
     @objc set
   }
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var placeHolderName: Swift.String {
-    @objc get
-    @objc set
-  }
   @objc @_Concurrency.MainActor(unsafe) public func configuration(_ config: FincodeSDK.FincodeConfiguration?, delegate: FincodeSDK.ResultDelegate)
+  @objc @_Concurrency.MainActor(unsafe) public func configurationForReact(_ config: FincodeSDK.FincodeConfiguration?, delegate: FincodeSDK.ResultDelegate)
   @objc deinit
 }
-public enum ApiKinds {
+public enum ApiKinds : Swift.String {
   case none
   case register
   case payment
@@ -868,9 +870,9 @@ public enum ApiKinds {
   case cardRegister
   case cardUpdate
   case cardInfoList
-  public static func == (a: FincodeSDK.ApiKinds, b: FincodeSDK.ApiKinds) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
     get
   }
 }
@@ -1381,7 +1383,7 @@ public class FincodeAuthRequest {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class FincodeErrorInfo {
-  final public let code: Swift.String
+  final public let code: Swift.String?
   final public let message: Swift.String
   @objc deinit
 }
@@ -1403,8 +1405,8 @@ public class FincodeCardRegisterRequest {
   final public let expire: Swift.String
   final public let holderName: Swift.String?
   final public let cardNoHash: Swift.String
-  final public let created: Foundation.Date?
-  final public let updated: Foundation.Date?
+  final public let created: Swift.String?
+  final public let updated: Swift.String?
   final public let type: Swift.String
   final public let brand: Swift.String
   @objc deinit
@@ -1414,7 +1416,7 @@ public class FincodeCardRegisterRequest {
   @objc func failure(_ result: FincodeSDK.FincodeErrorResponse)
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class FincodeErrorResponse : ObjectiveC.NSObject {
-  final public let statusCode: Swift.Int
+  final public let statusCode: Swift.Int?
   final public let errorOccurredApi: FincodeSDK.ApiKinds
   final public let errors: [FincodeSDK.FincodeErrorInfo]
   @objc deinit
@@ -1428,6 +1430,8 @@ public class FincodeCardRegisterRequest {
   case none
   case Basic
   case Bearer
+  public func authorization(_ apiKey: Swift.String) -> Swift.String
+  public static func getValue(_ value: Swift.String) -> FincodeSDK.Authorization
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -1600,8 +1604,8 @@ public class FincodeCardUpdateRequest {
   final public let expire: Swift.String
   final public let holderName: Swift.String?
   final public let cardNoHash: Swift.String
-  final public let created: Foundation.Date?
-  final public let updated: Foundation.Date?
+  final public let created: Swift.String?
+  final public let updated: Swift.String?
   final public let type: Swift.String
   final public let brand: Swift.String
   @objc deinit
@@ -1714,6 +1718,7 @@ extension FincodeSDK.writingOptionsKeys : Swift.Equatable {}
 extension FincodeSDK.writingOptionsKeys : Swift.Hashable {}
 extension FincodeSDK.ApiKinds : Swift.Equatable {}
 extension FincodeSDK.ApiKinds : Swift.Hashable {}
+extension FincodeSDK.ApiKinds : Swift.RawRepresentable {}
 extension FincodeSDK.HTTPMethod : Swift.Equatable {}
 extension FincodeSDK.HTTPMethod : Swift.Hashable {}
 extension FincodeSDK.HTTPMethod : Swift.RawRepresentable {}
