@@ -8,18 +8,18 @@ import { FincodeVerticalView, FincodePaymentResponse, FincodeErrorResponse, BEAR
 // const
 // **************************
 
-const sample_apiKey = 'p_test_MTE1NjYzZDAtNWU0Ny00ZGM5LTgzNTEtMmYxMTY5NDI0ZTBhNzgxMDhiMDYtZThlMy00YzM1LWI1ZmQtNTczMTRjZDk3NmY2c18yMzA1MjM4NzUzNg';
+const sample_apiKey = '';
 const sample_apiVersion = '';
-const sample_customerId = 'User001';
+const sample_customerId = '';
 const sample_payType = 'Konbini';
-const sample_accessId = 'a_LkIh-CnTTa-o--8IgpgO1g';
-const sample_id = 'o_D2YVgs8zTtKu0rcT153R3A';
-const sample_paymentTermDay = '2';
-const sample_deviceName = 'iPhone';
-const sample_winWidth = '390';
-const sample_winHeight = '844';
-const sample_pixelRatio = '3';
-const sample_winSizeType = '2';
+const sample_accessId = '';
+const sample_id = '';
+const sample_paymentTermDay = '';
+const sample_deviceName = '';
+const sample_winWidth = '';
+const sample_winHeight = '';
+const sample_pixelRatio = '';
+const sample_winSizeType = '';
 
 // **************************
 // component
@@ -29,7 +29,7 @@ const ApiPaymentKonbini = () => {
     // 決済実行APIを単体で呼び出す
     // 補足：
     //   動作確認の容易さからuseEffect内で実行しているが、加盟店様の任意のタイミングで実行してください
-    console.log('■■■ コンビニ決済実行 API >>>>>');
+    console.log('■■■ 決済実行(コンビニ) API >>>>>');
     konbini(
       {
         authorization: BEARER,

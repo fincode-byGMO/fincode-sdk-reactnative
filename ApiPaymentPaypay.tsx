@@ -8,15 +8,15 @@ import { FincodeVerticalView, FincodePaymentResponse, FincodeErrorResponse, BEAR
 // const
 // **************************
 
-const sample_apiKey = 'p_test_MTE1NjYzZDAtNWU0Ny00ZGM5LTgzNTEtMmYxMTY5NDI0ZTBhNzgxMDhiMDYtZThlMy00YzM1LWI1ZmQtNTczMTRjZDk3NmY2c18yMzA1MjM4NzUzNg';
+const sample_apiKey = '';
 const sample_apiVersion = '';
-const sample_customerId = 'User001';
+const sample_customerId = '';
 const sample_payType = 'Paypay';
-const sample_accessId = 'a_8nQ043vWQBa7ysQgVej3tQ';
-const sample_id = 'o_ILGvc-FlTAqhim4f5H9Xqg';
-const sample_redirectUrl = 'https://webhook.site/3ee6e787-064e-4758-ae36-a9fc93930794';
-const sample_redirectType = '2';
-const sample_userAgent = 'safary';
+const sample_accessId = '';
+const sample_id = '';
+const sample_redirectUrl = '';
+const sample_redirectType = '';
+const sample_userAgent = '';
 
 // **************************
 // component

@@ -19,4 +19,4 @@ import ApiPayment3ds from './ApiPayment3ds'; // API単体実行 : 決済実行AP
 import ApiPaymentKonbini from './ApiPaymentKonbini'; // API単体実行 : 決済実行API
 import ApiPaymentPaypay from './ApiPaymentPaypay'; // API単体実行 : 決済実行API
 
-AppRegistry.registerComponent(appName, () => ApiPaymentPaypay);
+AppRegistry.registerComponent(appName, () => AppPayment);
