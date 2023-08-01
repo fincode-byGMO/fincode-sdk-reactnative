@@ -227,6 +227,98 @@ export type PaymentResponse = {
   updated: string;
 };
 
+export type KonbiniRequest = ConfigPayment & {
+  paymentTermDay: String;
+  deviceName: String;
+  winWidth: String;
+  winHeight: String;
+  pixelRatio: String;
+  winSizeType: String;
+};
+
+export type KonbiniResponse = {
+  shopId: String;
+  id: String;
+  payType: String;
+  status: String;
+  accessId: String;
+  processDate: String;
+  amount: String;
+  tax: String;
+  totalAmount: String;
+  paymentTermDay: String;
+  paymentTerm: String;
+  deviceName: String;
+  osVersion: String;
+  winWidth: String;
+  winHeight: String;
+  xdpi: String;
+  ydpi: String;
+  clientField1: String;
+  clientField2: String;
+  clientField3: String;
+  result: String;
+  orderSerial: String;
+  invoiceId: String;
+  barcode: String;
+  barcodeFormat: String;
+  barcodeWidth: String;
+  barcodeHeight: String;
+  paymentDate: String;
+  konbiniCode: String;
+  konbiniStoreCode: String;
+  errorCode: String;
+  overpaymentFlag: String;
+  cancelOverpaymentFlag: String;
+  created: String;
+  updated: String;
+};
+
+export type PaypayRequest = ConfigPayment & {
+  redirectUrl: String;
+  redirectType: String;
+  userAgent: String;
+};
+
+export type PaypayResponse = {
+  shopId: String;
+  id: String;
+  payType: String;
+  status: String;
+  accessId: String;
+  processDate: String;
+  jobCode: String;
+  amount: String;
+  tax: String;
+  totalAmount: String;
+  customerId: String;
+  codeExpiryDate: String;
+  authMaxDate: String;
+  orderDescription: String;
+  captureDescription: String;
+  updateDescription: String;
+  cancelDescription: String;
+  redirectUrl: String;
+  redirectType: String;
+  clientField1: String;
+  clientField2: String;
+  clientField3: String;
+  storeId: String;
+  codeId: String;
+  codeUrl: String;
+  paymentId: String;
+  paypayResultCode: String;
+  merchantPaymentId: String;
+  merchantCaptureId: String;
+  merchantUpdateId: String;
+  merchantRevertId: String;
+  merchantRefundId: String;
+  paymentDate: String;
+  errorCode: String;
+  created: String;
+  updated: String;
+};
+
 export type PaymentSecureRequest = {
   payType: string;
   accessId: string;
@@ -407,6 +499,8 @@ export type ConfigCardUpdate = {
 };
 
 export type ApiPaymentSuccessCallback = (response: PaymentResponse) => void;
+export type ApiKonbiniSuccessCallback = (response: KonbiniResponse) => void;
+export type ApiPaypaySuccessCallback = (response: PaypayResponse) => void;
 export type ApiCardRegisterSuccessCallback = (response: CardRegisterResponse) => void;
 export type ApiCardUpdateSuccessCallback = (response: CardUpdateResponse) => void;
 export type ApiCardInfoListSuccessCallback = (response: CardInfoListResponse) => void;
