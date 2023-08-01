@@ -195,6 +195,158 @@ class FincodeApiModule: NSObject {
     }
   }
   
+  @objc public func konbini(_ authorization: String, apiKey: String, apiVersion: String?,
+                            payType: String?, accessId: String?, id: String?, customerId: String?, paymentTermDay: String?, deviceName: String?, winWidth: String?,
+                            winHeight: String?, pixelRatio: String?,winSizeType: String?,
+                            errorCallback: @escaping RCTResponseSenderBlock, successCallback: @escaping RCTResponseSenderBlock) {
+    
+    let req = FincodeKonbiniRequest()
+    req.payType = payType
+    req.accessId = accessId
+    req.id = id
+    req.customerId = customerId
+    req.paymentTermDay = paymentTermDay
+    req.deviceName = deviceName
+    req.winWidth = winWidth
+    req.winHeight = winHeight
+    req.pixelRatio = pixelRatio
+    req.winSizeType = winSizeType
+    
+    print(req)
+    
+    FincodePaymentRepository.sharedInstance.payment(id ?? "", request: req, header: createHeader(auth: authorization, apiKey: apiKey, apiVersion: apiVersion)) { result in
+      switch result {
+      case .success(let data):
+       
+        successCallback([
+          FincodeUtil.param(data.shopId),
+          FincodeUtil.param(data.id),
+          FincodeUtil.param(data.payType),
+          FincodeUtil.param(data.status),
+          FincodeUtil.param(data.accessId),
+          FincodeUtil.param(data.processDate),
+          FincodeUtil.param(data.amount),
+          FincodeUtil.param(data.tax),
+          FincodeUtil.param(data.totalAmount),
+          FincodeUtil.param(data.paymentTermDay),
+          FincodeUtil.param(data.paymentTerm),
+          FincodeUtil.param(data.deviceName),
+          FincodeUtil.param(data.osVersion),
+          FincodeUtil.param(data.winWidth),
+          FincodeUtil.param(data.winHeight),
+          FincodeUtil.param(data.xdpi),
+          FincodeUtil.param(data.ydpi),
+          FincodeUtil.param(data.clientField1),
+          FincodeUtil.param(data.clientField2),
+          FincodeUtil.param(data.clientField3),
+          FincodeUtil.param(data.result),
+          FincodeUtil.param(data.orderSerial),
+          FincodeUtil.param(data.invoiceId),
+          FincodeUtil.param(data.barcode),
+          FincodeUtil.param(data.barcodeFormat),
+          FincodeUtil.param(data.barcodeWidth),
+          FincodeUtil.param(data.barcodeHeight),
+          FincodeUtil.param(data.paymentDate),
+          FincodeUtil.param(data.konbiniCode),
+          FincodeUtil.param(data.konbiniStoreCode),
+          FincodeUtil.param(data.errorCode),
+          FincodeUtil.param(data.overpaymentFlag),
+          FincodeUtil.param(data.cancelOverpaymentFlag),
+          FincodeUtil.param(data.created),
+          FincodeUtil.param(data.updated)])
+      case .failure(let error):
+        var params: [Any] = []
+        params.append(error.errorResponse.statusCode ?? "")
+        
+        var errors: [Dictionary<AnyHashable, Any>] = []
+        for e in error.errorResponse.errors {
+          var map: Dictionary<AnyHashable, Any> = [:]
+          map.updateValue(e.code ?? "", forKey: "code")
+          map.updateValue(e.message, forKey: "message")
+          errors.append(map)
+        }
+        params.append(errors)
+        
+        errorCallback(params)
+      }
+    }
+  }
+  
+  @objc public func paypay(_ authorization: String, apiKey: String, apiVersion: String?,
+                            payType: String?, accessId: String?, id: String?,
+                           customerId: String?,redirectUrl: String?, redirectType: String?, userAgent: String?,
+                            errorCallback: @escaping RCTResponseSenderBlock, successCallback: @escaping RCTResponseSenderBlock) {
+
+    let req = FincodePaypayRequest()
+    req.payType = payType
+    req.accessId = accessId
+    req.id = id
+    req.customerId = customerId
+    req.redirectUrl = redirectUrl
+    req.redirectType = redirectType
+    req.userAgent = userAgent
+    
+    print(req)
+    
+    FincodePaymentRepository.sharedInstance.payment(id ?? "", request: req, header: createHeader(auth: authorization, apiKey: apiKey, apiVersion: apiVersion)) { result in
+      switch result {
+      case .success(let data):
+       
+        successCallback([
+          FincodeUtil.param(data.shopId),
+          FincodeUtil.param(data.id),
+          FincodeUtil.param(data.payType),
+          FincodeUtil.param(data.status),
+          FincodeUtil.param(data.accessId),
+          FincodeUtil.param(data.processDate),
+          FincodeUtil.param(data.jobCode),
+          FincodeUtil.param(data.amount),
+          FincodeUtil.param(data.tax),
+          FincodeUtil.param(data.totalAmount),
+          FincodeUtil.param(data.customerId),
+          FincodeUtil.param(data.codeExpiryDate),
+          FincodeUtil.param(data.authMaxDate),
+          FincodeUtil.param(data.orderDescription),
+          FincodeUtil.param(data.captureDescription),
+          FincodeUtil.param(data.updateDescription),
+          FincodeUtil.param(data.cancelDescription),
+          FincodeUtil.param(data.redirectUrl),
+          FincodeUtil.param(data.redirectType),
+          FincodeUtil.param(data.clientField1),
+          FincodeUtil.param(data.clientField2),
+          FincodeUtil.param(data.clientField3),
+          FincodeUtil.param(data.storeId),
+          FincodeUtil.param(data.codeId),
+          FincodeUtil.param(data.codeUrl),
+          FincodeUtil.param(data.paymentId),
+          FincodeUtil.param(data.paypayResultCode),
+          FincodeUtil.param(data.merchantPaymentId),
+          FincodeUtil.param(data.merchantCaptureId),
+          FincodeUtil.param(data.merchantUpdateId),
+          FincodeUtil.param(data.merchantRevertId),
+          FincodeUtil.param(data.merchantRefundId),
+          FincodeUtil.param(data.paymentDate),
+          FincodeUtil.param(data.errorCode),
+          FincodeUtil.param(data.created),
+          FincodeUtil.param(data.updated)])
+      case .failure(let error):
+        var params: [Any] = []
+        params.append(error.errorResponse.statusCode ?? "")
+        
+        var errors: [Dictionary<AnyHashable, Any>] = []
+        for e in error.errorResponse.errors {
+          var map: Dictionary<AnyHashable, Any> = [:]
+          map.updateValue(e.code ?? "", forKey: "code")
+          map.updateValue(e.message, forKey: "message")
+          errors.append(map)
+        }
+        params.append(errors)
+        
+        errorCallback(params)
+      }
+    }
+  }
+  
   @objc public func registerCard(_ authorization: String, apiKey: String, apiVersion: String?,
                                  customerId: String?,defaultFlag: String?, cardNo: String?,
                                  expire: String?,holderName: String?,
