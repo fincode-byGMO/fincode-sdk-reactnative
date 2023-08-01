@@ -8,6 +8,10 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.epsilon.fincode.fincodesdk.entities.api.FincodeKonbiniRequest;
+import com.epsilon.fincode.fincodesdk.entities.api.FincodeKonbiniResponse;
+import com.epsilon.fincode.fincodesdk.entities.api.FincodePaypayRequest;
+import com.epsilon.fincode.fincodesdk.entities.api.FincodePaypayResponse;
 import com.facebook.react.bridge.Arguments;
 
 import com.epsilon.fincode.fincodesdk.Repository.FincodePaymentRepository;
@@ -244,6 +248,188 @@ public class FincodeApiModule extends ReactContextBaseJavaModule {
                             fincodePaymentResponse.getPaReq(),
                             fincodePaymentResponse.getCreated(),
                             fincodePaymentResponse.getUpdated());
+                }
+            }
+
+            @Override
+            public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
+
+                WritableNativeArray args1 = new WritableNativeArray();
+                args1.pushString(fincodeErrorResponse.statusCode.toString());
+
+                WritableNativeArray args2 = new WritableNativeArray();
+                for (FincodeErrorInfo v : fincodeErrorResponse.errorInfo.getList()) {
+                    args2.pushMap(RCTFincodeResultEvent.createInfo(v.getCode(), v.getMessage()));
+                }
+
+                if (failureCallback != null) {
+                    failureCallback.invoke(args1, args2);
+                }
+            }
+        });
+    }
+
+    @ReactMethod
+    public void konbini(String authorization,
+                        String apiKey,
+                        String apiVersion,
+                        String payType,
+                        String accessId,
+                        String id,
+                        String customerId,
+                        String paymentTermDay,
+                        String deviceName,
+                        String winWidth,
+                        String winHeight,
+                        String pixelRatio,
+                        String winSizeType,
+                        Callback failureCallback, Callback successCallback) {
+
+        this.successCallback = successCallback;
+        this.failureCallback = failureCallback;
+
+        HashMap<String, String> header = createHeader(authorization, apiKey, apiVersion);
+        FincodeKonbiniRequest req = new FincodeKonbiniRequest();
+        req.setPayType(payType);
+        req.setAccessId(accessId);
+        req.setOrderId(id);
+        req.setCustomerId(customerId);
+        req.setPaymentTermDay(paymentTermDay);
+        req.setDeviceName(deviceName);
+        req.setWinWidth(winWidth);
+        req.setWinHeight(winHeight);
+        req.setPixelRatio(pixelRatio);
+        req.setWinSizeType(winSizeType);
+
+        FincodePaymentRepository.getInstance().payment(header, id, req, new FincodeCallback<FincodeKonbiniResponse>() {
+            @Override
+            public void onResponse(FincodeKonbiniResponse fincodeKonbiniResponse) {
+
+                if (successCallback != null) {
+                    successCallback.invoke(
+                            fincodeKonbiniResponse.getShopId(),
+                            fincodeKonbiniResponse.getOrderId(),
+                            fincodeKonbiniResponse.getPayType(),
+                            fincodeKonbiniResponse.getStatus(),
+                            fincodeKonbiniResponse.getAccessId(),
+                            fincodeKonbiniResponse.getProcessDate(),
+                            fincodeKonbiniResponse.getAmount() != null ? fincodeKonbiniResponse.getAmount().toString() : "",
+                            fincodeKonbiniResponse.getTax() != null ? fincodeKonbiniResponse.getTax().toString() : "",
+                            fincodeKonbiniResponse.getTotalAmount() != null ? fincodeKonbiniResponse.getTotalAmount().toString() : "",
+                            fincodeKonbiniResponse.getPaymentTermDay(),
+                            fincodeKonbiniResponse.getPaymentTerm(),
+                            fincodeKonbiniResponse.getDeviceName(),
+                            fincodeKonbiniResponse.getOsVersion(),
+                            fincodeKonbiniResponse.getWinWidth(),
+                            fincodeKonbiniResponse.getWinHeight(),
+                            fincodeKonbiniResponse.getXdpi(),
+                            fincodeKonbiniResponse.getYdpi(),
+                            fincodeKonbiniResponse.getClientField1(),
+                            fincodeKonbiniResponse.getClientField2(),
+                            fincodeKonbiniResponse.getClientField3(),
+                            fincodeKonbiniResponse.getResult(),
+                            fincodeKonbiniResponse.getOrderSerial(),
+                            fincodeKonbiniResponse.getInvoiceId(),
+                            fincodeKonbiniResponse.getBarcode(),
+                            fincodeKonbiniResponse.getBarcodeFormat(),
+                            fincodeKonbiniResponse.getBarcodeWidth(),
+                            fincodeKonbiniResponse.getBarcodeHeight(),
+                            fincodeKonbiniResponse.getPaymentDate(),
+                            fincodeKonbiniResponse.getKonbiniCode(),
+                            fincodeKonbiniResponse.getKonbiniStoreCode(),
+                            fincodeKonbiniResponse.getErrorCode(),
+                            fincodeKonbiniResponse.getOverpaymentFlag(),
+                            fincodeKonbiniResponse.getCancelOverpaymentFlag(),
+                            fincodeKonbiniResponse.getCreated(),
+                            fincodeKonbiniResponse.getUpdated());
+                }
+            }
+
+            @Override
+            public void onFailure(FincodeErrorResponse fincodeErrorResponse) {
+
+                WritableNativeArray args1 = new WritableNativeArray();
+                args1.pushString(fincodeErrorResponse.statusCode.toString());
+
+                WritableNativeArray args2 = new WritableNativeArray();
+                for (FincodeErrorInfo v : fincodeErrorResponse.errorInfo.getList()) {
+                    args2.pushMap(RCTFincodeResultEvent.createInfo(v.getCode(), v.getMessage()));
+                }
+
+                if (failureCallback != null) {
+                    failureCallback.invoke(args1, args2);
+                }
+            }
+        });
+    }
+
+    @ReactMethod
+    public void paypay(String authorization,
+                        String apiKey,
+                        String apiVersion,
+                        String payType,
+                        String accessId,
+                        String id,
+                        String customerId,
+                        String redirectUrl,
+                        String redirectType,
+                        String userAgent,
+                        Callback failureCallback, Callback successCallback) {
+
+        this.successCallback = successCallback;
+        this.failureCallback = failureCallback;
+
+        HashMap<String, String> header = createHeader(authorization, apiKey, apiVersion);
+        FincodePaypayRequest req = new FincodePaypayRequest();
+        req.setPayType(payType);
+        req.setAccessId(accessId);
+        req.setOrderId(id);
+        req.setRedirectUrl(redirectUrl);
+        req.setRedirectType(redirectType);
+        req.setUserAgent(userAgent);
+
+        FincodePaymentRepository.getInstance().payment(header, id, req, new FincodeCallback<FincodePaypayResponse>() {
+            @Override
+            public void onResponse(FincodePaypayResponse fincodePaypayResponse) {
+
+                if (successCallback != null) {
+                    successCallback.invoke(
+                            fincodePaypayResponse.getShopId(),
+                            fincodePaypayResponse.getOrderId(),
+                            fincodePaypayResponse.getPayType(),
+                            fincodePaypayResponse.getStatus(),
+                            fincodePaypayResponse.getAccessId(),
+                            fincodePaypayResponse.getProcessDate(),
+                            fincodePaypayResponse.getJobCode(),
+                            fincodePaypayResponse.getAmount() != null ? fincodePaypayResponse.getAmount().toString() : "",
+                            fincodePaypayResponse.getTax() != null ? fincodePaypayResponse.getTax().toString() : "",
+                            fincodePaypayResponse.getTotalAmount() != null ? fincodePaypayResponse.getTotalAmount().toString() : "",
+                            fincodePaypayResponse.getCustomerId(),
+                            fincodePaypayResponse.getCodeExpiryDate(),
+                            fincodePaypayResponse.getAuthMaxDate(),
+                            fincodePaypayResponse.getOrderDescription(),
+                            fincodePaypayResponse.getCaptureDescription(),
+                            fincodePaypayResponse.getUpdateDescription(),
+                            fincodePaypayResponse.getCancelDescription(),
+                            fincodePaypayResponse.getRedirectUrl(),
+                            fincodePaypayResponse.getRedirectType(),
+                            fincodePaypayResponse.getClientField1(),
+                            fincodePaypayResponse.getClientField2(),
+                            fincodePaypayResponse.getClientField3(),
+                            fincodePaypayResponse.getStoreId(),
+                            fincodePaypayResponse.getCodeId(),
+                            fincodePaypayResponse.getCodeUrl(),
+                            fincodePaypayResponse.getPaymentId(),
+                            fincodePaypayResponse.getPaypayResultCode(),
+                            fincodePaypayResponse.getMerchantPaymentId(),
+                            fincodePaypayResponse.getMerchantCaptureId(),
+                            fincodePaypayResponse.getMerchantUpdateId(),
+                            fincodePaypayResponse.getMerchantRevertId(),
+                            fincodePaypayResponse.getMerchantRefundId(),
+                            fincodePaypayResponse.getPaymentDate(),
+                            fincodePaypayResponse.getErrorCode(),
+                            fincodePaypayResponse.getCreated(),
+                            fincodePaypayResponse.getUpdated());
                 }
             }
 
