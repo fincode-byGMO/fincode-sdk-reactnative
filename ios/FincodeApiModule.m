@@ -76,6 +76,35 @@ RCT_EXTERN_METHOD(payment:(NSString *)authorization
                   errorCallback:(RCTResponseSenderBlock)errorCallback
                   successCallback:(RCTResponseSenderBlock)successCallback)
 
+RCT_EXTERN_METHOD(konbini:(NSString *)authorization
+                  apiKey:(NSString *)apiKey
+                  apiVersion:(NSString *)apiVersion
+                  payType:(NSString *)payType
+                  accessId:(NSString *)accessId
+                  id:(NSString *)id
+                  customerId:(NSString *)customerId
+                  paymentTermDay:(NSString *)paymentTermDay
+                  deviceName:(NSString *)deviceName
+                  winWidth:(NSString *)winWidth
+                  winHeight:(NSString *)winHeight
+                  pixelRatio:(NSString *)pixelRatio
+                  winSizeType:(NSString *)winSizeType
+                  errorCallback:(RCTResponseSenderBlock)errorCallback
+                  successCallback:(RCTResponseSenderBlock)successCallback)
+
+RCT_EXTERN_METHOD(paypay:(NSString *)authorization
+                  apiKey:(NSString *)apiKey
+                  apiVersion:(NSString *)apiVersion
+                  payType:(NSString *)payType
+                  accessId:(NSString *)accessId
+                  id:(NSString *)id
+                  customerId:(NSString *)customerId
+                  redirectUrl:(NSString *)redirectUrl
+                  redirectType:(NSString *)redirectType
+                  userAgent:(NSString *)userAgent
+                  errorCallback:(RCTResponseSenderBlock)errorCallback
+                  successCallback:(RCTResponseSenderBlock)successCallback)
+
 RCT_EXTERN_METHOD(cardInfoList:(NSString *)authorization
                   apiKey:(NSString *)apiKey
                   apiVersion:(NSString *)apiVersion

@@ -16,5 +16,7 @@ import ApiAuthentication from './ApiAuthentication'; // API単体実行 : 3DS2.0
 import ApiGetResult from './ApiGetResult'; // API単体実行 : 3DS2.0認証実行API
 import ApiPaymentSecure from './ApiPaymentSecure'; // API単体実行 : 認証後決済API
 import ApiPayment3ds from './ApiPayment3ds'; // API単体実行 : 決済実行API
+import ApiPaymentKonbini from './ApiPaymentKonbini'; // API単体実行 : 決済実行API
+import ApiPaymentPaypay from './ApiPaymentPaypay'; // API単体実行 : 決済実行API
 
-AppRegistry.registerComponent(appName, () => AppPayment);
+AppRegistry.registerComponent(appName, () => ApiPaymentPaypay);
